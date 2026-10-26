@@ -1,0 +1,239 @@
+.section {
+  padding: 32px 0;
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.legendItem {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+}
+
+.roadmapScroll {
+  overflow-x: auto;
+  padding: 12px 0 24px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.roadmapTrack {
+  display: flex;
+  min-width: max-content;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.nodeWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.nodeInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  min-width: 120px;
+  max-width: 130px;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+}
+
+.nodeInner:hover {
+  background: var(--bg-elevated);
+}
+
+/* Circles */
+.nodeCircle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 2px solid transparent;
+  transition: all var(--transition-normal);
+  z-index: 1;
+}
+
+.nodeCompleted {
+  background: var(--green-soft);
+  border-color: var(--state-completed);
+  color: var(--green);
+}
+
+.nodeCurrent {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  box-shadow: 0 0 0 5px rgba(245, 200, 66, 0.15);
+  animation: pulseGlow 3s ease infinite;
+}
+
+.nodeNext {
+  background: var(--purple-soft);
+  border-color: var(--purple);
+  color: var(--purple);
+}
+
+.nodeLocked {
+  background: rgba(58, 63, 96, 0.35);
+  border-color: var(--state-locked);
+  color: var(--text-muted);
+}
+
+.checkIcon {
+  color: var(--green);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.starIcon {
+  color: var(--gold);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.nextIcon {
+  color: var(--purple);
+  font-weight: 900;
+  font-size: 18px;
+}
+
+.lockSmall {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.levelNum {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+}
+
+.levelName {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rewardPill {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--gold-soft);
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.rewardPillLocked {
+  background: rgba(58, 63, 96, 0.3);
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+
+.youAreHere {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+.nextGoal {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--purple);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+}
+
+/* Connector line between nodes */
+.connector {
+  position: absolute;
+  top: 43px;
+  left: calc(50% + 27px);
+  width: calc(100% - 38px);
+  height: 3px;
+  background: var(--border);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.connectorFilled {
+  background: var(--green);
+}
+
+/* Detail popover */
+.detail {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-hover);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  width: 170px;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  box-shadow: var(--shadow-hover);
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.detailRow:last-child {
+  border: none;
+}
+
+.detailRow span:first-child {
+  color: var(--text-muted);
+}
+
+.detailRow span:last-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}

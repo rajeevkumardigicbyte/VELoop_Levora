@@ -1,0 +1,40 @@
+/* Skeleton */
+.skeletonCard {
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+.skeletonHero  { padding: 24px; }
+.skeletonRoadmap { display: flex; gap: 16px; overflow: hidden; padding: 24px; }
+.skeletonRoadmapNode { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+.skeletonLine {
+  background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-elevated) 50%, var(--bg-card) 75%);
+  background-size: 400px 100%;
+  animation: skeletonWave 1.4s ease infinite;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Error State */
+.errorState {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 48px 24px;
+  background: var(--bg-card); border: 1px solid var(--red-soft);
+  border-radius: var(--radius-lg); gap: 12px;
+}
+.errorIcon  { font-size: 40px; }
+.errorTitle { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); }
+.errorMsg   { font-size: var(--text-sm); color: var(--text-secondary); max-width: 280px; }
+
+/* Empty State */
+.emptyState {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 48px 24px;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); gap: 12px;
+}
+.emptyIcon  { font-size: 48px; }
+.emptyTitle { font-size: var(--text-lg); font-weight: 700; color: var(--text-primary); }
+.emptyMsg   { font-size: var(--text-sm); color: var(--text-secondary); max-width: 280px; }

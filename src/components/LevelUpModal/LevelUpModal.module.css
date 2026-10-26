@@ -1,0 +1,149 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 11, 20, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+}
+
+.modalCard {
+  background: var(--grad-card);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 460px;
+  box-shadow: 0 0 50px rgba(245, 200, 66, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.sparkleWrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 20px;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.celebrationBadge {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.modalTitle {
+  font-size: 36px;
+  font-weight: 900;
+  color: #FFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.badgeRing {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gold-soft);
+  box-shadow: 0 0 25px rgba(245, 200, 66, 0.4);
+  margin-bottom: 14px;
+  animation: bounceIn 0.8s ease;
+}
+
+.badgeRingInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badgeIcon {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.badgeNum {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+.levelRankTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.modalSub {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.rewardBox {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.rewardLead {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.rewardAmount {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rewardIcon {
+  font-size: 26px;
+}
+
+.rewardVal {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.rewardNote {
+  font-size: 11px;
+  color: var(--text-secondary);
+}

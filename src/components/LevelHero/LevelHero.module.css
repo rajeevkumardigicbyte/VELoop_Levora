@@ -1,0 +1,350 @@
+.hero {
+  position: relative;
+  padding: 40px 0 24px;
+  overflow: hidden;
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 75% at 20% 45%, rgba(123, 97, 255, 0.08) 0%, transparent 70%),
+              radial-gradient(ellipse 45% 65% at 85% 25%, rgba(245, 200, 66, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .heroInner {
+    grid-template-columns: 1.35fr 1fr;
+    gap: 40px;
+  }
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.heroTitle {
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.heroSub {
+  font-size: var(--text-md);
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+/* Level block */
+.levelBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.levelBadgeWrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.levelBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 16px var(--gold-glow);
+  flex-shrink: 0;
+}
+
+.levelIcon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.levelNum {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-top: 2px;
+}
+
+.levelInfo {
+  flex: 1;
+}
+
+.levelLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.levelName {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.levelXP {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+}
+
+.levelXP span {
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* Progress */
+.progressSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progressLabels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.pct {
+  font-weight: 700;
+  color: var(--gold);
+  font-size: var(--text-sm);
+}
+
+.progressTrack {
+  height: 12px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--grad-gold);
+  border-radius: var(--radius-full);
+  position: relative;
+  min-width: 4px;
+}
+
+.progressGlow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFF;
+  filter: blur(4px);
+  opacity: 0.7;
+}
+
+.progressRemaining {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+/* Right card */
+.heroRight {
+  height: 100%;
+}
+
+.nextLevelCard {
+  background: var(--grad-card);
+  border: 1px solid var(--border-purple);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-purple);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.nextLevelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nextLevelLabel {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.levelArrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.tierPillCurrent,
+.tierPillNext {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  flex: 1;
+}
+
+.tierPillCurrent {
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+}
+
+.tierPillNext {
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+}
+
+.tierPillLevel {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.tierPillCurrent .tierPillLevel {
+  color: var(--gold);
+}
+
+.tierPillNext .tierPillLevel {
+  color: var(--purple);
+}
+
+.tierPillName {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.arrowIcon {
+  font-size: 18px;
+  color: var(--text-muted);
+}
+
+.rewardTeaser {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+}
+
+.rewardTeaserIconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--gold-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-gold);
+}
+
+.rewardTeaserIcon {
+  font-size: 22px;
+}
+
+.rewardTeaserDetails {
+  flex: 1;
+}
+
+.rewardTeaserLabel {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.rewardTeaserValue {
+  font-size: var(--text-md);
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.miniProgressWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.miniProgress {
+  height: 6px;
+  background: var(--bg-elevated);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.miniProgressFill {
+  height: 100%;
+  background: var(--grad-purple);
+  border-radius: var(--radius-full);
+}
+
+.miniProgressText {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  font-weight: 500;
+}

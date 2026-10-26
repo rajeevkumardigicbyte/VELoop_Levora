@@ -1,0 +1,180 @@
+.section {
+  padding: 32px 0;
+}
+
+.sectionHead {
+  margin-bottom: 24px;
+}
+
+/* CTA Banner */
+.ctaBanner {
+  background: var(--grad-card);
+  border: 1px solid var(--border-purple);
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+@media (min-width: 900px) {
+  .ctaBanner {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.ctaLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaXP {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ctaLabel {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ctaChip {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  background: var(--purple-soft);
+  color: var(--purple);
+  border: 1px solid var(--border-purple);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.ctaRight {
+  display: flex;
+  align-items: center;
+}
+
+.recommendBox {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  width: 100%;
+}
+
+.recommendLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.recommendText {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Cards */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.earnCard {
+  background: var(--bg-card);
+  border: 1px solid var(--card-border, var(--border));
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.earnCard:hover:not(.earnCardDisabled) {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--card-border, var(--border-hover));
+  background: var(--bg-card-hover);
+}
+
+.earnCardDisabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.comingSoonBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.cardIcon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardDesc {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.cardReward {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--card-color, var(--gold));
+  margin-top: 4px;
+}
+
+.cardCta {
+  width: 100%;
+  margin-top: auto;
+}
+
+.demoNote {
+  margin-top: 24px;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+}

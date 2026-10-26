@@ -1,0 +1,389 @@
+.section {
+  padding: 32px 0;
+}
+
+.sectionHead {
+  margin-bottom: 24px;
+}
+
+.tagWrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.centerContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.gameCardWrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Start screen */
+.gameStartScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.gameBadge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.gameTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.gameSubtitle {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  max-width: 440px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.rulesCard {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  width: 100%;
+  max-width: 480px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.rulesTitle {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.rulesList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.rulesList li {
+  line-height: 1.4;
+}
+
+.rulesList strong {
+  color: var(--text-primary);
+}
+
+.startActionArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.frequencyTag {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Gameplay screen */
+.gamePlayWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  user-select: none;
+}
+
+.gameHud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+}
+
+.hudScore,
+.hudTimer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hudLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.hudScoreVal {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+.hudTimerVal {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.timerWarn .hudTimerVal {
+  color: #FFA500;
+}
+
+.timerUrgent .hudTimerVal {
+  color: var(--red);
+  animation: pulseGlow 1s infinite;
+}
+
+.gameArena {
+  background: radial-gradient(circle at 50% 20%, #202444 0%, #131525 100%);
+  border: 2px solid var(--border-purple);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+  cursor: crosshair;
+}
+
+.coinItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 24px;
+  line-height: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.gemItem {
+  font-size: 26px;
+  filter: drop-shadow(0 0 6px rgba(123, 97, 255, 0.6));
+}
+
+.collectorCart {
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  height: 40px;
+  pointer-events: none;
+  transition: transform 0.05s ease-out;
+}
+
+.collectorTray {
+  width: 100%;
+  height: 100%;
+  background: var(--grad-gold);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.collectorGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #FFF;
+  opacity: 0.8;
+}
+
+.collectorIcon {
+  font-size: 16px;
+}
+
+.collectorText {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1a1200;
+  letter-spacing: 0.05em;
+}
+
+.mobileControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 14px;
+  gap: 8px;
+}
+
+.controlBtn {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  flex: 1;
+}
+
+.controlBtn:active {
+  background: var(--purple-soft);
+  border-color: var(--purple);
+}
+
+.controlHint {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Result screen */
+.gameResultScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 12px 0;
+}
+
+.resultBadge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid rgba(46, 204, 113, 0.3);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+
+.resultTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.scoreBox {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.scoreRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreLabel {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.scoreVal {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.scoreDivider {
+  height: 1px;
+  background: var(--border);
+}
+
+.rewardReveal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.rewardLead {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.rewardPrize {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rewardPrizeXP {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.rewardPrizeExtra {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--purple);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.rewardNotice {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.resultActions {
+  display: flex;
+  gap: 12px;
+}

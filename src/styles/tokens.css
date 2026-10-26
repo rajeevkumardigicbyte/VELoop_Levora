@@ -1,0 +1,100 @@
+/* ============================================================
+   DESIGN TOKENS — VELoop Rewards Level Dashboard
+   ============================================================ */
+
+:root {
+  /* ---------- Backgrounds ---------- */
+  --bg-body:        #161827;
+  --bg-card:        #1E2138;
+  --bg-card-hover:  #252843;
+  --bg-elevated:    #2A2F4E;
+  --bg-overlay:     rgba(22, 24, 39, 0.92);
+
+  /* ---------- Brand / Accent ---------- */
+  --gold:           #F5C842;
+  --gold-dark:      #D4A017;
+  --gold-soft:      rgba(245, 200, 66, 0.12);
+  --gold-glow:      rgba(245, 200, 66, 0.25);
+
+  --purple:         #7B61FF;
+  --purple-dark:    #5A3FD4;
+  --purple-soft:    rgba(123, 97, 255, 0.12);
+  --purple-glow:    rgba(123, 97, 255, 0.3);
+
+  --blue:           #3D9EFF;
+  --blue-soft:      rgba(61, 158, 255, 0.12);
+
+  --green:          #2ECC71;
+  --green-soft:     rgba(46, 204, 113, 0.12);
+  --green-glow:     rgba(46, 204, 113, 0.25);
+
+  --silver:         #B0B8D1;
+  --red:            #FF5252;
+  --red-soft:       rgba(255, 82, 82, 0.12);
+
+  /* ---------- Text ---------- */
+  --text-primary:   #FFFFFF;
+  --text-secondary: #8B93B0;
+  --text-muted:     #555E7E;
+  --text-gold:      #F5C842;
+
+  /* ---------- Borders ---------- */
+  --border:         #2E3454;
+  --border-hover:   #4A527A;
+  --border-gold:    rgba(245, 200, 66, 0.4);
+  --border-purple:  rgba(123, 97, 255, 0.4);
+
+  /* ---------- Level States ---------- */
+  --state-completed: #2ECC71;
+  --state-current:   #F5C842;
+  --state-next:      #7B61FF;
+  --state-locked:    #3A3F60;
+  --state-locked-text: #555E7E;
+
+  /* ---------- Gradients ---------- */
+  --grad-hero:    linear-gradient(135deg, #1E2138 0%, #161827 100%);
+  --grad-gold:    linear-gradient(135deg, #F5C842, #D4A017);
+  --grad-purple:  linear-gradient(135deg, #7B61FF, #5A3FD4);
+  --grad-blue:    linear-gradient(135deg, #3D9EFF, #2563EB);
+  --grad-green:   linear-gradient(135deg, #2ECC71, #16A34A);
+  --grad-card:    linear-gradient(145deg, #1E2138, #252843);
+  --grad-reward:  linear-gradient(135deg, #1E2138, #2A2050);
+
+  /* ---------- Shadows ---------- */
+  --shadow-card:   0 4px 24px rgba(0,0,0,0.35);
+  --shadow-gold:   0 0 20px rgba(245, 200, 66, 0.2);
+  --shadow-purple: 0 0 20px rgba(123, 97, 255, 0.25);
+  --shadow-hover:  0 8px 32px rgba(0,0,0,0.5);
+
+  /* ---------- Spacing ---------- */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ---------- Border Radius ---------- */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 9999px;
+
+  /* ---------- Typography ---------- */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --text-hero:  clamp(40px, 6vw, 72px);
+  --text-2xl:   clamp(28px, 4vw, 40px);
+  --text-xl:    clamp(22px, 3vw, 28px);
+  --text-lg:    clamp(18px, 2.5vw, 22px);
+  --text-md:    16px;
+  --text-sm:    14px;
+  --text-xs:    12px;
+  --text-2xs:   11px;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast:   0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow:   0.4s ease;
+}
