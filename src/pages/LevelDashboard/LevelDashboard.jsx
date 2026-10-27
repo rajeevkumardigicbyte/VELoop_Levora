@@ -29,7 +29,7 @@ const LevelDashboard = () => {
         <div className="content-container">
           <div className={styles.navInner}>
             <div className={styles.brand}>
-              <span className={styles.brandLogo}>⚡</span>
+              <img src="/assets/logo.svg" alt="VELOOP Logo" className={styles.brandLogoImg} />
               <span className={styles.brandName}>VELOOP</span>
               <span className={styles.brandSub}>REWARDS</span>
             </div>
@@ -55,7 +55,7 @@ const LevelDashboard = () => {
             <div className={styles.navRight}>
               {data && (
                 <div className={styles.walletPill}>
-                  <span className={styles.walletIcon}>🪙</span>
+                  <img src="/assets/xp-1.svg" alt="XP" className={styles.walletSvg} />
                   <span className={styles.walletVal}>{data.currentXP?.toLocaleString()} XP</span>
                 </div>
               )}
@@ -139,7 +139,7 @@ const LevelDashboard = () => {
           <div className={styles.footerInner}>
             <div className={styles.footerBrand}>
               <div className={styles.brand}>
-                <span className={styles.brandLogo}>⚡</span>
+                <img src="/assets/logo.svg" alt="VELOOP Logo" className={styles.brandLogoImg} />
                 <span className={styles.brandName}>VELOOP</span>
                 <span className={styles.brandSub}>REWARDS</span>
               </div>

@@ -16,7 +16,7 @@ const LevelNode = ({ level, isLast }) => {
   return (
     <div
       className={`${styles.nodeWrapper} animate-fadeInUp`}
-      style={{ animationDelay: `${level.level * 0.08}s` }}
+      style={{ animationDelay: `${level.level * 0.05}s` }}
     >
       <div
         className={styles.nodeInner}
@@ -24,9 +24,11 @@ const LevelNode = ({ level, isLast }) => {
         role="button"
         tabIndex={0}
       >
-        {/* Circle */}
+        {/* Circle with Badge */}
         <div className={`${styles.nodeCircle} ${stateClass}`}>
-          {level.status === 'completed' ? (
+          {level.badgeUrl ? (
+            <img src={level.badgeUrl} alt={level.name} className={styles.roadmapBadgeImg} />
+          ) : level.status === 'completed' ? (
             <span className={styles.checkIcon}>✓</span>
           ) : level.status === 'current' ? (
             <span className={styles.starIcon}>★</span>
@@ -49,12 +51,12 @@ const LevelNode = ({ level, isLast }) => {
             level.status === 'locked' ? styles.rewardPillLocked : ''
           }`}
         >
-          {level.status === 'completed'
-            ? '✓ '
-            : level.status === 'locked'
-            ? '🔒 '
-            : (level.reward?.icon || '🎁') + ' '}
-          {level.reward?.amount} {level.reward?.type}
+          {level.reward?.icon?.startsWith('/') ? (
+            <img src={level.reward.icon} alt="" className={styles.rewardIconImg} />
+          ) : (
+            (level.status === 'completed' ? '✓ ' : level.status === 'locked' ? '🔒 ' : '')
+          )}
+          <span>{level.reward?.amount} {level.reward?.type}</span>
         </div>
 
         {/* State label */}
@@ -84,7 +86,7 @@ const LevelNode = ({ level, isLast }) => {
           <div className={styles.detailRow}>
             <span>Reward</span>
             <span className="text-gold">
-              {level.reward?.icon} {level.reward?.amount} {level.reward?.type}
+              {level.reward?.amount} {level.reward?.type}
             </span>
           </div>
           <div className={styles.detailRow}>

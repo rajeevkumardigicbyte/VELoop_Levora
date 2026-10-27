@@ -34,7 +34,7 @@ const GamePlay = ({
   const handlePointerMove = (e) => {
     if (!containerRef.current) return
     const rect = containerRef.current.getBoundingClientRect()
-    const clientX = e.clientX || (e.touches && e.touches[0]?.clientX)
+    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0]?.clientX)
     if (clientX !== undefined) {
       const relX = clientX - rect.left
       setCollectorPos(relX - COLLECTOR_WIDTH / 2)
@@ -83,7 +83,11 @@ const GamePlay = ({
               transform: `translate(${coin.x}px, ${coin.y}px)`,
             }}
           >
-            {coin.isGem ? '💎' : '🪙'}
+            <img
+              src={coin.isGem ? '/assets/gem.svg' : '/assets/ve.svg'}
+              alt={coin.isGem ? 'Gem' : 'VE'}
+              className={styles.fallingSvg}
+            />
           </div>
         ))}
 
@@ -97,7 +101,7 @@ const GamePlay = ({
         >
           <div className={styles.collectorTray}>
             <span className={styles.collectorGlow} />
-            <span className={styles.collectorIcon}>🛒</span>
+            <img src="/assets/cart-side.svg" alt="Collector" className={styles.cartSvg} />
             <span className={styles.collectorText}>CATCH</span>
           </div>
         </div>

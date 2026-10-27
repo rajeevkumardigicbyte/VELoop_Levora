@@ -16,9 +16,9 @@ const NextLevelReward = ({ data }) => {
       {/* Header */}
       <div className={styles.header}>
         <div>
-          <div className={styles.label}>NEXT LEVEL REWARD</div>
+          <div className={styles.label}>NEXT LEVEL VAULT REWARD</div>
           <div className={styles.sublabel}>
-            Reach Level {String(data.nextLevel).padStart(2, '0')} to unlock
+            Reach Level {String(data.nextLevel).padStart(2, '0')} ({data.nextLevelName}) to unlock
           </div>
         </div>
         <InfoTooltip text="The displayed reward is associated with the next level according to the current reward configuration. Values shown are development placeholders until official backend reward rules are connected." />
@@ -27,10 +27,14 @@ const NextLevelReward = ({ data }) => {
       {/* Lock icon + reward */}
       <div className={styles.rewardCenter}>
         <div className={`${styles.lockRing} ${isHovered ? styles.lockRingHover : ''}`}>
-          <div className={styles.lockIcon}>🔒</div>
+          <img src="/assets/lock.svg" alt="Locked" className={styles.lockSvg} />
         </div>
         <div className={styles.rewardAmount}>
-          <span className={styles.rewardIcon}>{reward?.icon || '💰'}</span>
+          {reward?.icon?.startsWith('/') ? (
+            <img src={reward.icon} alt="" className={styles.rewardIconImg} />
+          ) : (
+            <span className={styles.rewardIcon}>{reward?.icon || '💰'}</span>
+          )}
           <span className={styles.rewardValue}>{reward?.amount?.toLocaleString() || 500}</span>
           <span className={styles.rewardType}>{reward?.type || 'VEs'}</span>
         </div>
@@ -44,7 +48,7 @@ const NextLevelReward = ({ data }) => {
         </div>
         <div className={styles.progressText}>
           <span>{pct}% unlocked</span>
-          <span className="text-gold">{data.xpRemaining.toLocaleString()} XP remaining</span>
+          <span className="text-gold font-bold">{data.xpRemaining.toLocaleString()} XP remaining</span>
         </div>
       </div>
 

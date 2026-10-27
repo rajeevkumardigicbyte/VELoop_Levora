@@ -18,8 +18,14 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   cursor: pointer;
+}
+
+.brandLogoImg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 .brandLogo {
@@ -81,11 +87,17 @@
 .walletPill {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   background: var(--bg-card);
   border: 1px solid var(--border-gold);
   padding: 6px 14px;
   border-radius: var(--radius-full);
+}
+
+.walletSvg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 .walletIcon {

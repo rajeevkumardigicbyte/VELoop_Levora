@@ -73,8 +73,8 @@
 
 /* Circles */
 .nodeCircle {
-  width: 54px;
-  height: 54px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -83,6 +83,14 @@
   border: 2px solid transparent;
   transition: all var(--transition-normal);
   z-index: 1;
+  overflow: hidden;
+  padding: 3px;
+}
+
+.roadmapBadgeImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .nodeCompleted {
@@ -108,6 +116,11 @@
   background: rgba(58, 63, 96, 0.35);
   border-color: var(--state-locked);
   color: var(--text-muted);
+}
+
+.nodeLocked .roadmapBadgeImg {
+  opacity: 0.35;
+  filter: grayscale(1);
 }
 
 .checkIcon {
@@ -157,6 +170,15 @@
   padding: 2px 8px;
   border-radius: var(--radius-full);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rewardIconImg {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
 }
 
 .rewardPillLocked {
@@ -188,9 +210,9 @@
 /* Connector line between nodes */
 .connector {
   position: absolute;
-  top: 43px;
-  left: calc(50% + 27px);
-  width: calc(100% - 38px);
+  top: 45px;
+  left: calc(50% + 29px);
+  width: calc(100% - 40px);
   height: 3px;
   background: var(--border);
   transform: translateY(-50%);

@@ -61,12 +61,24 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             <div className={styles.levelBlock}>
               <div className={styles.levelBadgeWrap}>
                 <div className={styles.levelBadge}>
-                  <span className={styles.levelIcon}>{data.currentLevelData?.badge || '🥈'}</span>
-                  <span className={styles.levelNum}>L{String(data.currentLevel).padStart(2, '0')}</span>
+                  {data.currentLevelData?.badgeUrl ? (
+                    <img
+                      src={data.currentLevelData.badgeUrl}
+                      alt={data.levelName}
+                      className={styles.badgeImg}
+                    />
+                  ) : (
+                    <>
+                      <span className={styles.levelIcon}>{data.currentLevelData?.badge || '🥈'}</span>
+                      <span className={styles.levelNum}>L{String(data.currentLevel).padStart(2, '0')}</span>
+                    </>
+                  )}
                 </div>
                 <div className={styles.levelInfo}>
                   <div className={styles.levelLabel}>Current Status</div>
-                  <div className={styles.levelName}>{data.levelName}</div>
+                  <div className={styles.levelName}>
+                    Level {String(data.currentLevel).padStart(2, '0')} — {data.levelName}
+                  </div>
                   <div className={styles.levelXP}>
                     {animStart ? xpCount.toLocaleString() : '0'}{' '}
                     <span>/ {data.requiredXP.toLocaleString()} XP</span>
@@ -124,7 +136,11 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
               <div className={styles.rewardTeaser}>
                 <div className={styles.rewardTeaserIconWrap}>
-                  <span className={styles.rewardTeaserIcon}>{data.nextLevelData?.reward?.icon || '🎁'}</span>
+                  {data.nextLevelData?.reward?.icon?.startsWith('/') ? (
+                    <img src={data.nextLevelData.reward.icon} alt="" className={styles.rewardSvg} />
+                  ) : (
+                    <span className={styles.rewardTeaserIcon}>{data.nextLevelData?.reward?.icon || '🎁'}</span>
+                  )}
                 </div>
                 <div className={styles.rewardTeaserDetails}>
                   <div className={styles.rewardTeaserLabel}>Target Reward Unlocked</div>
