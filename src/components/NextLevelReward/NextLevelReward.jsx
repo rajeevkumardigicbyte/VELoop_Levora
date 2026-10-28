@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import styles from './NextLevelReward.module.css'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
-const NextLevelReward = ({ data }) => {
+const NextLevelReward = ({ data, onTriggerLevelUp }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const reward = data.nextLevelData?.reward
+  const targetLevel = data.nextLevel || 5
   const pct = data.xpPercent
 
   return (
@@ -13,32 +13,34 @@ const NextLevelReward = ({ data }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Header */}
+      {/* Header matching Screen 1 */}
       <div className={styles.header}>
         <div>
-          <div className={styles.label}>NEXT LEVEL VAULT REWARD</div>
-          <div className={styles.sublabel}>
-            Reach Level {String(data.nextLevel).padStart(2, '0')} ({data.nextLevelName}) to unlock
-          </div>
+          <div className={styles.levelTag}>LEVEL {String(targetLevel).padStart(2, '0')} REWARDS</div>
+          <h3 className={styles.mainHeading}>Amazing rewards await you!</h3>
         </div>
-        <InfoTooltip text="The displayed reward is associated with the next level according to the current reward configuration. Values shown are development placeholders until official backend reward rules are connected." />
+        <InfoTooltip text="Reach Level 05 to unlock this reward chest containing 500 VEs and 25 Gems. Values are credited automatically upon reaching the XP milestone." />
       </div>
 
-      {/* Lock icon + reward */}
-      <div className={styles.rewardCenter}>
-        <div className={`${styles.lockRing} ${isHovered ? styles.lockRingHover : ''}`}>
-          <img src="/assets/lock.svg" alt="Locked" className={styles.lockSvg} />
+      {/* Visual Chest + Purple Gems Centerpiece from Screen 1 */}
+      <div className={styles.chestGraphicCenter}>
+        <div className={styles.glowAura} />
+        <div className={styles.chestArtwork}>
+          <img
+            src="/assets/safe-1.svg"
+            alt="Level 05 Reward Chest"
+            className={styles.chestImg}
+          />
+          <div className={styles.floatingGemCluster}>
+            <span className={styles.gemSparkle}>💎</span>
+            <span className={styles.gemSparkle} style={{ animationDelay: '0.4s' }}>✨</span>
+          </div>
         </div>
-        <div className={styles.rewardAmount}>
-          {reward?.icon?.startsWith('/') ? (
-            <img src={reward.icon} alt="" className={styles.rewardIconImg} />
-          ) : (
-            <span className={styles.rewardIcon}>{reward?.icon || '💰'}</span>
-          )}
-          <span className={styles.rewardValue}>{reward?.amount?.toLocaleString() || 500}</span>
-          <span className={styles.rewardType}>{reward?.type || 'VEs'}</span>
+
+        <div className={styles.rewardSummaryRow}>
+          <span className={styles.rewardPillGold}>💰 +500 VEs</span>
+          <span className={styles.rewardPillPurple}>💎 +25 Gems</span>
         </div>
-        <div className={styles.demoLabel}>Demo value — pending backend approval</div>
       </div>
 
       {/* Progress towards unlock */}
@@ -47,16 +49,20 @@ const NextLevelReward = ({ data }) => {
           <div className={styles.progressFill} style={{ width: `${pct}%` }} />
         </div>
         <div className={styles.progressText}>
-          <span>{pct}% unlocked</span>
+          <span>{pct}% Unlocked</span>
           <span className="text-gold font-bold">{data.xpRemaining.toLocaleString()} XP remaining</span>
         </div>
       </div>
 
-      {/* Helper text */}
+      {/* "View Rewards" Action Button from Screen 1 */}
       <div className={styles.ctaRow}>
-        <span className={styles.ctaText}>
-          ⚡ Earn XP via games, tasks & referrals to claim this vault reward!
-        </span>
+        <button
+          className="ve-btn ve-btn-gold"
+          onClick={onTriggerLevelUp}
+          style={{ width: '100%', padding: '12px' }}
+        >
+          View Rewards Preview ➔
+        </button>
       </div>
 
       {/* Shimmer overlay */}

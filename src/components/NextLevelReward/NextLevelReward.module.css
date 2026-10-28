@@ -2,20 +2,21 @@
   background: var(--grad-reward);
   border: 1px solid var(--border-gold);
   border-radius: var(--radius-xl);
-  padding: 28px;
+  padding: 24px;
   box-shadow: var(--shadow-gold);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 16px;
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   height: 100%;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(245, 200, 66, 0.2);
+  box-shadow: 0 12px 40px rgba(245, 200, 66, 0.25);
 }
 
 .header {
@@ -24,91 +25,99 @@
   align-items: flex-start;
 }
 
-.label {
+.levelTag {
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--gold);
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 2px;
 }
 
-.sublabel {
-  font-size: var(--text-xs);
-  color: var(--text-muted);
+.mainHeading {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
-.rewardCenter {
+/* Chest + Gems Graphic Centerpiece */
+.chestGraphicCenter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 8px 0;
+  position: relative;
+  padding: 10px 0;
 }
 
-.lockRing {
-  width: 80px;
-  height: 80px;
+.glowAura {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.25) 0%, rgba(245, 200, 66, 0.15) 50%, transparent 70%);
   border-radius: 50%;
-  border: 2px dashed var(--border-gold);
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chestArtwork {
+  position: relative;
+  width: 120px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gold-soft);
-  transition: all var(--transition-normal);
-  padding: 16px;
 }
 
-.lockRingHover {
-  border-style: solid;
-  box-shadow: var(--shadow-gold);
-  transform: scale(1.06);
-}
-
-.lockSvg {
+.chestImg {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.6));
 }
 
-.rewardAmount {
+.floatingGemCluster {
+  position: absolute;
+  right: -10px;
+  bottom: 10px;
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
-.rewardIconImg {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
+.gemSparkle {
+  font-size: 20px;
+  animation: pulseGlow 2s infinite ease-in-out;
 }
 
-.rewardIcon {
-  font-size: 28px;
+.rewardSummaryRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.rewardValue {
-  font-size: 38px;
-  font-weight: 900;
+.rewardPillGold {
+  background: var(--gold-soft);
   color: var(--gold);
-  line-height: 1;
-}
-
-.rewardType {
-  font-size: var(--text-lg);
-  font-weight: 700;
-  color: var(--text-secondary);
-}
-
-.demoLabel {
-  font-size: 10px;
-  color: var(--text-muted);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  padding: 2px 10px;
+  border: 1px solid var(--border-gold);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
   border-radius: var(--radius-full);
 }
 
+.rewardPillPurple {
+  background: var(--purple-soft);
+  color: var(--purple);
+  border: 1px solid var(--border-purple);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+/* Progress Wrap */
 .progressWrap {
   display: flex;
   flex-direction: column;
@@ -138,14 +147,7 @@
 }
 
 .ctaRow {
-  text-align: center;
-}
-
-.ctaText {
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  font-weight: 500;
-  line-height: 1.5;
+  margin-top: 4px;
 }
 
 /* Shimmer */

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
@@ -21,6 +21,8 @@ const LevelDashboard = () => {
     closeLevelUp,
     retryLoad,
   } = useLevelData()
+
+  const [activeTab, setActiveTab] = useState('home')
 
   return (
     <div className="page-wrapper">
@@ -59,14 +61,16 @@ const LevelDashboard = () => {
                   <span className={styles.walletVal}>{data.currentXP?.toLocaleString()} XP</span>
                 </div>
               )}
-              <div className={styles.userAvatar}>👤</div>
+              <div className={styles.userAvatar} onClick={triggerLevelUp} title="Preview Level Up Celebration">
+                👤
+              </div>
             </div>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="content-container" style={{ paddingTop: '20px' }}>
+      <main className="content-container" style={{ paddingTop: '16px' }}>
         {loading && (
           <div className={styles.loadingContainer}>
             <SkeletonLoader type="hero" />
@@ -87,36 +91,39 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
-            {/* Hero Section */}
+            {/* Screen 1: Level Progression Hero with Greeting, Level Card & Today's Boost */}
             <div id="hero">
-              <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
+              <LevelHero
+                data={data}
+                onTriggerLevelUp={triggerLevelUp}
+              />
             </div>
 
-            {/* Split Highlight Section: Current Progress Details & Locked Vault Reward */}
+            {/* Split Section: Level Progression Roadmap & Level 05 Vault Rewards */}
             <section className={styles.highlightSection}>
               <div className={styles.highlightGrid}>
-                {/* Level Roadmap */}
+                {/* Level Roadmap Ladder */}
                 <div id="roadmap" className={styles.roadmapCol}>
                   <LevelRoadmap data={data} />
                 </div>
-                {/* Vault Reward Card */}
+                {/* Screen 1 Level 05 Rewards Card */}
                 <div className={styles.rewardCol}>
-                  <NextLevelReward data={data} />
+                  <NextLevelReward data={data} onTriggerLevelUp={triggerLevelUp} />
                 </div>
               </div>
             </section>
 
-            {/* Play & Earn Arcade Section */}
+            {/* Screen 2 & 3: Play & Earn "XP CATCHER" Mini-Game Terminal */}
             <div id="arcade">
               <PlayAndEarn />
             </div>
 
-            {/* Earning Features Section */}
+            {/* Screen 4: "EARN & LEVEL UP" List Activities */}
             <div id="earn">
               <EarnMoreXP data={data} />
             </div>
 
-            {/* XP Activity Feed & Sources */}
+            {/* Screen 6: "RECENT ACTIVITY" & Today's Summary */}
             <div id="activity">
               <XPActivity />
             </div>
@@ -124,7 +131,7 @@ const LevelDashboard = () => {
         )}
       </main>
 
-      {/* Level Up Celebration Modal */}
+      {/* Screen 5: "LEVEL UP!" Celebration Modal */}
       {data && (
         <LevelUpModal
           isOpen={showLevelUp}
@@ -133,7 +140,35 @@ const LevelDashboard = () => {
         />
       )}
 
-      {/* Footer */}
+      {/* Screen 1 Mobile Bottom Navigation Bar */}
+      <nav className={styles.mobileBottomNav}>
+        {[
+          { id: 'home', label: 'Home', icon: '🏠', href: '#hero' },
+          { id: 'earn', label: 'Earn', icon: '💲', href: '#earn' },
+          { id: 'rewards', label: 'Rewards', icon: '🎁', href: '#roadmap' },
+          { id: 'wallet', label: 'Wallet', icon: '👛', href: '#activity' },
+          { id: 'profile', label: 'Profile', icon: '👤', onClick: triggerLevelUp },
+        ].map((item) => (
+          <a
+            key={item.id}
+            href={item.href || '#'}
+            className={`${styles.bottomNavItem} ${activeTab === item.id ? styles.bottomNavItemActive : ''}`}
+            onClick={(e) => {
+              if (item.onClick) {
+                e.preventDefault()
+                item.onClick()
+              } else {
+                setActiveTab(item.id)
+              }
+            }}
+          >
+            <span className={styles.bottomNavIcon}>{item.icon}</span>
+            <span className={styles.bottomNavLabel}>{item.label}</span>
+          </a>
+        ))}
+      </nav>
+
+      {/* Desktop Footer */}
       <footer className={styles.footer}>
         <div className="content-container">
           <div className={styles.footerInner}>

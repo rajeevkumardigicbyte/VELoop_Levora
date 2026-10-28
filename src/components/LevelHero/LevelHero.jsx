@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './LevelHero.module.css'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
@@ -18,7 +18,7 @@ const useCountUp = (target, duration = 1200, start = false) => {
   return count
 }
 
-const LevelHero = ({ data, onTriggerLevelUp }) => {
+const LevelHero = ({ data, onTriggerLevelUp, onNavigateSection }) => {
   const [animStart, setAnimStart] = useState(false)
 
   useEffect(() => {
@@ -27,145 +27,147 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
   }, [])
 
   const xpCount = useCountUp(data.currentXP, 1200, animStart)
-  const xpRemCount = useCountUp(data.xpRemaining, 1200, animStart)
   const pct = data.xpPercent
 
   return (
     <section className={styles.hero}>
       <div className={styles.heroBg} />
       <div className="content-container">
-        <div className={styles.heroInner}>
-          {/* Left: Level + XP */}
-          <div className={`${styles.heroLeft} animate-fadeInUp`}>
-            <div className={styles.eyebrow}>
-              <span className="ve-badge ve-badge-gold">⚡ Level Progression Hub</span>
-              {onTriggerLevelUp && (
-                <button
-                  className="ve-btn ve-btn-ghost"
-                  style={{ padding: '2px 10px', fontSize: '11px', marginLeft: '10px' }}
-                  onClick={onTriggerLevelUp}
-                  title="Demo trigger level-up celebration modal"
-                >
-                  🎉 Test Level Up
-                </button>
-              )}
-            </div>
-            <h1 className={styles.heroTitle}>
-              Level Up Your <span className={styles.highlight}>Rewards</span>
+        {/* Top Greeting Bar */}
+        <div className={styles.greetingBar}>
+          <div>
+            <h1 className={styles.greetingTitle}>
+              Good Morning, VeLooper! 👋
             </h1>
-            <p className={styles.heroSub}>
-              Keep earning XP, unlock new tiers, and discover higher tier rewards and multipliers along the way.
+            <p className={styles.greetingSub}>
+              Level up your journey and unlock epic rewards every day.
             </p>
+          </div>
+          <div className={styles.greetingActions}>
+            <button
+              className={styles.notificationBtn}
+              onClick={onTriggerLevelUp}
+              title="Test Level Up Celebration"
+            >
+              🔔 <span className={styles.notifBadge}>1</span>
+            </button>
+          </div>
+        </div>
 
-            {/* Level + XP block */}
-            <div className={styles.levelBlock}>
-              <div className={styles.levelBadgeWrap}>
-                <div className={styles.levelBadge}>
-                  {data.currentLevelData?.badgeUrl ? (
-                    <img
-                      src={data.currentLevelData.badgeUrl}
-                      alt={data.levelName}
-                      className={styles.badgeImg}
-                    />
-                  ) : (
-                    <>
-                      <span className={styles.levelIcon}>{data.currentLevelData?.badge || '🥈'}</span>
-                      <span className={styles.levelNum}>L{String(data.currentLevel).padStart(2, '0')}</span>
-                    </>
-                  )}
-                </div>
-                <div className={styles.levelInfo}>
-                  <div className={styles.levelLabel}>Current Status</div>
-                  <div className={styles.levelName}>
-                    Level {String(data.currentLevel).padStart(2, '0')} — {data.levelName}
-                  </div>
-                  <div className={styles.levelXP}>
-                    {animStart ? xpCount.toLocaleString() : '0'}{' '}
-                    <span>/ {data.requiredXP.toLocaleString()} XP</span>
-                    <InfoTooltip text="XP helps you progress through VELOOP Rewards levels. As you reach new levels, you unlock exclusive rewards, higher cashout perks, and bonus multipliers." />
+        {/* Hero Grid */}
+        <div className={styles.heroGrid}>
+          {/* Main Level Progress Card */}
+          <div className={styles.levelCard}>
+            <div className={styles.levelCardTop}>
+              <div className={styles.badgeWrapper}>
+                <div className={styles.badgeShield}>
+                  <img
+                    src={data.currentLevelData?.badgeUrl || '/assets/lvl-4.svg'}
+                    alt="Current Level Badge"
+                    className={styles.shieldImg}
+                  />
+                  <div className={styles.shieldOverlayText}>
+                    <span className={styles.shieldLabel}>LEVEL</span>
+                    <span className={styles.shieldNumber}>
+                      {String(data.currentLevel).padStart(2, '0')}
+                    </span>
                   </div>
                 </div>
               </div>
 
-              {/* XP Progress bar */}
-              <div className={styles.progressSection}>
-                <div className={styles.progressLabels}>
-                  <span>Level {String(data.currentLevel).padStart(2, '0')}</span>
-                  <span className={styles.pct}>{pct}%</span>
-                  <span>Level {String(data.nextLevel).padStart(2, '0')}</span>
+              <div className={styles.levelMeta}>
+                <div className={styles.xpBig}>
+                  {animStart ? xpCount.toLocaleString() : '0'} XP
                 </div>
-                <div className={styles.progressTrack}>
-                  <div
-                    className={styles.progressFill}
-                    style={{
-                      width: animStart ? `${pct}%` : '0%',
-                      transition: animStart ? 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-                    }}
-                  >
-                    <span className={styles.progressGlow} />
-                  </div>
+                <div className={styles.xpToNext}>
+                  to reach Level {String(data.nextLevel).padStart(2, '0')}
+                  <InfoTooltip text="XP helps you progress through VELOOP Rewards levels. As you reach new levels, you unlock exclusive rewards and higher cashout perks." />
                 </div>
-                <div className={styles.progressRemaining}>
-                  <span className="text-gold font-bold">
-                    {animStart ? xpRemCount.toLocaleString() : data.xpRemaining.toLocaleString()} XP
-                  </span>{' '}
-                  needed to unlock Level {String(data.nextLevel).padStart(2, '0')} ({data.nextLevelName})
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className={styles.progressArea}>
+              <div className={styles.progressLabels}>
+                <span>{data.currentXP.toLocaleString()} / {data.requiredXP.toLocaleString()} XP</span>
+                <span className={styles.progressPct}>{pct}%</span>
+              </div>
+              <div className={styles.progressBarTrack}>
+                <div
+                  className={styles.progressBarFill}
+                  style={{
+                    width: animStart ? `${pct}%` : '0%',
+                    transition: animStart ? 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+                  }}
+                >
+                  <span className={styles.progressBarGlow} />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right: Quick Next Level Target Card */}
-          <div className={`${styles.heroRight} animate-fadeInUp delay-200`}>
-            <div className={styles.nextLevelCard}>
-              <div className={styles.nextLevelHeader}>
-                <span className={styles.nextLevelLabel}>Next Target Tier</span>
-                <span className="ve-badge ve-badge-purple">Incoming Goal</span>
-              </div>
-              <div className={styles.levelArrow}>
-                <div className={styles.tierPillCurrent}>
-                  <span className={styles.tierPillLevel}>L{String(data.currentLevel).padStart(2, '0')}</span>
-                  <span className={styles.tierPillName}>{data.levelName}</span>
+          {/* Today's Boost Card */}
+          <div className={styles.boostCard}>
+            <div className={styles.boostHeader}>
+              <span className={styles.boostTitle}>⚡ TODAY'S BOOST</span>
+              <span className={styles.boostSubtitle}>Daily Overview</span>
+            </div>
+            <div className={styles.boostGrid}>
+              <div className={styles.boostItem}>
+                <div className={`${styles.boostIconWrap} ${styles.boostIconXP}`}>
+                  <span>⭐</span>
                 </div>
-                <span className={styles.arrowIcon}>➔</span>
-                <div className={styles.tierPillNext}>
-                  <span className={styles.tierPillLevel}>L{String(data.nextLevel).padStart(2, '0')}</span>
-                  <span className={styles.tierPillName}>{data.nextLevelName}</span>
-                </div>
+                <span className={styles.boostLabel}>XP Earned</span>
+                <span className={styles.boostVal}>215 XP</span>
               </div>
 
-              <div className={styles.rewardTeaser}>
-                <div className={styles.rewardTeaserIconWrap}>
-                  {data.nextLevelData?.reward?.icon?.startsWith('/') ? (
-                    <img src={data.nextLevelData.reward.icon} alt="" className={styles.rewardSvg} />
-                  ) : (
-                    <span className={styles.rewardTeaserIcon}>{data.nextLevelData?.reward?.icon || '🎁'}</span>
-                  )}
+              <div className={styles.boostItem}>
+                <div className={`${styles.boostIconWrap} ${styles.boostIconTasks}`}>
+                  <span>📋</span>
                 </div>
-                <div className={styles.rewardTeaserDetails}>
-                  <div className={styles.rewardTeaserLabel}>Target Reward Unlocked</div>
-                  <div className={styles.rewardTeaserValue}>
-                    {data.nextLevelData?.reward?.amount?.toLocaleString() || 500} {data.nextLevelData?.reward?.type || 'VEs'}
-                  </div>
-                </div>
+                <span className={styles.boostLabel}>Tasks Done</span>
+                <span className={styles.boostVal}>4 / 8</span>
               </div>
 
-              <div className={styles.miniProgressWrap}>
-                <div className={styles.miniProgress}>
-                  <div
-                    className={styles.miniProgressFill}
-                    style={{
-                      width: animStart ? `${pct}%` : '0%',
-                      transition: animStart ? 'width 1.4s ease' : 'none',
-                    }}
-                  />
+              <div className={styles.boostItem}>
+                <div className={`${styles.boostIconWrap} ${styles.boostIconStreak}`}>
+                  <span>🔥</span>
                 </div>
-                <div className={styles.miniProgressText}>
-                  <span>Progress to unlock</span>
-                  <span className="text-purple">{pct}% Complete</span>
-                </div>
+                <span className={styles.boostLabel}>Streak</span>
+                <span className={styles.boostVal}>7 Days</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Quick Earn More Grid (From Attached Screen 1) */}
+        <div className={styles.earnMoreSection}>
+          <div className={styles.earnMoreHeader}>
+            <div>
+              <h3 className={styles.earnMoreTitle}>EARN MORE</h3>
+              <p className={styles.earnMoreSub}>Explore fun activities and earn exciting rewards.</p>
+            </div>
+            <a href="#earn" className={styles.earnMoreArrowBtn} title="View all activities">
+              ➔
+            </a>
+          </div>
+
+          <div className={styles.quickTilesGrid}>
+            {[
+              { id: 'watch', icon: '📺', name: 'Watch & Earn', color: '#7B61FF', link: '#earn' },
+              { id: 'tasks', icon: '📋', name: 'Daily Tasks', color: '#3D9EFF', link: '#earn' },
+              { id: 'refer', icon: '👥', name: 'Refer & Earn', color: '#2ECC71', link: '#earn' },
+              { id: 'game',  icon: '🧲', name: 'XP Catcher', color: '#F5C842', link: '#arcade' },
+              { id: 'mini',  icon: '🎮', name: 'Mini Games', color: '#FF6B35', link: '#arcade' },
+              { id: 'streak', icon: '🔥', name: 'Streak Bonus', color: '#E74C3C', link: '#earn' },
+            ].map((tile) => (
+              <a key={tile.id} href={tile.link} className={styles.quickTile}>
+                <div className={styles.quickTileIcon} style={{ background: `${tile.color}20`, borderColor: tile.color }}>
+                  <span>{tile.icon}</span>
+                </div>
+                <span className={styles.quickTileName}>{tile.name}</span>
+              </a>
+            ))}
           </div>
         </div>
       </div>

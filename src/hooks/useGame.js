@@ -3,13 +3,17 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 const GAME_DURATION = 20
 const COLLECTOR_WIDTH = 90
 const GAME_WIDTH = 400
-const GAME_HEIGHT = 340
+const GAME_HEIGHT = 360
 
 const getReward = (score) => {
-  if (score >= 30) return { xp: 35, extra: '+ 1 Gem', label: 'Amazing!' }
-  if (score >= 20) return { xp: 25, extra: null, label: 'Great job!' }
-  if (score >= 10) return { xp: 15, extra: null, label: 'Good job!' }
-  return { xp: 5, extra: null, label: 'Keep going!' }
+  const xp = Math.max(10, Math.min(50, Math.floor(score / 3)))
+  const ves = Math.max(2, Math.floor(score / 10))
+  let label = 'Good Effort!'
+  if (score >= 90) label = 'Outstanding!'
+  else if (score >= 60) label = 'Great Job!'
+  else if (score >= 30) label = 'Well Done!'
+
+  return { xp, ves, score, label }
 }
 
 const useGame = () => {
@@ -33,9 +37,23 @@ const useGame = () => {
 
   const spawnCoin = useCallback(() => {
     const x = Math.random() * (GAME_WIDTH - 50) + 10
-    const isGem = Math.random() < 0.12
+    const rand = Math.random()
+    let type = 'xp' // purple XP orb
+    let pts = 10
+    let speed = 2.2 + Math.random() * 2
+
+    if (rand < 0.45) {
+      type = 'coin' // gold VE coin
+      pts = 5
+      speed = 2.5 + Math.random() * 2
+    } else if (rand > 0.85) {
+      type = 'gem' // green gem
+      pts = 25
+      speed = 3.0 + Math.random() * 1.5
+    }
+
     coinIdRef.current += 1
-    setCoins(prev => [...prev, { id: coinIdRef.current, x, y: -40, isGem, speed: 2 + Math.random() * 2.5 }])
+    setCoins(prev => [...prev, { id: coinIdRef.current, x, y: -40, type, pts, speed }])
   }, [])
 
   const endGame = useCallback(() => {
@@ -82,10 +100,10 @@ const useGame = () => {
     return () => clearInterval(timerRef.current)
   }, [gameState, endGame])
 
-  // Coin spawner
+  // Spawner
   useEffect(() => {
     if (gameState !== 'playing') return
-    coinTimerRef.current = setInterval(spawnCoin, 900)
+    coinTimerRef.current = setInterval(spawnCoin, 750)
     return () => clearInterval(coinTimerRef.current)
   }, [gameState, spawnCoin])
 
@@ -98,11 +116,10 @@ const useGame = () => {
         const next = []
         prev.forEach(c => {
           const ny = c.y + c.speed
-          const hitX = c.x + 20 >= collectorRef.current && c.x <= collectorRef.current + COLLECTOR_WIDTH
-          const hitY = ny >= GAME_HEIGHT - 58 && ny <= GAME_HEIGHT - 20
+          const hitX = c.x + 24 >= collectorRef.current && c.x <= collectorRef.current + COLLECTOR_WIDTH
+          const hitY = ny >= GAME_HEIGHT - 65 && ny <= GAME_HEIGHT - 20
           if (hitX && hitY) {
-            const pts = c.isGem ? 3 : 1
-            scoreRef.current += pts
+            scoreRef.current += c.pts
             setScore(scoreRef.current)
           } else if (ny < GAME_HEIGHT) {
             next.push({ ...c, y: ny })

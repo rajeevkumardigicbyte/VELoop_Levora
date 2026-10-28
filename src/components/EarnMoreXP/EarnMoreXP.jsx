@@ -1,68 +1,122 @@
 import React from 'react'
 import styles from './EarnMoreXP.module.css'
-import EarnCard from './EarnCard'
-import { earnOpportunities } from '../../data/earnData'
+
+const earnActivitiesList = [
+  {
+    id: 1,
+    title: 'Watch & Earn',
+    desc: 'Watch ads and earn',
+    reward: '+50 XP',
+    icon: '▶',
+    color: '#7B61FF',
+    actionText: 'Watch Now',
+    category: 'watch',
+  },
+  {
+    id: 2,
+    title: 'Daily Missions',
+    desc: 'Complete daily tasks',
+    reward: '+30 XP',
+    icon: '📋',
+    color: '#3D9EFF',
+    actionText: 'Start Mission',
+    category: 'tasks',
+  },
+  {
+    id: 3,
+    title: 'Refer & Earn',
+    desc: 'Invite friends & earn',
+    reward: '+100 XP',
+    icon: '👥',
+    color: '#2ECC71',
+    actionText: 'Share Link',
+    category: 'refer',
+  },
+  {
+    id: 4,
+    title: 'Mini Games',
+    desc: 'Play games & win',
+    reward: '+75 XP',
+    icon: '🎮',
+    color: '#F5C842',
+    actionText: 'Play Arcade',
+    category: 'games',
+  },
+  {
+    id: 5,
+    title: 'Streak Bonus',
+    desc: 'Maintain your streak',
+    reward: '+25 XP',
+    icon: '🔥',
+    color: '#FF6B35',
+    actionText: 'Claim Streak',
+    category: 'streak',
+  },
+  {
+    id: 6,
+    title: 'XP Catcher',
+    desc: 'Catch orbs & coins',
+    reward: '+10 XP',
+    icon: '🧲',
+    color: '#9B51E0',
+    actionText: 'Play Catcher',
+    category: 'catcher',
+  },
+]
 
 const EarnMoreXP = ({ data }) => {
   const xpRemaining = data.xpRemaining
 
   return (
     <section className={styles.section}>
-      {/* Progress CTA banner */}
-      <div className={`${styles.ctaBanner} animate-fadeInUp`}>
-        <div className={styles.ctaLeft}>
-          <div className={styles.ctaXP}>
-            <span className="text-gold">{xpRemaining.toLocaleString()} XP</span> needed to reach Level {data.nextLevel}
-          </div>
-          <div className={styles.ctaLabel}>Ways to accelerate your progression:</div>
-          <div className={styles.ctaActions}>
-            {['🎮 Play Game', '📺 Watch Ads', '✅ Complete Tasks', '👥 Invite Friends', '🔥 Daily Streak'].map(a => (
-              <span key={a} className={styles.ctaChip}>
-                {a}
-              </span>
-            ))}
-          </div>
-        </div>
-        <div className={styles.ctaRight}>
-          <div className={styles.recommendBox}>
-            <div className={styles.recommendLabel}>💡 Personalized Recommendation</div>
-            <div className={styles.recommendText}>
-              You are only <span className="text-gold font-bold">{xpRemaining.toLocaleString()} XP</span> away from{' '}
-              <span className="text-purple font-bold">Level {data.nextLevel} ({data.nextLevelName})</span>.
-              Complete today's daily mission or play the arcade challenge to get closer!
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Section header */}
+      {/* Header from Screen 4 */}
       <div className={styles.sectionHead}>
         <div>
-          <h2 className="section-title">💰 Earn More XP & Rewards</h2>
-          <p className="section-subtitle">
-            Complete active platform activities to earn XP and speed up your milestone unlocks
+          <h2 className={styles.screen4Title}>EARN & LEVEL UP</h2>
+          <p className={styles.screen4Subtitle}>
+            Complete activities. Earn XP. Climb levels. Get rewards.
           </p>
         </div>
       </div>
 
-      {/* Cards grid */}
-      <div className={styles.cardsGrid}>
-        {earnOpportunities.map((earn) => (
-          <EarnCard
-            key={earn.id}
-            earn={earn}
-            onAction={(e) => {
-              // Smooth scroll to game if play clicked
-              if (e.category === 'game') {
-                window.scrollTo({ top: 400, behavior: 'smooth' })
+      {/* List matching Screen 4 */}
+      <div className={styles.activityList}>
+        {earnActivitiesList.map((item) => (
+          <div
+            key={item.id}
+            className={styles.activityRow}
+            onClick={() => {
+              if (item.category === 'catcher' || item.category === 'games') {
+                window.scrollTo({ top: 600, behavior: 'smooth' })
               }
             }}
-          />
+          >
+            <div
+              className={styles.activityIconWrap}
+              style={{ background: `${item.color}20`, color: item.color }}
+            >
+              <span>{item.icon}</span>
+            </div>
+
+            <div className={styles.activityDetails}>
+              <div className={styles.activityName}>{item.title}</div>
+              <div className={styles.activityDesc}>{item.desc}</div>
+            </div>
+
+            <div className={styles.activityActionWrap}>
+              <span className={styles.rewardPillTag} style={{ color: item.color }}>
+                {item.reward}
+              </span>
+              <span className={styles.chevron}>➔</span>
+            </div>
+          </div>
         ))}
       </div>
 
-      <div className={styles.demoNote}>
-        ⓘ Reward amounts and XP increments displayed are development demo placeholders and will reflect verified platform partner payouts upon live sync.
+      {/* Encouragement Bar from Screen 4 */}
+      <div className={styles.encouragementBar}>
+        <span className={styles.encouragementText}>Keep going! You're doing great!</span>
+        <span className={styles.chartIcon}>📊</span>
       </div>
     </section>
   )

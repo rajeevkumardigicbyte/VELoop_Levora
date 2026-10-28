@@ -19,48 +19,71 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null
 
   const targetLevel = data.nextLevel || 5
-  const targetLevelName = data.nextLevelName || 'Gold Guardian'
-  const reward = data.nextLevelData?.reward
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={`${styles.modalCard} animate-scaleIn`} onClick={(e) => e.stopPropagation()}>
-        {/* Particle / Sparkle effects */}
+        {/* Floating Sparkles & Coins from Screen 5 */}
         <div className={styles.sparkleWrap}>
-          <span className={styles.sparkle} style={{ top: '10%', left: '15%' }}>✨</span>
-          <span className={styles.sparkle} style={{ top: '15%', right: '20%' }}>⭐</span>
-          <span className={styles.sparkle} style={{ bottom: '25%', left: '20%' }}>🌟</span>
-          <span className={styles.sparkle} style={{ bottom: '20%', right: '15%' }}>✨</span>
+          <span className={styles.sparkle} style={{ top: '8%', left: '12%' }}>✨</span>
+          <span className={styles.sparkle} style={{ top: '15%', right: '15%' }}>🟡</span>
+          <span className={styles.sparkle} style={{ top: '35%', left: '8%' }}>💎</span>
+          <span className={styles.sparkle} style={{ top: '40%', right: '10%' }}>⭐</span>
         </div>
 
-        {/* Modal content */}
-        <div className={styles.celebrationBadge}>🎉 MILESTONE UNLOCKED</div>
+        {/* Header from Screen 5 */}
         <h2 className={styles.modalTitle}>LEVEL UP!</h2>
+        <div className={styles.modalSub}>You've reached</div>
 
-        <div className={styles.badgeRing}>
-          <div className={styles.badgeRingInner}>
-            <span className={styles.badgeIcon}>🥇</span>
-            <span className={styles.badgeNum}>L{String(targetLevel).padStart(2, '0')}</span>
+        {/* Golden Pedestal with Shield from Screen 5 */}
+        <div className={styles.pedestalStage}>
+          <div className={styles.podiumShield}>
+            <div className={styles.laurelWreathLeft}>🌿</div>
+            <div className={styles.shieldCenter}>
+              <span className={styles.shieldTitle}>LEVEL</span>
+              <span className={styles.shieldNum}>{String(targetLevel).padStart(2, '0')}</span>
+            </div>
+            <div className={styles.laurelWreathRight}>🌿</div>
+          </div>
+          <div className={styles.goldenPlatform} />
+        </div>
+
+        {/* 2 Reward Cards from Screen 5 */}
+        <div className={styles.rewardCardsRow}>
+          <div className={styles.rewardCard}>
+            <span className={styles.rewardCardVal}>+500 VEs</span>
+            <span className={styles.rewardCardIcon}>💰</span>
+          </div>
+
+          <div className={styles.rewardCard}>
+            <span className={styles.rewardCardVal}>+25 Gems</span>
+            <span className={styles.rewardCardIcon}>💎</span>
           </div>
         </div>
 
-        <div className={styles.levelRankTitle}>{targetLevelName}</div>
-        <p className={styles.modalSub}>
-          Congratulations! You've climbed into a higher progression tier.
-        </p>
-
-        {/* Reward Box */}
-        <div className={styles.rewardBox}>
-          <div className={styles.rewardLead}>Milestone Reward Granted</div>
-          <div className={styles.rewardAmount}>
-            <span className={styles.rewardIcon}>{reward?.icon || '💰'}</span>
-            <span className={styles.rewardVal}>+{reward?.amount || 500} {reward?.type || 'VEs'}</span>
+        {/* Unlocked Perks List from Screen 5 */}
+        <div className={styles.perksList}>
+          <div className={styles.perkItem}>
+            <span className={styles.perkIcon}>📈</span>
+            <span className={styles.perkText}>Higher daily XP limit</span>
           </div>
-          <div className={styles.rewardNote}>Added directly to your eligible reward vault</div>
+          <div className={styles.perkItem}>
+            <span className={styles.perkIcon}>🎯</span>
+            <span className={styles.perkText}>Access to new challenges</span>
+          </div>
+          <div className={styles.perkItem}>
+            <span className={styles.perkIcon}>🎁</span>
+            <span className={styles.perkText}>Better reward opportunities</span>
+          </div>
         </div>
 
-        <button className="ve-btn ve-btn-gold" onClick={onClose} style={{ width: '100%', padding: '14px', fontSize: '16px' }}>
-          Claim & Continue Progression ➔
+        {/* "Claim Rewards" Button from Screen 5 */}
+        <button
+          className="ve-btn ve-btn-gold"
+          onClick={onClose}
+          style={{ width: '100%', padding: '16px', fontSize: '16px', fontWeight: 800 }}
+        >
+          Claim Rewards
         </button>
       </div>
     </div>

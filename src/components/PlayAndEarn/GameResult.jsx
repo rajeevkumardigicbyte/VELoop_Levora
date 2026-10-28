@@ -1,38 +1,81 @@
 import React from 'react'
 import styles from './PlayAndEarn.module.css'
 
-const GameResult = ({ score, reward, onPlayAgain }) => {
+const GameResult = ({ score, reward, onPlayAgain, onBackToDashboard }) => {
+  const xpEarned = reward?.xp || 30
+  const veEarned = reward?.ves || 12
+
   return (
     <div className={`${styles.gameResultScreen} animate-scaleIn`}>
-      <div className={styles.resultBadge}>🎉 Round Completed!</div>
-      <h3 className={styles.resultTitle}>{reward?.label || 'Challenge Done!'}</h3>
+      {/* Top Header */}
+      <div className={styles.resultTopBar}>
+        <button
+          className={styles.backBtn}
+          onClick={onPlayAgain}
+          title="Back"
+        >
+          ←
+        </button>
+        <span className={styles.shareIcon}>↗</span>
+      </div>
 
-      {/* Score and Reward reveal */}
-      <div className={styles.scoreBox}>
-        <div className={styles.scoreRow}>
-          <span className={styles.scoreLabel}>Final Score</span>
-          <span className={styles.scoreVal}>{score} pts</span>
-        </div>
-        <div className={styles.scoreDivider} />
-        <div className={styles.rewardReveal}>
-          <span className={styles.rewardLead}>Reward Earned</span>
-          <div className={styles.rewardPrize}>
-            <span className={styles.rewardPrizeXP}>+{reward?.xp} XP</span>
-            {reward?.extra && (
-              <span className={styles.rewardPrizeExtra}>{reward.extra}</span>
-            )}
-          </div>
-          <div className={styles.rewardNotice}>
-            *Demo value credited to session. Backend synchronization pending.
-          </div>
+      <div className={styles.resultTitle}>CHALLENGE COMPLETE!</div>
+      <div className={styles.resultSubtitle}>{reward?.label || 'Outstanding!'}</div>
+
+      {/* Golden Laurel Star Trophy from Screen 3 */}
+      <div className={styles.trophyWrapper}>
+        <div className={styles.trophyRing}>
+          <span className={styles.trophyStar}>★</span>
         </div>
       </div>
 
-      {/* Buttons */}
-      <div className={styles.resultActions}>
-        <button className="ve-btn ve-btn-gold" onClick={onPlayAgain}>
-          🔄 Play Again
-        </button>
+      {/* Final Score Card */}
+      <div className={styles.resultCard}>
+        <div className={styles.finalScoreRow}>
+          <div className={styles.scoreLead}>FINAL SCORE</div>
+          <div className={styles.scoreValueRow}>
+            <span className={styles.scoreNumber}>{score}</span>
+            <span className={styles.newBestBadge}>New Best!</span>
+          </div>
+        </div>
+
+        {/* 2 Stat Pills from Screen 3 */}
+        <div className={styles.rewardPillsGrid}>
+          <div className={styles.rewardPillItem}>
+            <span className={styles.rewardPillValue}>+{xpEarned} XP</span>
+            <span className={styles.rewardPillLabel}>Experience</span>
+          </div>
+          <div className={styles.rewardPillItem}>
+            <span className={styles.rewardPillValue}>+{veEarned} VEs</span>
+            <span className={styles.rewardPillLabel}>Your Reward</span>
+          </div>
+        </div>
+
+        {/* Level Progression Progress Bar */}
+        <div className={styles.resultProgressSection}>
+          <div className={styles.resultProgressLabels}>
+            <span>Level 05</span>
+            <span>Level 06</span>
+          </div>
+          <div className={styles.resultProgressBarTrack}>
+            <div className={styles.resultProgressBarFill} style={{ width: '80%' }} />
+          </div>
+          <div className={styles.resultProgressText}>6,420 / 8,000 XP</div>
+        </div>
+
+        {/* Actions */}
+        <div className={styles.resultActions}>
+          <button className="ve-btn ve-btn-gold" onClick={onPlayAgain} style={{ width: '100%', padding: '14px' }}>
+            Play Again
+          </button>
+          <button
+            className="ve-btn ve-btn-outline"
+            onClick={onPlayAgain}
+            style={{ width: '100%', padding: '12px' }}
+          >
+            Back to Dashboard
+          </button>
+        </div>
       </div>
     </div>
   )

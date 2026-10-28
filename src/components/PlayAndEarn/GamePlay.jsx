@@ -41,29 +41,26 @@ const GamePlay = ({
     }
   }
 
-  // Timer color
-  const timerColorClass = timeLeft <= 5 ? styles.timerUrgent : timeLeft <= 10 ? styles.timerWarn : ''
+  const veGain = Math.max(1, Math.floor(score / 15))
 
   return (
     <div className={styles.gamePlayWrapper}>
-      {/* HUD Header */}
-      <div className={styles.gameHud}>
-        <div className={styles.hudScore}>
-          <span className={styles.hudLabel}>SCORE</span>
-          <span className={styles.hudScoreVal}>{score}</span>
-        </div>
-        <div className={`${styles.hudTimer} ${timerColorClass}`}>
-          <span className={styles.hudLabel}>TIME LEFT</span>
-          <span className={styles.hudTimerVal}>0:{String(timeLeft).padStart(2, '0')}</span>
-        </div>
+      {/* HUD Header from Screen 2 */}
+      <div className={styles.gameHudTop}>
         <button
-          className="ve-btn ve-btn-outline"
-          style={{ padding: '4px 12px', fontSize: '11px' }}
+          className={styles.backBtn}
           onClick={onEndGame}
-          title="Exit game early"
+          title="Exit game"
         >
-          End Run
+          ←
         </button>
+        <div className={styles.gameHudTitleGroup}>
+          <span className={styles.gameHudTitle}>XP CATCHER ⓘ</span>
+          <span className={styles.gameHudSub}>Catch XP orbs & coins</span>
+        </div>
+        <div className={styles.timerBadge}>
+          ⏱ 00:{String(timeLeft).padStart(2, '0')}
+        </div>
       </div>
 
       {/* Game arena */}
@@ -74,24 +71,34 @@ const GamePlay = ({
         onMouseMove={handlePointerMove}
         onTouchMove={handlePointerMove}
       >
-        {/* Falling Coins and Gems */}
-        {coins.map((coin) => (
+        {/* Falling Items */}
+        {coins.map((item) => (
           <div
-            key={coin.id}
-            className={`${styles.coinItem} ${coin.isGem ? styles.gemItem : ''}`}
+            key={item.id}
+            className={`${styles.fallingItem} ${styles[item.type]}`}
             style={{
-              transform: `translate(${coin.x}px, ${coin.y}px)`,
+              transform: `translate(${item.x}px, ${item.y}px)`,
             }}
           >
-            <img
-              src={coin.isGem ? '/assets/gem.svg' : '/assets/ve.svg'}
-              alt={coin.isGem ? 'Gem' : 'VE'}
-              className={styles.fallingSvg}
-            />
+            {item.type === 'xp' && (
+              <div className={styles.orbXP}>
+                <span>XP</span>
+              </div>
+            )}
+            {item.type === 'coin' && (
+              <div className={styles.orbCoin}>
+                <span>V</span>
+              </div>
+            )}
+            {item.type === 'gem' && (
+              <div className={styles.orbGem}>
+                <span>💎</span>
+              </div>
+            )}
           </div>
         ))}
 
-        {/* Collector Cart */}
+        {/* Golden Hoop / Basket Net Collector */}
         <div
           className={styles.collectorCart}
           style={{
@@ -99,11 +106,19 @@ const GamePlay = ({
             width: `${COLLECTOR_WIDTH}px`,
           }}
         >
-          <div className={styles.collectorTray}>
-            <span className={styles.collectorGlow} />
-            <img src="/assets/cart-side.svg" alt="Collector" className={styles.cartSvg} />
-            <span className={styles.collectorText}>CATCH</span>
+          <div className={styles.hoopRim}>
+            <div className={styles.hoopNet} />
           </div>
+        </div>
+      </div>
+
+      {/* Bottom Score HUD from Screen 2 */}
+      <div className={styles.gameScoreBar}>
+        <div className={styles.scoreLead}>YOUR SCORE</div>
+        <div className={styles.scoreValueBig}>{score}</div>
+        <div className={styles.scoreBadgesRow}>
+          <span className={styles.scoreBadgeVE}>🟡 +{veGain} VEs</span>
+          <span className={styles.scoreBadgeMult}>🚀 2X Multiplier</span>
         </div>
       </div>
 

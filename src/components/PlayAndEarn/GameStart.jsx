@@ -4,42 +4,36 @@ import styles from './PlayAndEarn.module.css'
 const GameStart = ({ onStart }) => {
   return (
     <div className={styles.gameStartScreen}>
-      <div className={styles.gameBadge}>🎮 Play & Earn Challenge</div>
-      <h3 className={styles.gameTitle}>VE Coin Rush</h3>
+      <div className={styles.gameBadge}>🧲 ARCADE MINI-GAME</div>
+      <h3 className={styles.gameTitle}>XP CATCHER ⓘ</h3>
       <p className={styles.gameSubtitle}>
-        Catch falling VE coins and gems within 20 seconds. Test your reflexes and earn eligible XP toward your next level!
+        Catch XP orbs & coins. Score high for better rewards!
       </p>
 
       {/* Rules list */}
       <div className={styles.rulesCard}>
-        <div className={styles.rulesTitle}>📜 Rules & Reward Tiers:</div>
+        <div className={styles.rulesTitle}>📜 Rules & Scoring:</div>
         <ul className={styles.rulesList}>
           <li>
-            <span>🕹️ <strong>Controls:</strong></span> Use Left/Right Arrow Keys or mouse/touch to drag the collector.
+            <span>🕹️ <strong>Controls:</strong></span> Drag the golden hoop with mouse/finger, or use Left/Right Arrow keys.
           </li>
           <li>
-            <span>⏱️ <strong>Time Limit:</strong></span> 20 seconds fast-paced arcade round.
+            <span>⏱️ <strong>Timer:</strong></span> 20 seconds rapid reflex challenge.
           </li>
           <li>
-            <span>💰 <strong>VE Coin:</strong></span> +1 point &nbsp;|&nbsp; <span>💎 <strong>Gem:</strong></span> +3 points
+            <span>🟣 <strong>XP Orb:</strong></span> +10 XP pts &nbsp;|&nbsp; <span>🟡 <strong>VE Coin:</strong></span> +5 VEs &nbsp;|&nbsp; <span>💎 <strong>Gem:</strong></span> +25 bonus
           </li>
           <li>
-            <span>🎁 <strong>Score 10+ pts:</strong></span> +15 XP
-          </li>
-          <li>
-            <span>🎁 <strong>Score 20+ pts:</strong></span> +25 XP
-          </li>
-          <li>
-            <span>🎁 <strong>Score 30+ pts:</strong></span> +35 XP + 1 Gem Bonus
+            <span>🏆 <strong>Target:</strong></span> Collect as many orbs as you can before the clock runs out!
           </li>
         </ul>
       </div>
 
       <div className={styles.startActionArea}>
-        <button className="ve-btn ve-btn-gold" onClick={onStart} style={{ padding: '12px 32px', fontSize: '16px' }}>
-          ▶ Start Challenge Now
+        <button className="ve-btn ve-btn-gold" onClick={onStart} style={{ padding: '14px 36px', fontSize: '16px' }}>
+          ▶ Start XP Catcher
         </button>
-        <span className={styles.frequencyTag}>⚡ Free play demo — no limits during development</span>
+        <span className={styles.frequencyTag}>⚡ Skill-based gameplay — no casino or gambling mechanics</span>
       </div>
     </div>
   )
