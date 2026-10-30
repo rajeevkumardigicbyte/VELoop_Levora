@@ -216,9 +216,13 @@
   position: relative;
 }
 
-/* Node Wrapper */
+/* Node Wrapper (Enforces 160px width & zero shrink) */
 .nodeWrapper {
   display: flex;
+  flex: 0 0 160px;
+  width: 160px;
+  min-width: 160px;
+  max-width: 160px;
   position: relative;
   cursor: pointer;
   outline: none;
@@ -273,7 +277,13 @@
 
 .nodeCard {
   width: 160px;
+  min-width: 160px;
+  max-width: 160px;
+  height: 220px;
   min-height: 220px;
+  max-height: 220px;
+  box-sizing: border-box;
+  flex-shrink: 0;
   background: linear-gradient(135deg, rgba(22, 17, 42, 0.90) 0%, rgba(11, 8, 22, 0.96) 100%);
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
@@ -293,7 +303,6 @@
 
 .nodeCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(168, 85, 247, 0.40);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.68), 0 0 20px rgba(168, 85, 247, 0.30);
 }
 
@@ -306,13 +315,13 @@
 .nodeCurrent {
   border-color: var(--gold);
   background: linear-gradient(135deg, rgba(34, 25, 52, 0.94) 0%, rgba(16, 12, 28, 0.98) 100%);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 28px rgba(251, 191, 36, 0.38), inset 0 1px 0 rgba(251, 191, 36, 0.40);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 24px rgba(251, 191, 36, 0.35), inset 0 1px 0 rgba(251, 191, 36, 0.35);
   animation: currentPulse 3s infinite ease-in-out;
 }
 
 @keyframes currentPulse {
-  0%, 100% { box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 22px rgba(251, 191, 36, 0.30); }
-  50% { box-shadow: 0 14px 40px rgba(0, 0, 0, 0.80), 0 0 34px rgba(251, 191, 36, 0.50); }
+  0%, 100% { box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 20px rgba(251, 191, 36, 0.28); }
+  50% { box-shadow: 0 14px 40px rgba(0, 0, 0, 0.80), 0 0 30px rgba(251, 191, 36, 0.45); }
 }
 
 .nodeNext {
@@ -335,15 +344,18 @@
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.70), 0 0 30px rgba(168, 85, 247, 0.40);
 }
 
-/* Selected Node Indicator */
+/* Selected Node Indicator (Adds glowing ambient outline without overriding the card's native state color!) */
 .nodeCardSelected {
-  border-color: #FFFFFF !important;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 28px rgba(0, 245, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  outline: 2px solid rgba(0, 245, 255, 0.6);
+  outline-offset: 3px;
 }
 
-/* 1. Status Pill Slot (Fixed 24px) */
+/* 1. Status Pill Slot (Strict 24px Fixed Slot) */
 .statusPillSlot {
   height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,8 +441,15 @@
   white-space: nowrap;
 }
 
-/* 2. Emblem Halo Centerpiece */
+/* 2. Emblem Halo Centerpiece (Strict 78px Fixed Slot) */
 .emblemHaloWrap {
+  height: 78px;
+  min-height: 78px;
+  max-height: 78px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 6px 0;
   position: relative;
 }
@@ -520,11 +539,16 @@
   box-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
 }
 
-/* 3. Level & Tier Typography */
+/* 3. Level & Tier Typography (Strict 48px Fixed Slot) */
 .nodeTypography {
+  height: 48px;
+  min-height: 48px;
+  max-height: 48px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 2px;
   width: 100%;
 }
@@ -554,9 +578,13 @@
   font-weight: 600;
 }
 
-/* 4. Bottom Reward Capsule */
+/* 4. Bottom Reward Capsule (Strict 26px Fixed Slot) */
 .rewardCapsule {
   width: 100%;
+  height: 26px;
+  min-height: 26px;
+  max-height: 26px;
+  box-sizing: border-box;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(168, 85, 247, 0.22);
   border-radius: var(--radius-full);
