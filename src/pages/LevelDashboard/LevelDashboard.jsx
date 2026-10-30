@@ -100,8 +100,9 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
-            {/* FULL-WIDTH DASHBOARD GREETING BAR */}
-            <div className={styles.greetingBar}>
+            {/* FULL-WIDTH DASHBOARD GREETING CARD */}
+            <div className={styles.greetingCard}>
+              <div className={styles.greetingCardAura} aria-hidden="true" />
               <div className={styles.greetingTextWrap}>
                 <h1 className={styles.greetingTitle}>
                   Good Morning, VeLooper!
