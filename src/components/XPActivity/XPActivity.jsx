@@ -8,7 +8,7 @@ const recentActivities = [
     time: 'Today, 10:45 AM',
     reward: '+20 XP',
     icon: '👥',
-    color: '#0ED690',
+    color: '#2ECC71',
     category: 'referral',
   },
   {
@@ -17,7 +17,7 @@ const recentActivities = [
     time: 'Today, 09:12 AM',
     reward: '+50 XP',
     icon: '📋',
-    color: '#07D3E4',
+    color: '#3D9EFF',
     category: 'tasks',
   },
   {
@@ -26,7 +26,7 @@ const recentActivities = [
     time: 'Today, 08:30 AM',
     reward: '+75 XP',
     icon: '🎮',
-    color: '#8A31F7',
+    color: '#7B61FF',
     category: 'games',
   },
   {
@@ -35,16 +35,16 @@ const recentActivities = [
     time: 'Today, 07:50 AM',
     reward: '+10 VEs',
     icon: '🧲',
-    color: '#FB8521',
+    color: '#F5C842',
     category: 'catcher',
   },
   {
     id: 5,
-    title: 'Streak Multiplier Bonus',
+    title: 'Streak Bonus',
     time: 'Today, 07:20 AM',
     reward: '+25 XP',
     icon: '🔥',
-    color: '#EF4444',
+    color: '#FF5252',
     category: 'streak',
   },
 ]
@@ -68,7 +68,7 @@ const XPActivity = () => {
               onClick={() => setFilter(filter === 'all' ? 'catcher' : 'all')}
               title="Filter activity"
             >
-              🌪️ {filter === 'all' ? 'All' : 'Game'}
+              ▼ {filter === 'all' ? 'All' : 'Game'}
             </button>
           </div>
         </div>
@@ -85,14 +85,14 @@ const XPActivity = () => {
               </div>
 
               <div className={styles.details}>
+                <div className={styles.rewardLead} style={{ color: item.color }}>
+                  {item.reward}
+                </div>
                 <div className={styles.itemTitle}>{item.title}</div>
                 <div className={styles.itemTime}>{item.time}</div>
               </div>
 
               <div className={styles.rewardCol}>
-                <span className={styles.rewardText} style={{ color: item.color }}>
-                  {item.reward}
-                </span>
                 <span className={styles.chevron}>➔</span>
               </div>
             </div>

@@ -1,114 +1,87 @@
 /* ============================================================
    DESIGN TOKENS — VELoop Rewards Level Dashboard
-   Obsidian Cyberpunk Gaming Palette (Extracted from reference)
+   Aligned 100% to Level_up_page (5).pdf (Sections 33, 34, 35)
    ============================================================ */
 
 :root {
-  /* ---------- Backgrounds & Deep Canvas ---------- */
-  --bg-abyss:        #00030E; /* Root void obsidian canvas */
-  --bg-body:         #00030E;
-  --bg-sidebar:      #01020A; /* Deep sidebar canvas */
-  --bg-input:        #01040F; /* Search bar & dark inputs */
-  --bg-card:         #040B19; /* Base midnight card surface */
-  --bg-card-hover:   #071225; /* Elevated card hover */
-  --bg-elevated:     #080F24;
-  --bg-overlay:      rgba(0, 3, 14, 0.94);
-  --bg-profile:      #080B1C; /* Profile panel surface */
+  /* ---------- Backgrounds (Section 34: Body background #161827) ---------- */
+  --bg-body:        #161827;
+  --bg-card:        #1E2138;
+  --bg-card-hover:  #252843;
+  --bg-elevated:    #2A2F4E;
+  --bg-overlay:     rgba(22, 24, 39, 0.94);
+  --bg-input:       #161827;
 
-  /* ---------- Semantic Tinted Card Surfaces ---------- */
-  --bg-tint-cyan:    #04121F; /* Headshot / Tech / Precision */
-  --bg-tint-amber:   #0D1018; /* Loot / Gold / Milestones */
-  --bg-tint-green:   #07121A; /* Team / Social / Online */
-  --bg-tint-purple:  #0B0D20; /* Daily Warrior / Quests */
+  /* ---------- Brand / Accent (Section 35: Gold, Deep Navy, Purple, Blue, Green) ---------- */
+  --gold:           #F5C842;
+  --gold-dark:      #D4A017;
+  --gold-light:     #FCE280;
+  --gold-soft:      rgba(245, 200, 66, 0.14);
+  --gold-glow:      rgba(245, 200, 66, 0.28);
 
-  /* ---------- Brand & Core Neon (Electric Violet) ---------- */
-  --purple:          #8A31F7;
-  --purple-dark:     #4E0EC4;
-  --purple-light:    #A855F7;
-  --purple-soft:     rgba(138, 49, 247, 0.12);
-  --purple-glow:     rgba(138, 49, 247, 0.38);
-  --neon-purple:     #8A31F7;
-  --neon-purple-glow: 0 0 16px rgba(138, 49, 247, 0.45);
+  --purple:         #7B61FF;
+  --purple-dark:    #5A3FD4;
+  --purple-light:   #A08CFF;
+  --purple-soft:    rgba(123, 97, 255, 0.14);
+  --purple-glow:    rgba(123, 97, 255, 0.32);
 
-  /* ---------- Cyber Gold / Radiant Amber (Loot / Rank) ---------- */
-  --gold:            #FB8521;
-  --gold-dark:       #EA580C;
-  --gold-light:      #FBBF24;
-  --gold-soft:       rgba(251, 133, 33, 0.14);
-  --gold-glow:       rgba(251, 133, 33, 0.32);
-  --neon-amber:      #FB8521;
+  --blue:           #3D9EFF;
+  --blue-soft:      rgba(61, 158, 255, 0.14);
+  --blue-glow:      rgba(61, 158, 255, 0.30);
 
-  /* ---------- Cyber Cyan / Electric Teal (Tech / Headshot) ---------- */
-  --blue:            #07D3E4;
-  --blue-dark:       #0284C7;
-  --blue-soft:       rgba(7, 211, 228, 0.12);
-  --blue-glow:       rgba(7, 211, 228, 0.35);
-  --neon-cyan:       #07D3E4;
+  --green:          #2ECC71;
+  --green-soft:     rgba(46, 204, 113, 0.14);
+  --green-glow:     rgba(46, 204, 113, 0.28);
 
-  /* ---------- Matrix Emerald / Neon Mint (Team / Health) ---------- */
-  --green:           #0ED690;
-  --green-dark:      #059669;
-  --green-soft:      rgba(14, 214, 144, 0.12);
-  --green-glow:      rgba(14, 214, 144, 0.35);
-  --neon-green:      #0ED690;
+  --silver:         #B0B8D1;
+  --red:            #FF5252;
+  --red-soft:       rgba(255, 82, 82, 0.14);
 
-  /* ---------- Crimson Ruby / Alert (Lethal / Unstoppable) ---------- */
-  --red:             #EF4444;
-  --red-dark:        #DC2626;
-  --red-soft:        rgba(239, 68, 68, 0.14);
-  --red-glow:        rgba(239, 68, 68, 0.35);
+  /* Tint backgrounds & borders */
+  --bg-tint-cyan:   rgba(61, 158, 255, 0.08);
+  --bg-tint-amber:  rgba(245, 200, 66, 0.08);
+  --bg-tint-green:  rgba(46, 204, 113, 0.08);
+  --bg-tint-purple: rgba(123, 97, 255, 0.08);
 
-  /* ---------- Cosmic Orchid / Legend Badge ---------- */
-  --orchid:          #9A58C6;
-  --orchid-bg:       #1E1035;
-  --orchid-soft:     rgba(154, 88, 198, 0.16);
+  --border-cyan:    rgba(61, 158, 255, 0.40);
+  --border-green:   rgba(46, 204, 113, 0.40);
+  --border-gold:    rgba(245, 200, 66, 0.45);
+  --border-purple:  rgba(123, 97, 255, 0.45);
 
-  /* ---------- Neutral / Metallic ---------- */
-  --silver:          #94A3B8;
+  /* ---------- Text ---------- */
+  --text-primary:   #FFFFFF;
+  --text-secondary: #8B93B0;
+  --text-muted:     #677196;
+  --text-gold:      #F5C842;
 
-  /* ---------- Typography ---------- */
-  --text-primary:    #FFFFFF;
-  --text-secondary:  #AAACC7;
-  --text-muted:      #70738C;
-  --text-gold:       #FB8521;
-  --text-link:       #8A31F7;
+  /* ---------- Borders ---------- */
+  --border:         #2E3454;
+  --border-subtle:  rgba(255, 255, 255, 0.07);
+  --border-hover:   #4A527A;
 
-  /* ---------- Borders & Dividers ---------- */
-  --border:          rgba(255, 255, 255, 0.07);
-  --border-subtle:   rgba(255, 255, 255, 0.05);
-  --border-hover:    rgba(255, 255, 255, 0.18);
-  --border-focus:    #1E293B;
-  --border-input:    #162032;
-  --border-gold:     rgba(251, 133, 33, 0.4);
-  --border-purple:   rgba(138, 49, 247, 0.45);
-  --border-cyan:     rgba(7, 211, 228, 0.4);
-  --border-green:    rgba(14, 214, 144, 0.4);
-
-  /* ---------- Level States ---------- */
-  --state-completed: #0ED690;
-  --state-current:   #FB8521;
-  --state-next:      #8A31F7;
-  --state-locked:    #1E293B;
-  --state-locked-text: #70738C;
+  /* ---------- Level States (Section 20) ---------- */
+  --state-completed: #2ECC71;
+  --state-current:   #F5C842;
+  --state-next:      #7B61FF;
+  --state-locked:    #3A3F60;
+  --state-locked-text: #677196;
 
   /* ---------- Gradients ---------- */
-  --grad-hero:        linear-gradient(135deg, #080F24 0%, #00030E 100%);
-  --grad-primary-cta: linear-gradient(135deg, #4E0EC4 0%, #7C3AED 50%, #8A31F7 100%);
-  --grad-gold:        linear-gradient(135deg, #FB8521, #EA580C);
-  --grad-purple:      linear-gradient(135deg, #8A31F7, #4E0EC4);
-  --grad-blue:        linear-gradient(135deg, #07D3E4, #0284C7);
-  --grad-green:       linear-gradient(135deg, #0ED690, #059669);
-  --grad-card:        linear-gradient(145deg, #040B19, #071225);
-  --grad-reward:      linear-gradient(135deg, #040B19, #150E2D);
-  --grad-xp-bar:      linear-gradient(90deg, #614FF4 0%, #8A31F7 50%, #A855F7 100%);
-  --grad-soundwave:   linear-gradient(90deg, #07D3E4 0%, #8A31F7 50%, #EC4899 100%);
+  --grad-hero:        linear-gradient(135deg, #1E2138 0%, #161827 100%);
+  --grad-gold:        linear-gradient(135deg, #F5C842 0%, #D4A017 100%);
+  --grad-purple:      linear-gradient(135deg, #7B61FF 0%, #5A3FD4 100%);
+  --grad-primary-cta: linear-gradient(135deg, #7B61FF 0%, #5A3FD4 100%);
+  --grad-blue:        linear-gradient(135deg, #3D9EFF 0%, #2563EB 100%);
+  --grad-green:       linear-gradient(135deg, #2ECC71 0%, #16A34A 100%);
+  --grad-card:        linear-gradient(145deg, #1E2138 0%, #252843 100%);
+  --grad-reward:      linear-gradient(135deg, #1E2138 0%, #2B2155 100%);
+  --grad-xp-bar:      linear-gradient(90deg, #F5C842 0%, #E6AC10 100%);
 
-  /* ---------- Shadows & Glows ---------- */
-  --shadow-card:     0 4px 24px rgba(0, 0, 0, 0.55);
-  --shadow-gold:     0 0 20px rgba(251, 133, 33, 0.28);
-  --shadow-purple:   0 0 22px rgba(138, 49, 247, 0.32);
-  --shadow-cyan:     0 0 20px rgba(7, 211, 228, 0.28);
-  --shadow-hover:    0 8px 32px rgba(0, 0, 0, 0.75);
+  /* ---------- Shadows ---------- */
+  --shadow-card:   0 6px 24px rgba(0, 0, 0, 0.35);
+  --shadow-gold:   0 0 20px rgba(245, 200, 66, 0.22);
+  --shadow-purple: 0 0 20px rgba(123, 97, 255, 0.25);
+  --shadow-hover:  0 10px 32px rgba(0, 0, 0, 0.55);
 
   /* ---------- Spacing ---------- */
   --space-xs:  4px;
@@ -124,19 +97,18 @@
   --radius-md:   12px;
   --radius-lg:   16px;
   --radius-xl:   20px;
-  --radius-2xl:  24px;
   --radius-full: 9999px;
 
   /* ---------- Typography ---------- */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --text-hero:  clamp(40px, 6vw, 72px);
-  --text-2xl:   clamp(28px, 4vw, 40px);
-  --text-xl:    clamp(22px, 3vw, 28px);
-  --text-lg:    clamp(18px, 2.5vw, 22px);
-  --text-md:    16px;
-  --text-sm:    14px;
-  --text-xs:    12px;
-  --text-2xs:   11px;
+  --text-hero:  clamp(32px, 4.5vw, 56px);
+  --text-2xl:   clamp(24px, 3vw, 32px);
+  --text-xl:    clamp(18px, 2.2vw, 24px);
+  --text-lg:    clamp(15px, 1.8vw, 18px);
+  --text-md:    15px;
+  --text-sm:    13px;
+  --text-xs:    11px;
+  --text-2xs:   10px;
 
   /* ---------- Transitions ---------- */
   --transition-fast:   0.15s ease;

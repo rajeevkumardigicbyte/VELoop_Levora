@@ -4,8 +4,8 @@ import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
 import LevelRoadmap from '../../components/LevelRoadmap/LevelRoadmap'
 import PlayAndEarn from '../../components/PlayAndEarn/PlayAndEarn'
-import EarnMoreXP from '../../components/EarnMoreXP/EarnMoreXP'
 import XPActivity from '../../components/XPActivity/XPActivity'
+import EarnMoreXP from '../../components/EarnMoreXP/EarnMoreXP'
 import LevelUpModal from '../../components/LevelUpModal/LevelUpModal'
 import SkeletonLoader from '../../components/shared/SkeletonLoader'
 import ErrorState from '../../components/shared/ErrorState'
@@ -30,27 +30,27 @@ const LevelDashboard = () => {
       <header className={styles.navbar}>
         <div className="content-container">
           <div className={styles.navInner}>
-            <div className={styles.brand}>
+            <a href="#hero" className={styles.brand}>
               <img src="/assets/logo.svg" alt="VELOOP Logo" className={styles.brandLogoImg} />
               <span className={styles.brandName}>VELOOP</span>
               <span className={styles.brandSub}>REWARDS</span>
-            </div>
+            </a>
 
             <nav className={styles.navLinks}>
-              <a href="#hero" className={`${styles.navLink} ${styles.navLinkActive}`}>
+              <a href="#hero" className={`${styles.navLink} ${activeTab === 'home' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('home')}>
                 Level Hub
               </a>
-              <a href="#roadmap" className={styles.navLink}>
+              <a href="#roadmap" className={`${styles.navLink} ${activeTab === 'roadmap' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('roadmap')}>
                 Roadmap
               </a>
-              <a href="#arcade" className={styles.navLink}>
+              <a href="#arcade" className={`${styles.navLink} ${activeTab === 'arcade' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('arcade')}>
                 Arcade
               </a>
-              <a href="#earn" className={styles.navLink}>
-                Earn XP
-              </a>
-              <a href="#activity" className={styles.navLink}>
+              <a href="#activity" className={`${styles.navLink} ${activeTab === 'activity' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('activity')}>
                 Activity
+              </a>
+              <a href="#earn" className={`${styles.navLink} ${activeTab === 'earn' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('earn')}>
+                Earn XP
               </a>
             </nav>
 
@@ -61,7 +61,13 @@ const LevelDashboard = () => {
                   <span className={styles.walletVal}>{data.currentXP?.toLocaleString()} XP</span>
                 </div>
               )}
-              <div className={styles.userAvatar} onClick={triggerLevelUp} title="Preview Level Up Celebration">
+              <div
+                className={styles.userAvatar}
+                onClick={triggerLevelUp}
+                title="Preview Level Up Celebration"
+                role="button"
+                tabIndex={0}
+              >
                 👤
               </div>
             </div>
@@ -69,8 +75,8 @@ const LevelDashboard = () => {
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="content-container" style={{ paddingTop: '16px' }}>
+      {/* Main Content (Section 39 Desktop Layout & Page 33 Mobile screens) */}
+      <main className={`content-container ${styles.mainContent}`}>
         {loading && (
           <div className={styles.loadingContainer}>
             <SkeletonLoader type="hero" />
@@ -91,41 +97,34 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
-            {/* Screen 1: Level Progression Hero with Greeting, Level Card & Today's Boost */}
-            <div id="hero">
-              <LevelHero
-                data={data}
-                onTriggerLevelUp={triggerLevelUp}
-              />
-            </div>
-
-            {/* Split Section: Level Progression Roadmap & Level 05 Vault Rewards */}
-            <section className={styles.highlightSection}>
-              <div className={styles.highlightGrid}>
-                {/* Level Roadmap Ladder */}
-                <div id="roadmap" className={styles.roadmapCol}>
-                  <LevelRoadmap data={data} />
-                </div>
-                {/* Screen 1 Level 05 Rewards Card */}
-                <div className={styles.rewardCol}>
-                  <NextLevelReward data={data} onTriggerLevelUp={triggerLevelUp} />
-                </div>
+            {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
+            <div id="hero" className={styles.heroRewardGrid}>
+              <div className={styles.heroCol}>
+                <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
               </div>
-            </section>
-
-            {/* Screen 2 & 3: Play & Earn "XP CATCHER" Mini-Game Terminal */}
-            <div id="arcade">
-              <PlayAndEarn />
+              <div className={styles.rewardCol}>
+                <NextLevelReward data={data} onTriggerLevelUp={triggerLevelUp} />
+              </div>
             </div>
 
-            {/* Screen 4: "EARN & LEVEL UP" List Activities */}
-            <div id="earn">
+            {/* ROW 2: Level Progression Roadmap */}
+            <div id="roadmap" className={styles.roadmapSection}>
+              <LevelRoadmap data={data} />
+            </div>
+
+            {/* ROW 3: PLAY & EARN (XP Catcher Mini Game) | XP Activity */}
+            <div className={styles.arcadeActivityGrid}>
+              <div id="arcade" className={styles.arcadeCol}>
+                <PlayAndEarn />
+              </div>
+              <div id="activity" className={styles.activityCol}>
+                <XPActivity />
+              </div>
+            </div>
+
+            {/* ROW 4: EARN MORE XP & REWARDS */}
+            <div id="earn" className={styles.earnSection}>
               <EarnMoreXP data={data} />
-            </div>
-
-            {/* Screen 6: "RECENT ACTIVITY" & Today's Summary */}
-            <div id="activity">
-              <XPActivity />
             </div>
           </>
         )}

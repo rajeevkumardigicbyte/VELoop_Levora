@@ -5,80 +5,72 @@ const earnActivitiesList = [
   {
     id: 1,
     title: 'Watch & Earn',
-    desc: 'Watch ads and earn instant XP',
+    desc: 'Watch ads and earn',
     reward: '+50 XP',
     icon: '▶',
-    color: '#8A31F7',
-    tint: 'rgba(138, 49, 247, 0.08)',
-    border: 'rgba(138, 49, 247, 0.35)',
-    actionText: 'Watch Now',
+    color: '#7B61FF',
+    tint: 'rgba(123, 97, 255, 0.08)',
+    border: 'rgba(123, 97, 255, 0.35)',
     category: 'watch',
   },
   {
     id: 2,
     title: 'Daily Missions',
-    desc: 'Complete daily combat and reward tasks',
+    desc: 'Complete daily tasks',
     reward: '+30 XP',
     icon: '📋',
-    color: '#07D3E4',
-    tint: 'rgba(7, 211, 228, 0.08)',
-    border: 'rgba(7, 211, 228, 0.35)',
-    actionText: 'Start Mission',
+    color: '#2ECC71',
+    tint: 'rgba(46, 204, 113, 0.08)',
+    border: 'rgba(46, 204, 113, 0.35)',
     category: 'tasks',
   },
   {
     id: 3,
     title: 'Refer & Earn',
-    desc: 'Invite friends to squad up & earn together',
+    desc: 'Invite friends & earn',
     reward: '+100 XP',
     icon: '👥',
-    color: '#0ED690',
-    tint: 'rgba(14, 214, 144, 0.08)',
-    border: 'rgba(14, 214, 144, 0.35)',
-    actionText: 'Share Link',
+    color: '#3D9EFF',
+    tint: 'rgba(61, 158, 255, 0.08)',
+    border: 'rgba(61, 158, 255, 0.35)',
     category: 'refer',
   },
   {
     id: 4,
-    title: 'Mini Games & Arcade',
-    desc: 'Play retro arcade challenges & win score bonuses',
+    title: 'Mini Games',
+    desc: 'Play games & win',
     reward: '+75 XP',
     icon: '🎮',
-    color: '#FB8521',
-    tint: 'rgba(251, 133, 33, 0.08)',
-    border: 'rgba(251, 133, 33, 0.35)',
-    actionText: 'Play Arcade',
+    color: '#9A58C6',
+    tint: 'rgba(154, 88, 198, 0.08)',
+    border: 'rgba(154, 88, 198, 0.35)',
     category: 'games',
   },
   {
     id: 5,
-    title: 'Streak Multiplier',
-    desc: 'Maintain consecutive login streak for multipliers',
+    title: 'Streak Bonus',
+    desc: 'Maintain your streak',
     reward: '+25 XP',
     icon: '🔥',
-    color: '#EF4444',
-    tint: 'rgba(239, 68, 68, 0.08)',
-    border: 'rgba(239, 68, 68, 0.35)',
-    actionText: 'Claim Streak',
+    color: '#FF5252',
+    tint: 'rgba(255, 82, 82, 0.08)',
+    border: 'rgba(255, 82, 82, 0.35)',
     category: 'streak',
   },
   {
     id: 6,
-    title: 'XP Catcher Mini-Game',
-    desc: 'Catch neon orbs & energy crystals',
+    title: 'XP Catcher',
+    desc: 'Catch orbs & coins',
     reward: '+10 XP',
     icon: '🧲',
-    color: '#9A58C6',
-    tint: 'rgba(154, 88, 198, 0.08)',
-    border: 'rgba(154, 88, 198, 0.35)',
-    actionText: 'Play Catcher',
+    color: '#3D9EFF',
+    tint: 'rgba(61, 158, 255, 0.08)',
+    border: 'rgba(61, 158, 255, 0.35)',
     category: 'catcher',
   },
 ]
 
 const EarnMoreXP = ({ data }) => {
-  const xpRemaining = data.xpRemaining
-
   return (
     <section className={styles.section}>
       {/* Header from Screen 4 */}
@@ -103,13 +95,14 @@ const EarnMoreXP = ({ data }) => {
             }}
             onClick={() => {
               if (item.category === 'catcher' || item.category === 'games') {
-                window.scrollTo({ top: 600, behavior: 'smooth' })
+                const el = document.getElementById('arcade')
+                if (el) el.scrollIntoView({ behavior: 'smooth' })
               }
             }}
           >
             <div
               className={styles.activityIconWrap}
-              style={{ background: `${item.color}20`, color: item.color }}
+              style={{ background: `${item.color}25`, color: item.color }}
             >
               <span>{item.icon}</span>
             </div>
@@ -132,7 +125,7 @@ const EarnMoreXP = ({ data }) => {
       {/* Encouragement Bar from Screen 4 */}
       <div className={styles.encouragementBar}>
         <span className={styles.encouragementText}>Keep going! You're doing great!</span>
-        <span className={styles.chartIcon}>📊</span>
+        <span className={styles.chartIcon}>🏆</span>
       </div>
     </section>
   )

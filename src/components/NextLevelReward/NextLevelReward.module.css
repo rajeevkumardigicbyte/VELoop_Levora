@@ -1,9 +1,11 @@
 .card {
   background: var(--grad-reward);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid var(--border-purple);
   border-radius: var(--radius-xl);
   padding: 24px;
-  box-shadow: 0 4px 24px rgba(138, 49, 247, 0.2);
+  box-shadow: 0 8px 32px rgba(138, 49, 247, 0.25), inset 0 1px 0 rgba(138, 49, 247, 0.4);
   position: relative;
   overflow: hidden;
   display: flex;
