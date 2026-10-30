@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User, Home, Coins, Gift, Wallet } from 'lucide-react'
+import { User, Home, Coins, Gift, Wallet, Bell } from 'lucide-react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
@@ -100,6 +100,30 @@ const LevelDashboard = () => {
 
         {!loading && !error && data && (
           <>
+            {/* FULL-WIDTH DASHBOARD GREETING BAR */}
+            <div className={styles.greetingBar}>
+              <div className={styles.greetingTextWrap}>
+                <h1 className={styles.greetingTitle}>
+                  Good Morning, VeLooper!
+                </h1>
+                <p className={styles.greetingSub}>
+                  Level up your journey and unlock epic rewards every day.
+                </p>
+              </div>
+              <div className={styles.greetingActions}>
+                <button
+                  type="button"
+                  className={styles.notificationBtn}
+                  onClick={triggerLevelUp}
+                  title="Preview Level Up Celebration"
+                  aria-label="1 Unread Notification - Preview Level Up"
+                >
+                  <Bell size={18} className={styles.bellIcon} />
+                  <span className={styles.notifBadge} aria-hidden="true">1</span>
+                </button>
+              </div>
+            </div>
+
             {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
             <div id="hero" className={styles.heroRewardGrid}>
               <section aria-label="Current Level & Daily Boost" className={styles.heroCol}>

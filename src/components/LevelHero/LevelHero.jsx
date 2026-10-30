@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {
-  Bell,
   Star,
   ClipboardCheck,
   Flame,
@@ -26,7 +25,7 @@ const useCountUp = (target, duration = 1200, start = false) => {
   return count
 }
 
-const LevelHero = ({ data, onTriggerLevelUp }) => {
+const LevelHero = ({ data }) => {
   const [animStart, setAnimStart] = useState(false)
 
   useEffect(() => {
@@ -38,91 +37,72 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
   const pct = data.xpPercent
 
   return (
-    <div className={styles.hero}>
-      {/* Top Greeting Bar (Screen 1) */}
-      <div className={styles.greetingBar}>
-        <div>
-          <h1 id="hero-greeting" className={styles.greetingTitle}>
-            Good Morning, VeLooper!
-          </h1>
-          <p className={styles.greetingSub}>
-            Level up your journey and unlock epic rewards every day.
-          </p>
-        </div>
-        <div className={styles.greetingActions}>
-          <button
-            type="button"
-            className={styles.notificationBtn}
-            onClick={onTriggerLevelUp}
-            title="Preview Level Up Celebration"
-            aria-label="1 Unread Notification - Preview Level Up"
-          >
-            <Bell size={18} className={styles.bellIcon} />
-            <span className={styles.notifBadge} aria-hidden="true">1</span>
-          </button>
+    <article aria-labelledby="current-level-heading" className={styles.masterCard}>
+      {/* Ambient background glow */}
+      <div className={styles.cardAura} aria-hidden="true" />
+
+      {/* Top Section: Level Badge + XP Counter */}
+      <div className={styles.levelCardTop}>
+        <div className={styles.levelMainInfo}>
+          <div className={styles.badgeWrapper}>
+            <LevelBadgeHex level={data.currentLevel || 5} size={76} />
+          </div>
+
+          <div className={styles.levelMeta}>
+            <div id="current-level-heading" className={styles.xpBig}>
+              {animStart ? xpCount.toLocaleString() : '0'} XP
+            </div>
+            <div className={styles.xpToNext}>
+              to reach Level {String(data.nextLevel).padStart(2, '0')}
+              <InfoTooltip text="XP helps you progress through VELOOP Rewards levels. As you reach new levels, you unlock exclusive rewards and higher cashout perks." />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Main Level Progress Card (Screen 1) */}
-      <article aria-labelledby="current-level-heading" className={styles.levelCard}>
-        <div className={styles.levelCardTop}>
-          <div className={styles.levelMainInfo}>
-            <div className={styles.badgeWrapper}>
-              <LevelBadgeHex level={data.currentLevel || 5} size={82} />
-            </div>
-
-            <div className={styles.levelMeta}>
-              <div id="current-level-heading" className={styles.xpBig}>
-                {animStart ? xpCount.toLocaleString() : '0'} XP
-              </div>
-              <div className={styles.xpToNext}>
-                to reach Level {String(data.nextLevel).padStart(2, '0')}
-                <InfoTooltip text="XP helps you progress through VELOOP Rewards levels. As you reach new levels, you unlock exclusive rewards and higher cashout perks." />
-              </div>
-            </div>
-          </div>
+      {/* Progress Bar */}
+      <div className={styles.progressArea}>
+        <div className={styles.progressLabels}>
+          <span>{data.currentXP?.toLocaleString()} / {data.requiredXP?.toLocaleString()} XP</span>
+          <span className={styles.progressPct}>{pct}%</span>
         </div>
-
-        {/* Progress Bar (Screen 1) */}
-        <div className={styles.progressArea}>
-          <div className={styles.progressLabels}>
-            <span>{data.currentXP?.toLocaleString()} / {data.requiredXP?.toLocaleString()} XP</span>
-            <span className={styles.progressPct}>{pct}%</span>
-          </div>
+        <div
+          className={styles.progressBarTrack}
+          role="progressbar"
+          aria-valuenow={pct}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={`Progress to Level ${data.nextLevel}: ${pct}%`}
+        >
           <div
-            className={styles.progressBarTrack}
-            role="progressbar"
-            aria-valuenow={pct}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-label={`Progress to Level ${data.nextLevel}: ${pct}%`}
+            className={styles.progressBarFill}
+            style={{
+              width: animStart ? `${pct}%` : '0%',
+              transition: animStart ? 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+            }}
           >
-            <div
-              className={styles.progressBarFill}
-              style={{
-                width: animStart ? `${pct}%` : '0%',
-                transition: animStart ? 'width 1.2s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
-              }}
-            >
-              <span className={styles.progressBarGlow} />
-            </div>
+            <span className={styles.progressBarGlow} />
           </div>
         </div>
-      </article>
+      </div>
 
-      {/* Today's Boost Telemetry Card (Screen 1) */}
-      <section aria-labelledby="todays-boost-heading" className={styles.boostCard}>
+      {/* Subtle Divider */}
+      <div className={styles.divider} aria-hidden="true" />
+
+      {/* Bottom Section: Integrated Today's Boost Telemetry */}
+      <div className={styles.boostSection}>
         <div className={styles.boostHeader}>
           <div className={styles.boostTitleWrap}>
-            <Zap size={14} className={styles.boostZap} aria-hidden="true" />
-            <h2 id="todays-boost-heading" className={styles.boostTitle}>TODAY'S BOOST</h2>
+            <Zap size={13} className={styles.boostZap} aria-hidden="true" />
+            <span className={styles.boostTitle}>TODAY'S BOOST</span>
           </div>
           <span className={styles.boostSubtitle}>Daily Overview</span>
         </div>
+
         <div className={styles.boostGrid}>
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconXP}`}>
-              <Star size={16} color="#F5C842" aria-hidden="true" />
+              <Star size={15} color="#F5C842" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>XP Earned</span>
             <span className={styles.boostVal}>215 XP</span>
@@ -130,7 +110,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconTasks}`}>
-              <ClipboardCheck size={16} color="#3D9EFF" aria-hidden="true" />
+              <ClipboardCheck size={15} color="#3D9EFF" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Tasks Done</span>
             <span className={styles.boostVal}>4 / 8</span>
@@ -138,14 +118,14 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconStreak}`}>
-              <Flame size={16} color="#FF5252" aria-hidden="true" />
+              <Flame size={15} color="#FF5252" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Streak</span>
             <span className={styles.boostVal}>7 Days</span>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </article>
   )
 }
 

@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXT LEVEL REWARD — Styles (Screen 1 & 2 Compact Executive Vault)
+   NEXT LEVEL REWARD — Compact Executive Milestone Vault
    ============================================================ */
 
 .card {
@@ -8,22 +8,34 @@
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid var(--border-purple);
   border-radius: var(--radius-xl);
-  padding: 18px 20px;
+  padding: 22px 24px;
   box-shadow: 0 8px 30px rgba(123, 97, 255, 0.2), inset 0 1px 0 rgba(160, 140, 255, 0.25);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 12px;
-  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  gap: 14px;
   height: 100%;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(123, 97, 255, 0.32);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(123, 97, 255, 0.32);
   border-color: var(--purple-light);
+}
+
+.glowAura {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(123, 97, 255, 0.18) 0%, rgba(245, 200, 66, 0.1) 45%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .header {
@@ -46,7 +58,7 @@
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 /* Chest + Gems Graphic Centerpiece */
@@ -55,25 +67,13 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 4px 0;
-}
-
-.glowAura {
-  position: absolute;
-  width: 105px;
-  height: 105px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.25) 0%, rgba(245, 200, 66, 0.15) 50%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 6px 0;
 }
 
 .chestArtwork {
   position: relative;
-  width: 90px;
-  height: 76px;
+  width: 84px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,20 +89,20 @@
 .floatingGemCluster {
   position: absolute;
   right: -8px;
-  bottom: 6px;
+  bottom: 4px;
   display: flex;
   gap: 3px;
 }
 
 .gemSparkle {
-  font-size: 16px;
+  font-size: 15px;
   animation: pulseGlow 2s infinite ease-in-out;
 }
 
 .rewardSummaryRow {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .rewardPillGold {
@@ -115,7 +115,7 @@
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
 .rewardPillPurple {
@@ -128,21 +128,31 @@
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
 /* Progress Wrap */
 .progressWrap {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
+}
+
+.progressText {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .progressTrack {
   height: 7px;
-  background: var(--bg-elevated);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-full);
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .progressFill {
@@ -152,16 +162,8 @@
   transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.progressText {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-muted);
-  font-weight: 600;
-}
-
 .ctaRow {
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 /* Shimmer */
