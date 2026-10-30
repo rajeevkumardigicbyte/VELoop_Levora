@@ -31,10 +31,10 @@ VELoop Rewards employs an engagement-driven tier ladder. As users earn XP throug
 | **L01** | Bronze Starter | 500 XP | 50 VEs | Completed (✓) |
 | **L02** | Iron Climber | 1,500 XP | 5 Gems | Completed (✓) |
 | **L03** | Steel Achiever | 3,500 XP | 100 VEs | Completed (✓) |
-| **L04** | Silver Scout | 8,000 XP | 10 Gems | **Current (★ You Are Here)** |
-| **L05** | Gold Guardian | 15,000 XP | 500 VEs | **Next Goal (➔)** |
-| **L06** | Platinum Hero | 25,000 XP | 2 Spins | Locked (🔒) |
-| **L07** | Diamond Legend | 40,000 XP | 100 SVEs | Locked (🔒) |
+| **L04** | Silver Scout | 5,000 XP | 10 Gems | Completed (✓) |
+| **L05** | Gold Guardian | 8,000 XP | 500 VEs | **Current (★ You Are Here)** |
+| **L06** | Platinum Hero | 15,000 XP | 2 Spins | **Next Goal (➔)** |
+| **L07** | Diamond Legend | 25,000 XP | 100 SVEs | Locked (🔒) |
 
 ---
 
@@ -56,11 +56,11 @@ The next milestone reward is displayed using a **partially locked vault card**:
 
 ---
 
-## 5. 🕹️ Game Concept: "VE Coin Rush"
+## 5. 🕹️ Game Concept: "XP CATCHER"
 
-A mandatory, functional frontend arcade mini-game integrated into the dashboard:
+A mandatory, functional frontend arcade mini-game integrated into the dashboard (matching PDF Page 33 Screen 2):
 * **Format:** 20-second reflex arcade challenge.
-* **Action:** Users maneuver a collector cart horizontally across the arena floor to catch falling coins and bonus gems.
+* **Action:** Users maneuver a golden basket/hoop collector horizontally across the arena floor to catch falling V coins (`ve.svg`), XP orbs (`xp-1.svg`), and bonus gems.
 * **Safety & Integrity:** Purely skill-based reflex engagement. Contains **zero** casino, gambling, or betting elements.
 
 ---
@@ -70,15 +70,12 @@ A mandatory, functional frontend arcade mini-game integrated into the dashboard:
 * **Controls:** 
   * Desktop: Keyboard Left/Right arrow keys, `A` / `D` keys, or mouse hover.
   * Mobile: On-screen touch buttons or direct touch drag in the arena.
-* **Duration:** 20 seconds per run.
+* **Duration:** 20 seconds per run (`⏱ 00:20`).
 * **Items:**
-  * 🪙 **VE Coin:** +1 point
-  * 💎 **Gem:** +3 points
-* **Reward Tiers:**
-  * Score 10–19: `+15 XP`
-  * Score 20–29: `+25 XP`
-  * Score 30+: `+35 XP + 1 Gem`
-* **Result State:** Visually satisfying result card displaying final score, tier badge, and demo XP earned with an instant replay option.
+  * 🟣 **XP Orb:** +10 XP pts
+  * 🟡 **VE Coin:** +5 VEs
+  * 💎 **Gem:** +25 bonus
+* **Result State (Screen 3):** Visually satisfying result card displaying laurel star trophy, final score (`92 / New Best!`), rewards (`+30 XP Experience`, `+12 VEs Your Reward`), level progress bar, and instant replay option.
 
 ---
 
