@@ -1,8 +1,22 @@
-import React from 'react'
-import { Tv, CalendarCheck, Users, Gamepad2, Flame, Magnet, ChevronRight, Trophy } from 'lucide-react'
+import React, { useState } from 'react'
+import {
+  Tv,
+  CalendarCheck,
+  Users,
+  Gamepad2,
+  Flame,
+  Magnet,
+  ChevronRight,
+  Trophy,
+  Sparkles,
+  HelpCircle,
+  Search,
+  Compass,
+} from 'lucide-react'
 import styles from './EarnMoreXP.module.css'
 
-const earnActivitiesList = [
+// 6 Verified Active Activities from PDF Page 33 Screen 4
+const activeActivities = [
   {
     id: 1,
     title: 'Watch & Earn',
@@ -71,7 +85,48 @@ const earnActivitiesList = [
   },
 ]
 
+// 3 Proposed Earning Concepts from PDF Sections 23 & 47 (Clearly marked "Coming Soon")
+const upcomingConcepts = [
+  {
+    id: 101,
+    title: 'Weekly Quest',
+    desc: 'Complete a weekly objective milestone',
+    reward: '+100 XP',
+    icon: Compass,
+    color: '#F5C842',
+    tint: 'rgba(245, 200, 66, 0.08)',
+    border: 'rgba(245, 200, 66, 0.35)',
+    badge: 'Coming Soon',
+  },
+  {
+    id: 102,
+    title: 'Reward Hunt',
+    desc: 'Find hidden reward elements around platform',
+    reward: '+75 XP',
+    icon: Search,
+    color: '#0ED690',
+    tint: 'rgba(14, 214, 144, 0.08)',
+    border: 'rgba(14, 214, 144, 0.35)',
+    badge: 'Coming Soon',
+  },
+  {
+    id: 103,
+    title: 'Quick Quiz',
+    desc: 'Answer rapid platform knowledge quizzes',
+    reward: '+60 XP',
+    icon: HelpCircle,
+    color: '#3D9EFF',
+    tint: 'rgba(61, 158, 255, 0.08)',
+    border: 'rgba(61, 158, 255, 0.35)',
+    badge: 'Coming Soon',
+  },
+]
+
 const EarnMoreXP = ({ data }) => {
+  const [activeTab, setActiveTab] = useState('active')
+
+  const listToRender = activeTab === 'active' ? activeActivities : upcomingConcepts
+
   return (
     <section className={styles.section}>
       {/* Header from Screen 4 */}
@@ -82,16 +137,34 @@ const EarnMoreXP = ({ data }) => {
             Complete activities. Earn XP. Climb levels. Get rewards.
           </p>
         </div>
+
+        {/* Tab Segment (Section 23 & 47) */}
+        <div className={styles.tabSegment}>
+          <button
+            className={`${styles.tabBtn} ${activeTab === 'active' ? styles.tabBtnActive : ''}`}
+            onClick={() => setActiveTab('active')}
+          >
+            Active Tasks (6)
+          </button>
+          <button
+            className={`${styles.tabBtn} ${activeTab === 'upcoming' ? styles.tabBtnActive : ''}`}
+            onClick={() => setActiveTab('upcoming')}
+          >
+            Upcoming Concepts (3)
+          </button>
+        </div>
       </div>
 
       {/* Grid matching Screen 4 */}
       <div className={styles.activityList}>
-        {earnActivitiesList.map((item) => {
+        {listToRender.map((item) => {
           const IconComp = item.icon
+          const isUpcoming = Boolean(item.badge)
+
           return (
             <div
               key={item.id}
-              className={styles.activityRow}
+              className={`${styles.activityRow} ${isUpcoming ? styles.activityRowUpcoming : ''}`}
               style={{
                 background: item.tint,
                 borderColor: item.border,
@@ -111,7 +184,12 @@ const EarnMoreXP = ({ data }) => {
               </div>
 
               <div className={styles.activityDetails}>
-                <div className={styles.activityName}>{item.title}</div>
+                <div className={styles.activityNameRow}>
+                  <span className={styles.activityName}>{item.title}</span>
+                  {item.badge && (
+                    <span className={styles.comingSoonPill}>{item.badge}</span>
+                  )}
+                </div>
                 <div className={styles.activityDesc}>{item.desc}</div>
               </div>
 

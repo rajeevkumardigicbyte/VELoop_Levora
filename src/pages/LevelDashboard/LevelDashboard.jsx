@@ -3,6 +3,7 @@ import { User, Home, Coins, Gift, Wallet } from 'lucide-react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
+import RecommendationBanner from '../../components/RecommendationBanner/RecommendationBanner'
 import LevelRoadmap from '../../components/LevelRoadmap/LevelRoadmap'
 import PlayAndEarn from '../../components/PlayAndEarn/PlayAndEarn'
 import XPActivity from '../../components/XPActivity/XPActivity'
@@ -108,6 +109,9 @@ const LevelDashboard = () => {
                 <NextLevelReward data={data} onTriggerLevelUp={triggerLevelUp} />
               </div>
             </div>
+
+            {/* SECTION 26: Personalized Recommendation Action Banner */}
+            <RecommendationBanner data={data} />
 
             {/* ROW 2: Level Progression Roadmap */}
             <div id="roadmap" className={styles.roadmapSection}>
