@@ -8,7 +8,7 @@ const recentActivities = [
     time: 'Today, 10:45 AM',
     reward: '+20 XP',
     icon: '👥',
-    color: '#2ECC71',
+    color: '#0ED690',
     category: 'referral',
   },
   {
@@ -17,7 +17,7 @@ const recentActivities = [
     time: 'Today, 09:12 AM',
     reward: '+50 XP',
     icon: '📋',
-    color: '#3D9EFF',
+    color: '#07D3E4',
     category: 'tasks',
   },
   {
@@ -26,7 +26,7 @@ const recentActivities = [
     time: 'Today, 08:30 AM',
     reward: '+75 XP',
     icon: '🎮',
-    color: '#7B61FF',
+    color: '#8A31F7',
     category: 'games',
   },
   {
@@ -35,16 +35,16 @@ const recentActivities = [
     time: 'Today, 07:50 AM',
     reward: '+10 VEs',
     icon: '🧲',
-    color: '#F5C842',
+    color: '#FB8521',
     category: 'catcher',
   },
   {
     id: 5,
-    title: 'Streak Bonus',
+    title: 'Streak Multiplier Bonus',
     time: 'Today, 07:20 AM',
     reward: '+25 XP',
     icon: '🔥',
-    color: '#FF6B35',
+    color: '#EF4444',
     category: 'streak',
   },
 ]

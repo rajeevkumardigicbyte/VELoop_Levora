@@ -102,7 +102,7 @@
 .nodeCurrent {
   background: var(--gold-soft);
   border-color: var(--gold);
-  box-shadow: 0 0 0 5px rgba(245, 200, 66, 0.15);
+  box-shadow: 0 0 0 5px var(--gold-soft), 0 0 16px var(--gold-glow);
   animation: pulseGlow 3s ease infinite;
 }
 

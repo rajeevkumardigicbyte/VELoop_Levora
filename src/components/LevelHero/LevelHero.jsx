@@ -154,15 +154,15 @@ const LevelHero = ({ data, onTriggerLevelUp, onNavigateSection }) => {
 
           <div className={styles.quickTilesGrid}>
             {[
-              { id: 'watch', icon: '📺', name: 'Watch & Earn', color: '#7B61FF', link: '#earn' },
-              { id: 'tasks', icon: '📋', name: 'Daily Tasks', color: '#3D9EFF', link: '#earn' },
-              { id: 'refer', icon: '👥', name: 'Refer & Earn', color: '#2ECC71', link: '#earn' },
-              { id: 'game',  icon: '🧲', name: 'XP Catcher', color: '#F5C842', link: '#arcade' },
-              { id: 'mini',  icon: '🎮', name: 'Mini Games', color: '#FF6B35', link: '#arcade' },
-              { id: 'streak', icon: '🔥', name: 'Streak Bonus', color: '#E74C3C', link: '#earn' },
+              { id: 'watch',  icon: '📺', name: 'Watch & Earn', color: '#8A31F7', link: '#earn' },
+              { id: 'tasks',  icon: '📋', name: 'Daily Tasks',  color: '#07D3E4', link: '#earn' },
+              { id: 'refer',  icon: '👥', name: 'Refer & Earn', color: '#0ED690', link: '#earn' },
+              { id: 'game',   icon: '🧲', name: 'XP Catcher',   color: '#FB8521', link: '#arcade' },
+              { id: 'mini',   icon: '🎮', name: 'Mini Games',   color: '#9A58C6', link: '#arcade' },
+              { id: 'streak', icon: '🔥', name: 'Streak Bonus', color: '#EF4444', link: '#earn' },
             ].map((tile) => (
               <a key={tile.id} href={tile.link} className={styles.quickTile}>
-                <div className={styles.quickTileIcon} style={{ background: `${tile.color}20`, borderColor: tile.color }}>
+                <div className={styles.quickTileIcon} style={{ background: `${tile.color}18`, borderColor: `${tile.color}60` }}>
                   <span>{tile.icon}</span>
                 </div>
                 <span className={styles.quickTileName}>{tile.name}</span>

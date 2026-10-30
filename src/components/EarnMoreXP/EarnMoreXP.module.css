@@ -92,19 +92,20 @@
 }
 
 .encouragementBar {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
+  background: var(--bg-tint-purple);
+  border: 1px solid var(--border-purple);
   border-radius: var(--radius-lg);
   padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 0 16px rgba(138, 49, 247, 0.2);
 }
 
 .encouragementText {
   font-size: var(--text-sm);
   font-weight: 700;
-  color: var(--gold);
+  color: var(--purple-light);
 }
 
 .chartIcon {
