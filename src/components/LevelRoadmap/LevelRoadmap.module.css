@@ -1,265 +1,912 @@
+/* ============================================================
+   LEVEL ROADMAP — APEX MILESTONE CONDUIT & INSPECTOR
+   Palette 2: Cyber Obsidian & Electric Amethyst
+   ============================================================ */
+
 .section {
-  padding: 32px 0;
+  padding: 32px 0 24px;
+  position: relative;
 }
 
+/* Section Header */
 .sectionHead {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
+  flex-direction: column;
+  gap: 18px;
   margin-bottom: 24px;
 }
 
+@media (min-width: 900px) {
+  .sectionHead {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.titleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 4px;
+}
+
+.sparkleIcon {
+  color: var(--gold);
+}
+
+.headActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 600px) {
+  .headActions {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+/* Legend */
 .legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   align-items: center;
 }
 
 .legendItem {
-  font-size: 12px;
-  color: var(--text-muted);
-  display: flex;
+  font-size: 11px;
+  color: var(--text-secondary);
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(20, 16, 36, 0.75);
+  gap: 6px;
+  background: rgba(20, 16, 36, 0.70);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 4px 10px;
   border-radius: var(--radius-full);
   border: 1px solid rgba(168, 85, 247, 0.18);
+  font-weight: 600;
 }
+
+.legendDotCompleted {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+}
+
+.legendDotCurrent {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+}
+
+.legendDotNext {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple);
+  box-shadow: 0 0 8px var(--purple);
+}
+
+.legendDotLocked {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* Controls */
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jumpBtn {
+  background: rgba(20, 16, 36, 0.85);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.15);
+}
+
+.jumpBtn:hover {
+  background: var(--gold-soft);
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
+  transform: translateY(-1px);
+}
+
+.chevronGroup {
+  display: flex;
+  gap: 4px;
+}
+
+.chevronBtn {
+  background: rgba(20, 16, 36, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  color: var(--text-secondary);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.chevronBtn:hover {
+  background: var(--purple-soft);
+  color: #fff;
+  border-color: var(--purple);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+}
+
+/* ============================================================
+   Horizontal Milestone Conduit Rail
+   ============================================================ */
 
 .roadmapScroll {
   overflow-x: auto;
-  padding: 12px 0 24px;
+  padding: 18px 4px 28px;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(168, 85, 247, 0.4) rgba(10, 8, 20, 0.6);
+  border-radius: var(--radius-xl);
+}
+
+.roadmapScroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.roadmapScroll::-webkit-scrollbar-track {
+  background: rgba(10, 8, 20, 0.6);
+  border-radius: var(--radius-full);
+}
+
+.roadmapScroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.4) 0%, rgba(251, 191, 36, 0.5) 100%);
+  border-radius: var(--radius-full);
 }
 
 .roadmapTrack {
   display: flex;
   min-width: max-content;
-  padding: 8px 12px;
-  background: linear-gradient(135deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
+  align-items: stretch;
+  gap: 16px;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, rgba(20, 16, 36, 0.70) 0%, rgba(10, 8, 20, 0.85) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(168, 85, 247, 0.18);
   border-radius: var(--radius-xl);
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
 }
 
+/* Node Wrapper */
 .nodeWrapper {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   cursor: pointer;
-  padding: 0 8px;
+  outline: none;
 }
 
-.nodeInner {
+/* Laser Energy Conduit Line (Behind Cards) */
+.conduitSegment {
+  position: absolute;
+  top: 104px;
+  left: 50%;
+  width: calc(100% + 16px);
+  height: 3px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.conduitCompleted {
+  background: linear-gradient(90deg, var(--green) 0%, var(--green) 100%);
+  box-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
+}
+
+.conduitActiveCharging {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--purple) 100%);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.chargingBeam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+  animation: chargingPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes chargingPulse {
+  0% { transform: translateX(-40px); }
+  100% { transform: translateX(180px); }
+}
+
+.conduitLocked {
+  background: rgba(42, 36, 61, 0.6);
+  border-top: 1px dashed rgba(168, 85, 247, 0.2);
+}
+
+/* ============================================================
+   Symmetrical Micro-Vault Node Card (160px x 220px fixed)
+   ============================================================ */
+
+.nodeCard {
+  width: 160px;
+  min-height: 220px;
+  background: linear-gradient(135deg, rgba(22, 18, 40, 0.82) 0%, rgba(12, 9, 22, 0.94) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(168, 85, 247, 0.16);
+  border-radius: var(--radius-lg);
+  padding: 14px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 16px 12px;
-  min-width: 120px;
-  max-width: 130px;
-  border-radius: var(--radius-lg);
-  transition: all var(--transition-fast);
+  justify-content: space-between;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.nodeInner:hover {
-  background: var(--bg-elevated);
+.nodeCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.65), 0 0 18px rgba(168, 85, 247, 0.25);
 }
 
-/* Circles */
-.nodeCircle {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  border: 2px solid transparent;
-  transition: all var(--transition-normal);
-  z-index: 1;
-  overflow: hidden;
-  padding: 3px;
-}
-
-.roadmapBadgeImg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
+/* State Variants */
 .nodeCompleted {
-  background: var(--green-soft);
-  border-color: var(--state-completed);
-  color: var(--green);
+  border-color: rgba(0, 230, 118, 0.25);
 }
 
 .nodeCurrent {
-  background: var(--gold-soft);
   border-color: var(--gold);
-  box-shadow: 0 0 0 5px var(--gold-soft), 0 0 16px var(--gold-glow);
-  animation: pulseGlow 3s ease infinite;
+  background: linear-gradient(135deg, rgba(32, 24, 48, 0.92) 0%, rgba(16, 12, 28, 0.96) 100%);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 24px rgba(251, 191, 36, 0.32), inset 0 1px 0 rgba(251, 191, 36, 0.3);
+  animation: currentPulse 3s infinite ease-in-out;
+}
+
+@keyframes currentPulse {
+  0%, 100% { box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(251, 191, 36, 0.25); }
+  50% { box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75), 0 0 32px rgba(251, 191, 36, 0.45); }
 }
 
 .nodeNext {
-  background: var(--purple-soft);
-  border-color: var(--purple);
-  color: var(--purple);
+  border-color: var(--purple-light);
+  border-style: solid;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 18px rgba(168, 85, 247, 0.28);
 }
 
 .nodeLocked {
-  background: rgba(42, 36, 61, 0.40);
-  border-color: var(--state-locked);
-  color: var(--text-muted);
+  opacity: 0.78;
 }
 
-.nodeLocked .roadmapBadgeImg {
-  opacity: 0.35;
-  filter: grayscale(1);
+.nodeLocked:hover {
+  opacity: 1;
 }
 
-.checkIcon {
-  color: var(--green);
-  font-weight: 900;
-  font-size: 20px;
+/* Apex Sovereign (Level 10) */
+.nodeCardApex {
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  background: linear-gradient(135deg, rgba(38, 22, 54, 0.88) 0%, rgba(16, 10, 26, 0.96) 100%);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.65), 0 0 28px rgba(168, 85, 247, 0.35);
 }
 
-.starIcon {
-  color: var(--gold);
-  font-weight: 900;
-  font-size: 20px;
+/* Selected Node Indicator */
+.nodeCardSelected {
+  border-color: #FFFFFF !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 28px rgba(0, 245, 255, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
 }
 
-.nextIcon {
-  color: var(--purple);
-  font-weight: 900;
-  font-size: 18px;
+/* 1. Status Pill Slot (Fixed 24px) */
+.statusPillSlot {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.lockSmall {
-  font-size: 16px;
-  opacity: 0.6;
-}
-
-.levelNum {
-  font-size: 11px;
+.pillCompleted {
+  font-size: 9px;
   font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: 0.05em;
-}
-
-.levelName {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-align: center;
-  white-space: nowrap;
-}
-
-.rewardPill {
-  font-size: 10px;
-  font-weight: 600;
-  background: var(--gold-soft);
-  color: var(--gold);
-  border: 1px solid var(--border-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid var(--border-green);
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
+.pillCurrent {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #0E0B02;
+  background: var(--grad-gold);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+.radarDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #0E0B02;
+  animation: radarBlink 1.2s infinite;
+}
+
+@keyframes radarBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(1.4); }
+}
+
+.pillNext {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pillLocked {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  background: rgba(42, 36, 61, 0.45);
+  border: 1px solid rgba(168, 85, 247, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* 2. Emblem Halo Centerpiece */
+.emblemHaloWrap {
+  padding: 6px 0;
+  position: relative;
+}
+
+.emblemBezel {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 22, 54, 0.9) 0%, rgba(12, 9, 22, 0.95) 100%);
+  border: 2px solid rgba(168, 85, 247, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.nodeCurrent .emblemBezel {
+  border-color: var(--gold);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.45), inset 0 0 14px rgba(251, 191, 36, 0.2);
+}
+
+.nodeCompleted .emblemBezel {
+  border-color: rgba(0, 230, 118, 0.4);
+}
+
+.nodeCardApex .emblemBezel {
+  border-color: var(--gold);
+  box-shadow: 0 0 22px rgba(168, 85, 247, 0.6), inset 0 0 14px rgba(251, 191, 36, 0.3);
+}
+
+.badgeSvg {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.7));
+}
+
+.nodeLocked .badgeSvg {
+  opacity: 0.45;
+  filter: grayscale(0.8) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.badgeCheckCorner {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #0E0B02;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px var(--green);
+  border: 2px solid #0E0B02;
+}
+
+.badgeLockCorner {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #18122C;
+  color: var(--text-muted);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apexCrownBadge {
+  position: absolute;
+  top: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--grad-gold);
+  color: #0E0B02;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.7);
+}
+
+/* 3. Level & Tier Typography */
+.nodeTypography {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 100%;
+}
+
+.nodeLevelNum {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--text-gold);
+  text-transform: uppercase;
+}
+
+.nodeTierName {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 135px;
+  line-height: 1.2;
+}
+
+.nodeXPTarget {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* 4. Bottom Reward Capsule */
+.rewardCapsule {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  border-radius: var(--radius-full);
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 6px;
+}
+
 .rewardIconImg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   object-fit: contain;
 }
 
-.rewardPillLocked {
-  background: rgba(42, 36, 61, 0.35);
-  color: var(--text-muted);
-  border-color: var(--border);
+.rewardCapsuleText {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
-.youAreHere {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--gold);
+.rewardCapsuleLocked {
+  background: rgba(42, 36, 61, 0.3);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.rewardCapsuleLocked .rewardCapsuleText {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   Interactive Milestone Inspector Dock
+   ============================================================ */
+
+.inspectorDock {
+  margin-top: 20px;
+  background: linear-gradient(135deg, rgba(20, 16, 36, 0.85) 0%, rgba(10, 8, 20, 0.95) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  animation: fadeIn 0.3s ease;
+}
+
+.dockGlowAura {
+  position: absolute;
+  top: -80px;
+  left: 20%;
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dockGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 960px) {
+  .dockGrid {
+    grid-template-columns: 1.15fr 1.1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+/* Column 1: Tier Identity & Lore */
+.dockTierCol {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.dockBadgeWrapper {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(32, 22, 58, 0.9) 0%, rgba(12, 9, 24, 0.95) 100%);
+  border: 2px solid var(--border-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  position: relative;
+}
+
+.dockBadgeImg {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.dockApexGlow {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed var(--gold);
+  animation: spin 12s linear infinite;
+}
+
+.dockTierInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dockHeadingRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dockLevelPill {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-gold);
   background: var(--gold-soft);
   border: 1px solid var(--border-gold);
-  padding: 2px 6px;
+  padding: 2px 8px;
   border-radius: var(--radius-full);
+  letter-spacing: 0.1em;
 }
 
-.nextGoal {
-  font-size: 9px;
+.dockStatusCompleted {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dockStatusActive {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dockStatusNext {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--purple-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dockStatusLocked {
+  font-size: 10px;
   font-weight: 700;
-  color: var(--purple);
-  background: var(--purple-soft);
-  border: 1px solid var(--border-purple);
-  padding: 2px 6px;
-  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-/* Connector line between nodes */
-.connector {
-  position: absolute;
-  top: 45px;
-  left: calc(50% + 29px);
-  width: calc(100% - 40px);
-  height: 3px;
-  background: var(--border);
-  transform: translateY(-50%);
-  z-index: 0;
+.dockTierTitle {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  margin-top: 2px;
 }
 
-.connectorFilled {
-  background: var(--green);
+.dockTierLore {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 2px;
 }
 
-/* Detail popover */
-.detail {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-hover);
-  border-radius: var(--radius-md);
-  padding: 12px;
-  width: 170px;
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  box-shadow: var(--shadow-hover);
+/* Column 2: Milestone XP Gauge */
+.dockGaugeCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(168, 85, 247, 0.18);
+  border-radius: var(--radius-lg);
+  padding: 16px 20px;
+  gap: 10px;
 }
 
-.detailRow {
+.gaugeHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.gaugeLead {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-light);
+}
+
+.gaugeTargetVal {
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.gaugeBarTrack {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  position: relative;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gaugeBarFill {
+  height: 100%;
+  background: var(--grad-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gaugeBarIndicator {
+  position: absolute;
+  top: -4px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #FFF;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.9);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.gaugeStatusRow {
   font-size: 11px;
-  color: var(--text-secondary);
-  padding: 3px 0;
-  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
-.detailRow:last-child {
-  border: none;
+.gaugeSuccessText {
+  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.detailRow span:first-child {
+.gaugeCurrentText {
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.gaugeRemainingText {
   color: var(--text-muted);
 }
 
-.detailRow span:last-child {
-  font-weight: 600;
-  color: var(--text-primary);
+/* Column 3: Rewards, Perks & Quick Action */
+.dockPerksCol {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.dockRewardVault {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.vaultLabel {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.vaultPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.2);
+}
+
+.vaultRewardImg {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.vaultRewardText {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.perksListWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.perksListLabel {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-light);
+}
+
+.perksList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.perkItem {
+  font-size: 11px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.perkCheck {
+  color: var(--green);
+  flex-shrink: 0;
+}
+
+.dockActionRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2px;
 }
