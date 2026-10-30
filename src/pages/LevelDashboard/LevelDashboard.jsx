@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { User, Home, Coins, Gift, Wallet, Bell } from 'lucide-react'
+import { User, Home, Coins, Gift, Wallet, Bell, Zap } from 'lucide-react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
