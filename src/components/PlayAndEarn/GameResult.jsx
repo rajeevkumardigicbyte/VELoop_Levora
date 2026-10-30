@@ -1,82 +1,144 @@
 import React from 'react'
-import { ArrowLeft, Share2 } from 'lucide-react'
+import { ArrowLeft, Share2, RotateCcw, ArrowRight, Trophy, Zap, ShieldCheck, Coins, Sparkles } from 'lucide-react'
 import LaurelMedal from '../shared/LaurelMedal'
 import styles from './PlayAndEarn.module.css'
 
 const GameResult = ({ score, reward, onPlayAgain }) => {
   const xpEarned = reward?.xp || 30
   const veEarned = reward?.ves || 12
+  const currentXP = 6420 + xpEarned
+  const targetXP = 8000
+  const progressPct = Math.min(100, Math.round((currentXP / targetXP) * 100))
 
   return (
     <div className={`${styles.gameResultScreen} animate-scaleIn`}>
-      {/* Top Header */}
+      {/* Top Header Bar */}
       <div className={styles.resultTopBar}>
         <button
+          type="button"
           className={styles.backBtn}
           onClick={onPlayAgain}
-          title="Back"
-          aria-label="Back"
+          title="Play Again"
+          aria-label="Back to Arcade"
         >
           <ArrowLeft size={16} />
         </button>
-        <span className={styles.shareIcon} title="Share result">
+        <div className={styles.verifiedHeaderBadge}>
+          <ShieldCheck size={12} className={styles.shieldIcon} />
+          <span>Fair-Play Certified Audit</span>
+        </div>
+        <button
+          type="button"
+          className={styles.shareBtn}
+          title="Share Victory"
+          onClick={() => {
+            if (navigator.share) {
+              navigator.share({
+                title: 'VELoop XP Catcher Score',
+                text: `I just scored ${score} in VELoop XP Catcher and earned +${xpEarned} XP!`,
+                url: window.location.href,
+              }).catch(() => {})
+            }
+          }}
+        >
           <Share2 size={16} />
-        </span>
+        </button>
       </div>
 
-      <div className={styles.resultTitle}>CHALLENGE COMPLETE!</div>
-      <div className={styles.resultSubtitle}>{reward?.label || 'Outstanding!'}</div>
+      <div className={styles.resultTitleGroup}>
+        <div className={styles.performanceTag}>
+          <Sparkles size={11} />
+          <span>PERFORMANCE AUDIT</span>
+        </div>
+        <h3 className={styles.resultTitle}>BLITZ COMPLETE!</h3>
+        <p className={styles.resultSubtitle}>
+          {reward?.label || 'Outstanding Reflex Execution • Rewards Verified'}
+        </p>
+      </div>
 
-      {/* Golden Laurel Star Trophy from Screen 3 */}
+      {/* Golden Laurel Trophy Centerpiece */}
       <div className={styles.trophyWrapper}>
-        <LaurelMedal size={110} />
+        <LaurelMedal size={96} />
       </div>
 
-      {/* Final Score Card */}
+      {/* Executive Score & Rewards Matrix Card */}
       <div className={styles.resultCard}>
+        {/* Final Score Row */}
         <div className={styles.finalScoreRow}>
-          <div className={styles.scoreLead}>FINAL SCORE</div>
+          <span className={styles.scoreLead}>FINAL BLITZ SCORE</span>
           <div className={styles.scoreValueRow}>
             <span className={styles.scoreNumber}>{score}</span>
-            <span className={styles.newBestBadge}>New Best!</span>
+            <span className={styles.newBestBadge}>Verified Result</span>
           </div>
         </div>
 
-        {/* 2 Stat Pills from Screen 3 */}
+        {/* Dual Payout Cards */}
         <div className={styles.rewardPillsGrid}>
-          <div className={styles.rewardPillItem}>
-            <span className={styles.rewardPillValue}>+{xpEarned} XP</span>
-            <span className={styles.rewardPillLabel}>Experience</span>
+          <div className={styles.rewardPillItemXP}>
+            <div className={styles.rewardPillHeader}>
+              <Zap size={13} className={styles.pillIconXPColor} />
+              <span className={styles.rewardPillLabel}>XP MINTED</span>
+            </div>
+            <span className={styles.rewardPillValueXP}>+{xpEarned} XP</span>
+            <span className={styles.rewardPillSub}>Progression yield</span>
           </div>
-          <div className={styles.rewardPillItem}>
-            <span className={styles.rewardPillValue}>+{veEarned} VEs</span>
-            <span className={styles.rewardPillLabel}>Your Reward</span>
+
+          <div className={styles.rewardPillItemVE}>
+            <div className={styles.rewardPillHeader}>
+              <Coins size={13} className={styles.pillIconVEColor} />
+              <span className={styles.rewardPillLabel}>VE TOKENS</span>
+            </div>
+            <span className={styles.rewardPillValueVE}>+{veEarned} VEs</span>
+            <span className={styles.rewardPillSub}>Direct deposit</span>
           </div>
         </div>
 
-        {/* Level Progression Progress Bar */}
+        {/* Tier Multiplier Callout */}
+        <div className={styles.tierMultiplierCallout}>
+          <span className={styles.tierDot} />
+          <span>Includes <strong>1.15x Gold Guardian Rank Multiplier</strong></span>
+        </div>
+
+        {/* Dynamic Progression Bar */}
         <div className={styles.resultProgressSection}>
           <div className={styles.resultProgressLabels}>
-            <span>Level 05</span>
-            <span>Level 06</span>
+            <span>Level 05 (Gold Guardian)</span>
+            <span className={styles.progressPctText}>{progressPct}%</span>
+            <span>Level 06 (Platinum)</span>
           </div>
           <div className={styles.resultProgressBarTrack}>
-            <div className={styles.resultProgressBarFill} style={{ width: '80%' }} />
+            <div
+              className={styles.resultProgressBarFill}
+              style={{ width: `${progressPct}%` }}
+            />
           </div>
-          <div className={styles.resultProgressText}>6,420 / 8,000 XP</div>
+          <div className={styles.resultProgressText}>
+            {currentXP.toLocaleString()} / {targetXP.toLocaleString()} XP ({targetXP - currentXP} XP to Level 06)
+          </div>
         </div>
 
-        {/* Actions */}
+        {/* Symmetrical Action Buttons */}
         <div className={styles.resultActions}>
-          <button className="ve-btn ve-btn-gold" onClick={onPlayAgain} style={{ width: '100%', padding: '14px' }}>
-            Play Again
+          <button
+            type="button"
+            className="ve-btn ve-btn-gold"
+            onClick={onPlayAgain}
+            style={{ width: '100%', padding: '12px 18px' }}
+          >
+            <RotateCcw size={15} />
+            <span>Play Another Round</span>
           </button>
           <button
+            type="button"
             className="ve-btn ve-btn-outline"
-            onClick={onPlayAgain}
-            style={{ width: '100%', padding: '12px' }}
+            onClick={() => {
+              const el = document.getElementById('earn')
+              if (el) el.scrollIntoView({ behavior: 'smooth' })
+            }}
+            style={{ width: '100%', padding: '10px 18px', fontSize: '12px' }}
           >
-            Back to Dashboard
+            <span>Explore Acceleration Hub</span>
+            <ArrowRight size={14} />
           </button>
         </div>
       </div>

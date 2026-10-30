@@ -156,3 +156,76 @@
   font-weight: 600;
   color: var(--text-secondary);
 }
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* modalTitle fluid size */
+.modalTitle {
+  font-size: clamp(26px, 8vw, 36px);
+}
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .modalCard {
+    padding: 24px 18px;
+  }
+
+  .rewardCardsRow {
+    gap: 8px;
+  }
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .modalCard {
+    padding: 24px 16px;
+  }
+
+  .modalTitle {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+
+  .rewardCardsRow {
+    gap: 8px;
+  }
+
+  .rewardCard {
+    padding: 10px 12px;
+  }
+
+  .rewardCardVal {
+    font-size: 14px;
+  }
+
+  .laurelWreathLeft,
+  .laurelWreathRight {
+    font-size: 28px;
+  }
+}
+
+/* tiny < 360px */
+@media (max-width: 359px) {
+  .modalCard {
+    padding: 20px 12px;
+  }
+
+  .modalTitle {
+    font-size: 24px;
+  }
+
+  .perkItem {
+    padding: 8px 10px;
+  }
+
+  .perkText {
+    font-size: 10px;
+  }
+}

@@ -181,3 +181,31 @@
   opacity: 1;
   animation: shimmer 1.5s ease infinite;
 }
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* mobile < 640px */
+@media (max-width: 639px) {
+  .card {
+    padding: 16px 18px;
+  }
+}
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .mainHeading {
+    font-size: 14px;
+  }
+
+  .chestArtwork {
+    width: 70px;
+    height: 58px;
+  }
+
+  .rewardSummaryRow {
+    flex-wrap: wrap;
+  }
+}

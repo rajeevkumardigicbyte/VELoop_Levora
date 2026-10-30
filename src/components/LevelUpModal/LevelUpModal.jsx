@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react'
-import { Coins, Gem, TrendingUp, Target, Gift, Sparkles } from 'lucide-react'
+import { Coins, Gem, TrendingUp, Target, Gift, Sparkles, Zap, RefreshCw } from 'lucide-react'
 import LevelBadgeHex from '../shared/LevelBadgeHex'
 import { LaurelBranch } from '../shared/LaurelWreath'
 import styles from './LevelUpModal.module.css'
+
+// Maps reward type to icon + color
+const REWARD_ICON_MAP = {
+  VEs:        { Icon: Coins,     color: '#FBBF24' },
+  Gems:       { Icon: Gem,       color: '#A08CFF' },
+  Spins:      { Icon: RefreshCw, color: '#00F5FF' },
+  SVEs:       { Icon: Zap,       color: '#00E676' },
+  'Safe Vault': { Icon: Gift,    color: '#F5C842' },
+}
 
 const LevelUpModal = ({ isOpen, onClose, data }) => {
   useEffect(() => {
@@ -22,6 +31,30 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null
 
   const targetLevel = data?.currentLevel || 5
+  // Read the actual reward for the current level from live data
+  const currentLevelData = data?.currentLevelData
+  const reward = currentLevelData?.reward
+  const rewardType = reward?.type || 'VEs'
+  const rewardAmount = reward?.amount || 500
+  const { Icon: RewardIcon, color: rewardColor } = REWARD_ICON_MAP[rewardType] || REWARD_ICON_MAP['VEs']
+
+  // Perks by level tier
+  const tierPerks = {
+    1: ['Standard Task Rewards', 'Daily Login XP Access', 'Community Forum Badge'],
+    2: ['5 Bonus Gems on Unlock', '1.05x Arcade XP Multiplier', 'Access to Daily Quests'],
+    3: ['100 VE Coins Grant', 'Weekly Streak Shield (1 Day)', '+1 Daily Task Slot'],
+    4: ['10 Bonus Gems on Unlock', '1.10x Task XP Multiplier', 'Priority Activity Tracking'],
+    5: ['500 VE Coins Grant', '1.15x Arcade Score Multiplier', 'Executive Profile Flare'],
+    6: ['2 Lucky Wheel Spins', '1.25x Arcade XP Multiplier', 'Unlock Platinum Vault Tasks'],
+    7: ['100 SVEs Safe Grant', 'Exclusive Diamond Icon Frame', '2x Daily Task Refresh Rate'],
+    8: ['1,000 VE Coins Grant', '1.40x Global XP Multiplier', 'Master Guild Privileges'],
+    9: ['50 Gems Instant Deposit', 'Exclusive Grand Champion Aura', 'Infinite Task Re-rolls'],
+    10: ['1 Tier 1 Safe Vault', 'Permanent 2.0x Reward Multiplier', 'Sovereign Holographic Profile'],
+  }
+  const perks = tierPerks[targetLevel] || tierPerks[5]
+  const perkIcons = [TrendingUp, Target, Gift]
+  const perkColors = ['#7B61FF', '#3D9EFF', '#F5C842']
+  const perkIconStyles = [styles.perkIconTrend, styles.perkIconTarget, styles.perkIconGift]
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
@@ -42,11 +75,13 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
           </span>
         </div>
 
-        {/* Header from Screen 5 */}
+        {/* Header */}
         <h2 className={styles.modalTitle}>LEVEL UP!</h2>
-        <div className={styles.modalSub}>You've reached</div>
+        <div className={styles.modalSub}>
+          You've reached <strong style={{ color: 'var(--gold)' }}>Level {String(targetLevel).padStart(2, '0')} — {currentLevelData?.name || 'Gold Guardian'}</strong>
+        </div>
 
-        {/* Golden Pedestal with Shield from Screen 5 */}
+        {/* Golden Pedestal with Badge */}
         <div className={styles.pedestalStage}>
           <div className={styles.podiumShield}>
             <LaurelBranch side="left" size={44} />
@@ -58,46 +93,34 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
           <div className={styles.goldenPlatform} />
         </div>
 
-        {/* 2 Reward Cards from Screen 5 */}
+        {/* Dynamic Reward Card — reads from live data */}
         <div className={styles.rewardCardsRow}>
-          <div className={styles.rewardCard}>
-            <span className={styles.rewardCardVal}>+500 VEs</span>
-            <span className={styles.rewardCardIcon}>
-              <Coins size={28} color="#F5C842" />
+          <div className={styles.rewardCard} style={{ flex: 1 }}>
+            <span className={styles.rewardCardVal}>
+              +{rewardAmount} {rewardType}
             </span>
-          </div>
-
-          <div className={styles.rewardCard}>
-            <span className={styles.rewardCardVal}>+25 Gems</span>
             <span className={styles.rewardCardIcon}>
-              <Gem size={28} color="#A08CFF" />
+              <RewardIcon size={28} color={rewardColor} />
             </span>
           </div>
         </div>
 
-        {/* Unlocked Perks List from Screen 5 */}
+        {/* Unlocked Perks — dynamic per level */}
         <div className={styles.perksList}>
-          <div className={styles.perkItem}>
-            <span className={`${styles.perkIcon} ${styles.perkIconTrend}`}>
-              <TrendingUp size={16} color="#7B61FF" />
-            </span>
-            <span className={styles.perkText}>Higher daily XP limit</span>
-          </div>
-          <div className={styles.perkItem}>
-            <span className={`${styles.perkIcon} ${styles.perkIconTarget}`}>
-              <Target size={16} color="#3D9EFF" />
-            </span>
-            <span className={styles.perkText}>Access to new challenges</span>
-          </div>
-          <div className={styles.perkItem}>
-            <span className={`${styles.perkIcon} ${styles.perkIconGift}`}>
-              <Gift size={16} color="#F5C842" />
-            </span>
-            <span className={styles.perkText}>Better reward opportunities</span>
-          </div>
+          {perks.map((perk, idx) => {
+            const PerkIcon = perkIcons[idx]
+            return (
+              <div key={idx} className={styles.perkItem}>
+                <span className={`${styles.perkIcon} ${perkIconStyles[idx]}`}>
+                  <PerkIcon size={16} color={perkColors[idx]} />
+                </span>
+                <span className={styles.perkText}>{perk}</span>
+              </div>
+            )
+          })}
         </div>
 
-        {/* "Claim Rewards" Button from Screen 5 */}
+        {/* Claim Button */}
         <button
           className="ve-btn ve-btn-gold"
           onClick={onClose}

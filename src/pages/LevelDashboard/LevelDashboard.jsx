@@ -63,6 +63,16 @@ const LevelDashboard = () => {
                   <span className={styles.walletVal}>{data.currentXP?.toLocaleString()} XP</span>
                 </div>
               )}
+              <button
+                type="button"
+                className={styles.navNotifBtn}
+                onClick={triggerLevelUp}
+                title="Level-Up Notification"
+                aria-label="Level-Up Notification"
+              >
+                <Bell size={16} />
+                <span className={styles.navNotifDot} />
+              </button>
               <div
                 className={styles.userAvatar}
                 onClick={triggerLevelUp}
@@ -101,7 +111,7 @@ const LevelDashboard = () => {
         {!loading && !error && data && (
           <>
             {/* FULL-WIDTH DASHBOARD GREETING CARD */}
-            <div className={styles.greetingCard}>
+            <div className={`${styles.greetingCard} animate-fadeInUp`} style={{ animationDelay: '50ms' }}>
               <div className={styles.greetingCardAura} aria-hidden="true" />
               <div className={styles.greetingTextWrap}>
                 <h1 className={styles.greetingTitle}>
@@ -126,7 +136,7 @@ const LevelDashboard = () => {
             </div>
 
             {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
-            <div id="hero" className={styles.heroRewardGrid}>
+            <div id="hero" className={`${styles.heroRewardGrid} animate-fadeInUp`} style={{ animationDelay: '120ms' }}>
               <section aria-label="Current Level & Daily Boost" className={styles.heroCol}>
                 <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
               </section>
@@ -136,15 +146,17 @@ const LevelDashboard = () => {
             </div>
 
             {/* SECTION 26: Personalized Recommendation Action Banner */}
-            <RecommendationBanner data={data} />
+            <div className="animate-fadeInUp" style={{ animationDelay: '190ms' }}>
+              <RecommendationBanner data={data} />
+            </div>
 
             {/* ROW 2: Level Progression Roadmap */}
-            <div id="roadmap" className={styles.roadmapSection}>
+            <div id="roadmap" className={`${styles.roadmapSection} animate-fadeInUp`} style={{ animationDelay: '260ms' }}>
               <LevelRoadmap data={data} />
             </div>
 
             {/* ROW 3: ARCADE & RECENT ACTIVITY LEDGER */}
-            <div className={styles.row3Section}>
+            <div className={`${styles.row3Section} animate-fadeInUp`} style={{ animationDelay: '330ms' }}>
               <div className={styles.row3SectionHead}>
                 <div className={styles.row3HeaderBadge}>
                   <Zap size={11} className={styles.row3BadgeIcon} />
@@ -169,7 +181,7 @@ const LevelDashboard = () => {
             </div>
 
             {/* ROW 4: EARN MORE XP & REWARDS */}
-            <div id="earn" className={styles.earnSection}>
+            <div id="earn" className={`${styles.earnSection} animate-fadeInUp`} style={{ animationDelay: '400ms' }}>
               <EarnMoreXP data={data} />
             </div>
           </>

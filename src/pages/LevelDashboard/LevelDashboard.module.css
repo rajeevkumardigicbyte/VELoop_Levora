@@ -92,7 +92,41 @@
 .navRight {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+}
+
+.navNotifBtn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-purple);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.navNotifBtn:hover {
+  background: var(--purple-soft);
+  color: #fff;
+  border-color: var(--purple);
+  transform: scale(1.05);
+}
+
+.navNotifDot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+  animation: pulseSlow 2s infinite ease-in-out;
 }
 
 .walletPill {
@@ -412,7 +446,24 @@
   padding: 4px 8px;
 }
 
-.bottomNavItemActive,
+.bottomNavItemActive {
+  color: var(--gold) !important;
+  position: relative;
+}
+
+.bottomNavItemActive::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 2px;
+  background: var(--grad-gold);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.8);
+}
+
 .bottomNavItem:hover {
   color: var(--gold);
 }
@@ -488,4 +539,146 @@
   font-size: 11px;
   color: var(--text-muted);
   line-height: 1.5;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* ---- Navbar ---- */
+
+/* xs + sm: < 480px */
+@media (max-width: 479px) {
+  .navbar {
+    padding: 10px 0;
+  }
+
+  .brandName {
+    font-size: 16px;
+  }
+
+  .navRight {
+    gap: 8px;
+  }
+
+  .userAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+/* Hide walletPill XP text at < 380px (keep icon) */
+@media (max-width: 379px) {
+  .walletVal {
+    display: none;
+  }
+
+  .walletPill {
+    padding: 6px 10px;
+  }
+}
+
+/* ---- Greeting Card ---- */
+
+@media (max-width: 639px) {
+  .greetingCard {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 18px;
+  }
+
+  .greetingTitle {
+    font-size: clamp(18px, 5vw, 30px);
+  }
+
+  .greetingActions {
+    align-self: flex-start;
+  }
+}
+
+/* ---- Hero Reward Grid ---- */
+
+@media (max-width: 767px) {
+  .heroRewardGrid {
+    gap: 16px;
+  }
+}
+
+/* ---- Arcade Activity Grid ---- */
+
+@media (max-width: 767px) {
+  .arcadeActivityGrid {
+    gap: 16px;
+  }
+}
+
+/* ---- Main Content ---- */
+
+@media (max-width: 767px) {
+  .mainContent {
+    gap: 20px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .mainContent {
+    gap: 24px;
+  }
+}
+
+/* ---- Row 3 Section Head ---- */
+
+@media (max-width: 359px) {
+  .row3SectionHead h2,
+  .row3SectionHead .section-title {
+    font-size: var(--text-md);
+  }
+
+  .row3HeaderBadge {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+}
+
+/* ---- Footer ---- */
+
+@media (max-width: 767px) {
+  .footer {
+    padding: 28px 0 100px;
+  }
+}
+
+@media (max-width: 359px) {
+  .footerLinks {
+    gap: 12px;
+    font-size: var(--text-xs);
+  }
+
+  .footerBottom {
+    font-size: 10px;
+  }
+}
+
+/* ---- Mobile Bottom Nav ---- */
+
+.mobileBottomNav {
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 359px) {
+  .bottomNavItem {
+    padding: 2px 4px;
+  }
+
+  .bottomNavLabel {
+    font-size: 9px;
+  }
+
+  .bottomNavIcon {
+    font-size: 16px;
+  }
 }

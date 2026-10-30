@@ -175,23 +175,142 @@
   font-size: 14px;
 }
 
-.encouragementBar {
-  background: var(--bg-tint-purple);
-  border: 1px solid var(--border-purple);
-  border-radius: var(--radius-lg);
-  padding: 14px 20px;
-  display: flex;
+.headerBadge {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 0 18px rgba(168, 85, 247, 0.25);
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 6px;
 }
 
-.encouragementText {
-  font-size: var(--text-sm);
-  font-weight: 700;
+.badgeIcon {
   color: var(--purple-light);
 }
 
-.chartIcon {
-  font-size: 18px;
+.operationTag {
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 7px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.encouragementBar {
+  background: linear-gradient(135deg, rgba(28, 20, 52, 0.85) 0%, rgba(14, 10, 26, 0.95) 100%);
+  border: 1px solid var(--border-purple);
+  border-radius: var(--radius-lg);
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: 0 0 24px rgba(168, 85, 247, 0.22);
+}
+
+.encouragementLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.trophyIconWrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+}
+
+.encouragementTextWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.encouragementHeading {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.encouragementText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.encouragementText strong {
+  color: #FFFFFF;
+}
+
+.accelerateBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--purple-soft);
+  color: var(--purple-light);
+  border: 1px solid var(--border-purple);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.accelerateBtn:hover {
+  background: var(--purple);
+  color: #FFFFFF;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* screen4Title fluid size */
+.screen4Title {
+  font-size: clamp(18px, 5vw, 24px);
+}
+
+/* xs < 480px */
+@media (max-width: 479px) {
+  .activityRow {
+    padding: 12px 14px;
+    gap: 12px;
+  }
+
+  .activityIconWrap {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .encouragementBar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
 }

@@ -566,7 +566,7 @@
   text-align: center;
 }
 
-/* Result screen (Screen 3) */
+/* Result screen (Screen 3) — Executive Cyberpunk Arcade Styling */
 .gameResultScreen {
   display: flex;
   flex-direction: column;
@@ -583,58 +583,91 @@
   margin-bottom: 12px;
 }
 
-.shareIcon {
-  font-size: 18px;
-  color: var(--text-muted);
-  cursor: pointer;
-}
-
-.resultTitle {
-  font-size: 24px;
-  font-weight: 900;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-}
-
-.resultSubtitle {
-  font-size: var(--text-sm);
+.shareBtn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
   color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.trophyWrapper {
-  margin-bottom: 20px;
-}
-
-.trophyRing {
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
-  background: var(--gold-soft);
-  border: 3px solid var(--gold);
-  box-shadow: 0 0 30px rgba(245, 200, 66, 0.4);
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: bounceIn 0.8s ease;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-.trophyStar {
-  font-size: 48px;
+.shareBtn:hover {
+  background: var(--purple-soft);
+  color: #fff;
+  border-color: var(--border-purple);
+}
+
+.verifiedHeaderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid var(--border-green);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}
+
+.resultTitleGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.performanceTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
   color: var(--gold);
-  line-height: 1;
-  filter: drop-shadow(0 2px 8px rgba(245, 200, 66, 0.8));
+  background: var(--gold-soft);
+  border: 1px solid var(--border-gold);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.resultTitle {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.resultSubtitle {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.trophyWrapper {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
 }
 
 .resultCard {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  background: linear-gradient(145deg, rgba(22, 16, 40, 0.85) 0%, rgba(12, 10, 24, 0.95) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.22);
   border-radius: var(--radius-xl);
-  padding: 24px;
+  padding: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .finalScoreRow {
@@ -644,6 +677,13 @@
   gap: 4px;
 }
 
+.scoreLead {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
 .scoreValueRow {
   display: flex;
   align-items: center;
@@ -651,10 +691,11 @@
 }
 
 .scoreNumber {
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 900;
-  color: var(--text-primary);
+  color: #FFFFFF;
   line-height: 1;
+  text-shadow: 0 0 16px rgba(251, 191, 36, 0.35);
 }
 
 .newBestBadge {
@@ -670,49 +711,112 @@
 .rewardPillsGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
-.rewardPillItem {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 12px;
+.rewardPillItemXP {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  border-radius: var(--radius-md);
+  padding: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2px;
 }
 
-.rewardPillValue {
-  font-size: 18px;
-  font-weight: 900;
+.rewardPillItemVE {
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.rewardPillHeader {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pillIconXPColor {
+  color: var(--purple-light);
+}
+
+.pillIconVEColor {
   color: var(--gold);
 }
 
 .rewardPillLabel {
-  font-size: 11px;
+  font-size: 9px;
+  font-weight: 800;
   color: var(--text-muted);
+  letter-spacing: 0.08em;
+}
+
+.rewardPillValueXP {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--purple-light);
+}
+
+.rewardPillValueVE {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.rewardPillSub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.tierMultiplierCallout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.tierDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
 }
 
 .resultProgressSection {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .resultProgressLabels {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
+}
+
+.progressPctText {
+  color: var(--gold);
 }
 
 .resultProgressBarTrack {
-  height: 8px;
-  background: var(--bg-card);
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
@@ -721,10 +825,11 @@
   height: 100%;
   background: var(--grad-gold);
   border-radius: var(--radius-full);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
 }
 
 .resultProgressText {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--text-secondary);
   text-align: right;
   font-weight: 600;
@@ -733,6 +838,44 @@
 .resultActions {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 6px;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* gameTitle fluid size */
+.gameTitle {
+  font-size: clamp(18px, 5vw, 24px);
+}
+
+/* mobile < 768px */
+@media (max-width: 767px) {
+  .gameCardWrapper {
+    padding: 16px;
+  }
+}
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .specHudRow {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .specHudDivider {
+    display: none;
+  }
+
+  .yieldGrid {
+    gap: 6px;
+  }
+
+  .engageBtn {
+    padding: 10px 24px;
+  }
 }

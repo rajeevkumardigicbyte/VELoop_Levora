@@ -232,3 +232,57 @@ body {
 .animate-scaleIn {
   animation: scaleIn 0.3s ease forwards;
 }
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* xs: < 360px */
+@media (max-width: 359px) {
+  .content-container {
+    padding: 0 var(--space-sm);
+  }
+
+  .section-title {
+    font-size: var(--text-lg);
+  }
+
+  .section-subtitle {
+    font-size: var(--text-xs);
+  }
+}
+
+/* sm: 360px – 479px */
+@media (min-width: 360px) and (max-width: 479px) {
+  .content-container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* mobile: 480px – 767px */
+@media (min-width: 480px) and (max-width: 767px) {
+  .content-container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* Mobile bottom nav clearance: add extra bottom padding on mobile (< 768px) */
+@media (max-width: 767px) {
+  .page-wrapper {
+    padding-bottom: calc(var(--space-3xl) + 80px);
+  }
+}
+
+/* tablet: 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-container {
+    padding: 0 var(--space-xl);
+  }
+}
+
+/* desktop: 1024px – 1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .content-container {
+    padding: 0 var(--space-xl);
+  }
+}

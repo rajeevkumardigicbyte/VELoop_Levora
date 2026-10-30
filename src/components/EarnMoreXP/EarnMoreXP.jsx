@@ -12,113 +12,125 @@ import {
   HelpCircle,
   Search,
   Compass,
+  Zap,
+  Target,
+  ArrowRight
 } from 'lucide-react'
 import styles from './EarnMoreXP.module.css'
 
-// 6 Verified Active Activities from PDF Page 33 Screen 4
+// 6 Verified Active Operations with Professional Fintech / Gaming Copy
 const activeActivities = [
   {
     id: 1,
-    title: 'Watch & Earn',
-    desc: 'Watch ads and earn',
+    title: 'Sponsored Media Stream',
+    desc: 'Engage curated partner streams and brand showcases',
     reward: '+50 XP',
     icon: Tv,
-    color: '#7B61FF',
-    tint: 'rgba(123, 97, 255, 0.08)',
-    border: 'rgba(123, 97, 255, 0.35)',
+    color: '#A855F7',
+    tint: 'rgba(168, 85, 247, 0.08)',
+    border: 'rgba(168, 85, 247, 0.35)',
     category: 'watch',
+    tag: 'Media Yield',
   },
   {
     id: 2,
-    title: 'Daily Missions',
-    desc: 'Complete daily tasks',
+    title: 'Protocol Daily Quests',
+    desc: 'Execute 3 daily objectives to fulfill user quota',
     reward: '+30 XP',
     icon: CalendarCheck,
-    color: '#2ECC71',
-    tint: 'rgba(46, 204, 113, 0.08)',
-    border: 'rgba(46, 204, 113, 0.35)',
+    color: '#00E676',
+    tint: 'rgba(0, 230, 118, 0.08)',
+    border: 'rgba(0, 230, 118, 0.35)',
     category: 'tasks',
+    tag: 'Daily Quota',
   },
   {
     id: 3,
-    title: 'Refer & Earn',
-    desc: 'Invite friends & earn',
+    title: 'Network Expansion',
+    desc: 'Invite peers to join your VELoop squad & earn commission',
     reward: '+100 XP',
     icon: Users,
-    color: '#3D9EFF',
-    tint: 'rgba(61, 158, 255, 0.08)',
-    border: 'rgba(61, 158, 255, 0.35)',
+    color: '#00F5FF',
+    tint: 'rgba(0, 245, 255, 0.08)',
+    border: 'rgba(0, 245, 255, 0.35)',
     category: 'refer',
+    tag: 'Affiliate',
   },
   {
     id: 4,
-    title: 'Mini Games',
-    desc: 'Play games & win',
+    title: 'Skill Arcade Tournaments',
+    desc: 'Compete in rapid reflex challenges and leaderboard runs',
     reward: '+75 XP',
     icon: Gamepad2,
-    color: '#9A58C6',
-    tint: 'rgba(154, 88, 198, 0.08)',
-    border: 'rgba(154, 88, 198, 0.35)',
+    color: '#C084FC',
+    tint: 'rgba(192, 132, 252, 0.08)',
+    border: 'rgba(192, 132, 252, 0.35)',
     category: 'games',
+    tag: 'Arcade Multiplier',
   },
   {
     id: 5,
-    title: 'Streak Bonus',
-    desc: 'Maintain your streak',
+    title: 'Velocity Momentum Multiplier',
+    desc: 'Maintain consecutive daily logins for stacked compounding yield',
     reward: '+25 XP',
     icon: Flame,
-    color: '#FF5252',
-    tint: 'rgba(255, 82, 82, 0.08)',
-    border: 'rgba(255, 82, 82, 0.35)',
+    color: '#FF1E56',
+    tint: 'rgba(255, 30, 86, 0.08)',
+    border: 'rgba(255, 30, 86, 0.35)',
     category: 'streak',
+    tag: 'Streak Shield',
   },
   {
     id: 6,
-    title: 'XP Catcher',
-    desc: 'Catch orbs & coins',
+    title: 'Magnetic Reflex Blitz',
+    desc: 'Harvest falling XP orbs, VE tokens, and gems in the arcade',
     reward: '+10 XP',
     icon: Magnet,
-    color: '#3D9EFF',
-    tint: 'rgba(61, 158, 255, 0.08)',
-    border: 'rgba(61, 158, 255, 0.35)',
+    color: '#FBBF24',
+    tint: 'rgba(251, 191, 36, 0.08)',
+    border: 'rgba(251, 191, 36, 0.35)',
     category: 'catcher',
+    tag: 'Instant Play',
   },
 ]
 
-// 3 Proposed Earning Concepts from PDF Sections 23 & 47 (Clearly marked "Coming Soon")
+// 3 Proposed Earning Concepts (Clearly marked "Coming Soon")
 const upcomingConcepts = [
   {
     id: 101,
-    title: 'Weekly Quest',
-    desc: 'Complete a weekly objective milestone',
+    title: 'Weekly Horizon Quest',
+    desc: 'Complete cross-platform weekly objective milestones',
     reward: '+100 XP',
     icon: Compass,
-    color: '#F5C842',
-    tint: 'rgba(245, 200, 66, 0.08)',
-    border: 'rgba(245, 200, 66, 0.35)',
+    color: '#FBBF24',
+    tint: 'rgba(251, 191, 36, 0.08)',
+    border: 'rgba(251, 191, 36, 0.35)',
     badge: 'Coming Soon',
+    tag: 'Milestone',
   },
   {
     id: 102,
-    title: 'Reward Hunt',
-    desc: 'Find hidden reward elements around platform',
+    title: 'Cryptic Bounty Hunt',
+    desc: 'Find hidden reward tokens distributed across platform vaults',
     reward: '+75 XP',
     icon: Search,
-    color: '#0ED690',
-    tint: 'rgba(14, 214, 144, 0.08)',
-    border: 'rgba(14, 214, 144, 0.35)',
+    color: '#00E676',
+    tint: 'rgba(0, 230, 118, 0.08)',
+    border: 'rgba(0, 230, 118, 0.35)',
     badge: 'Coming Soon',
+    tag: 'Discovery',
   },
   {
     id: 103,
-    title: 'Quick Quiz',
-    desc: 'Answer rapid platform knowledge quizzes',
+    title: 'Rapid Knowledge Audit',
+    desc: 'Answer quick interactive queries on platform tokenomics',
     reward: '+60 XP',
     icon: HelpCircle,
-    color: '#3D9EFF',
-    tint: 'rgba(61, 158, 255, 0.08)',
-    border: 'rgba(61, 158, 255, 0.35)',
+    color: '#00F5FF',
+    tint: 'rgba(0, 245, 255, 0.08)',
+    border: 'rgba(0, 245, 255, 0.35)',
     badge: 'Coming Soon',
+    tag: 'Academy',
   },
 ]
 
@@ -126,19 +138,26 @@ const EarnMoreXP = ({ data }) => {
   const [activeTab, setActiveTab] = useState('active')
 
   const listToRender = activeTab === 'active' ? activeActivities : upcomingConcepts
+  const xpRemaining = data?.xpRemaining || 1580
+  const nextLevel = data?.nextLevel || 6
+  const nextLevelName = data?.nextLevelName || 'Platinum Hero'
 
   return (
     <section aria-labelledby="earn-heading" className={styles.section}>
-      {/* Header from Screen 4 */}
+      {/* Section Head with Header Badge */}
       <div className={styles.sectionHead}>
         <div>
-          <h2 id="earn-heading" className={styles.screen4Title}>EARN & LEVEL UP</h2>
+          <div className={styles.headerBadge}>
+            <Zap size={11} className={styles.badgeIcon} />
+            <span>BOOST OPERATIONS</span>
+          </div>
+          <h2 id="earn-heading" className={styles.screen4Title}>XP ACCELERATION HUB</h2>
           <p className={styles.screen4Subtitle}>
-            Complete activities. Earn XP. Climb levels. Get rewards.
+            Select a verified earning track. Complete high-yield micro-tasks, stack daily momentum, and accelerate to Level {String(nextLevel).padStart(2, '0')}.
           </p>
         </div>
 
-        {/* Tab Segment (Section 23 & 47) */}
+        {/* Tab Segment */}
         <div className={styles.tabSegment} role="tablist" aria-label="Earning categories">
           <button
             type="button"
@@ -147,7 +166,7 @@ const EarnMoreXP = ({ data }) => {
             className={`${styles.tabBtn} ${activeTab === 'active' ? styles.tabBtnActive : ''}`}
             onClick={() => setActiveTab('active')}
           >
-            Active Tasks (6)
+            Active Operations (6)
           </button>
           <button
             type="button"
@@ -156,12 +175,12 @@ const EarnMoreXP = ({ data }) => {
             className={`${styles.tabBtn} ${activeTab === 'upcoming' ? styles.tabBtnActive : ''}`}
             onClick={() => setActiveTab('upcoming')}
           >
-            Upcoming Concepts (3)
+            Upcoming Protocols (3)
           </button>
         </div>
       </div>
 
-      {/* Grid matching Screen 4 */}
+      {/* Grid of Earning Operations */}
       <div className={styles.activityList}>
         {listToRender.map((item) => {
           const IconComp = item.icon
@@ -192,8 +211,12 @@ const EarnMoreXP = ({ data }) => {
               <div className={styles.activityDetails}>
                 <div className={styles.activityNameRow}>
                   <span className={styles.activityName}>{item.title}</span>
-                  {item.badge && (
+                  {item.badge ? (
                     <span className={styles.comingSoonPill}>{item.badge}</span>
+                  ) : (
+                    <span className={styles.operationTag} style={{ color: item.color }}>
+                      {item.tag}
+                    </span>
                   )}
                 </div>
                 <div className={styles.activityDesc}>{item.desc}</div>
@@ -210,10 +233,30 @@ const EarnMoreXP = ({ data }) => {
         })}
       </div>
 
-      {/* Encouragement Bar from Screen 4 */}
+      {/* Dynamic Milestone Progress Horizon Bar */}
       <div className={styles.encouragementBar}>
-        <span className={styles.encouragementText}>Keep going! You're doing great!</span>
-        <Trophy size={18} color="#F5C842" className={styles.chartIcon} />
+        <div className={styles.encouragementLeft}>
+          <div className={styles.trophyIconWrap}>
+            <Trophy size={16} color="#FBBF24" />
+          </div>
+          <div className={styles.encouragementTextWrap}>
+            <span className={styles.encouragementHeading}>MILESTONE HORIZON: LEVEL {String(nextLevel).padStart(2, '0')} ({nextLevelName.toUpperCase()})</span>
+            <span className={styles.encouragementText}>
+              <strong>{xpRemaining.toLocaleString()} XP required</strong> to claim the +2 Spins Vault. Complete any 2 active operations today to close the gap.
+            </span>
+          </div>
+        </div>
+        <button
+          type="button"
+          className={styles.accelerateBtn}
+          onClick={() => {
+            const el = document.getElementById('arcade')
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
+          }}
+        >
+          <span>Launch Arcade</span>
+          <ArrowRight size={13} />
+        </button>
       </div>
     </section>
   )

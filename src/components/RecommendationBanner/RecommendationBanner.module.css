@@ -45,6 +45,13 @@
   max-width: 720px;
 }
 
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
 .bannerTag {
   display: inline-flex;
   align-items: center;
@@ -54,6 +61,28 @@
   letter-spacing: 0.12em;
   color: var(--gold);
   text-transform: uppercase;
+}
+
+.velocityPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.velocityIcon {
+  color: var(--purple-light);
+}
+
+.subHighlight {
+  color: var(--gold);
+  font-weight: 700;
 }
 
 .bannerHeading {
@@ -81,4 +110,28 @@
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
+}
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* mobile < 768px */
+@media (max-width: 767px) {
+  .banner {
+    padding: 14px 16px;
+  }
+}
+
+/* bannerHeading fluid size */
+.bannerHeading {
+  font-size: clamp(14px, 4vw, 20px);
+}
+
+/* xs + sm < 480px */
+@media (max-width: 479px) {
+  .bannerActions {
+    gap: 8px;
+  }
 }

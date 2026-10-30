@@ -350,3 +350,52 @@
   color: var(--text-muted);
   font-weight: 600;
 }
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* title fluid size */
+.title {
+  font-size: clamp(16px, 4vw, 20px);
+}
+
+/* mobile < 768px */
+@media (max-width: 767px) {
+  .activityCard {
+    padding: 16px;
+  }
+}
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .cardHeader {
+    gap: 8px;
+  }
+
+  .activityRow {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .itemTitle {
+    font-size: 12px;
+  }
+
+  .payoutBadge {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+
+  .filterTabs {
+    flex-wrap: wrap;
+  }
+}
+
+/* xs < 320px — summaryGrid single column */
+@media (max-width: 319px) {
+  .summaryGrid {
+    grid-template-columns: 1fr;
+  }
+}

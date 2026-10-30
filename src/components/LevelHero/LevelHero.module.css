@@ -237,3 +237,47 @@
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
+
+
+/* ============================================================
+   RESPONSIVE OVERRIDES — All breakpoint media queries
+   ============================================================ */
+
+/* mobile < 640px */
+@media (max-width: 639px) {
+  .masterCard {
+    padding: 16px 18px;
+  }
+}
+
+/* xs < 400px */
+@media (max-width: 399px) {
+  .levelMainInfo {
+    gap: 12px;
+  }
+}
+
+/* xpBig fluid size */
+.xpBig {
+  font-size: clamp(22px, 6vw, 36px);
+}
+
+/* xs < 320px — boostGrid very tight screens */
+@media (max-width: 319px) {
+  .boostGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .boostItem {
+    padding: 6px 4px;
+  }
+
+  .boostLabel {
+    font-size: 9px;
+  }
+
+  .boostVal {
+    font-size: 11px;
+  }
+}
