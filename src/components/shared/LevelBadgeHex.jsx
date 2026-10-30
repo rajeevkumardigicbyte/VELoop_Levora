@@ -18,7 +18,7 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
-        filter: 'drop-shadow(0 4px 16px rgba(245, 200, 66, 0.35))',
+        filter: 'drop-shadow(0 4px 18px rgba(245, 184, 56, 0.38))',
       }}
     >
       <svg
@@ -30,18 +30,18 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
         style={{ width: '100%', height: '100%' }}
       >
         <defs>
-          {/* Metallic Gold Border Gradient */}
+          {/* Metallic Champagne Gold Border Gradient */}
           <linearGradient id="goldBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF2A8" />
-            <stop offset="25%" stopColor="#F5C842" />
-            <stop offset="65%" stopColor="#D4A017" />
-            <stop offset="100%" stopColor="#8F6306" />
+            <stop offset="0%" stopColor="#FFF4BE" />
+            <stop offset="25%" stopColor="#FFE27D" />
+            <stop offset="65%" stopColor="#F5B838" />
+            <stop offset="100%" stopColor="#C68A1B" />
           </linearGradient>
 
           {/* Inner Dark Core Gradient */}
           <linearGradient id="badgeCoreGrad" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stopColor="#252A4A" />
-            <stop offset="100%" stopColor="#141728" />
+            <stop offset="0%" stopColor="#1E2338" />
+            <stop offset="100%" stopColor="#0D101E" />
           </linearGradient>
 
           {/* Subtle Top Inner Highlight */}

@@ -5,7 +5,7 @@
 
 /* Top Sticky Navbar */
 .navbar {
-  background: rgba(22, 24, 39, 0.95);
+  background: rgba(11, 14, 27, 0.95);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--border);
@@ -13,7 +13,7 @@
   top: 0;
   z-index: 100;
   padding: 14px 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
 }
 
 .navInner {
@@ -188,7 +188,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, rgba(245, 200, 66, 0.6) 0%, rgba(123, 97, 255, 0.6) 50%, rgba(61, 158, 255, 0.4) 100%);
+  background: linear-gradient(90deg, rgba(245, 184, 56, 0.7) 0%, rgba(139, 92, 246, 0.7) 50%, rgba(56, 189, 248, 0.5) 100%);
   pointer-events: none;
 }
 

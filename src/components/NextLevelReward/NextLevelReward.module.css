@@ -3,13 +3,13 @@
    ============================================================ */
 
 .card {
-  background: linear-gradient(135deg, rgba(30, 33, 56, 0.75) 0%, rgba(43, 33, 85, 0.65) 100%);
+  background: linear-gradient(135deg, rgba(22, 26, 46, 0.80) 0%, rgba(45, 27, 85, 0.65) 100%);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border: 1px solid var(--border-purple);
   border-radius: var(--radius-xl);
   padding: 22px 24px;
-  box-shadow: 0 10px 32px rgba(123, 97, 255, 0.22), inset 0 1px 0 rgba(160, 140, 255, 0.25);
+  box-shadow: 0 10px 32px rgba(139, 92, 246, 0.22), inset 0 1px 0 rgba(192, 132, 252, 0.25);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -22,7 +22,7 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 34px rgba(123, 97, 255, 0.32);
+  box-shadow: 0 14px 44px rgba(139, 92, 246, 0.35), inset 0 1px 0 rgba(192, 132, 252, 0.35);
   border-color: var(--purple-light);
 }
 
@@ -33,7 +33,7 @@
   transform: translate(-50%, -50%);
   width: 140px;
   height: 140px;
-  background: radial-gradient(circle, rgba(123, 97, 255, 0.18) 0%, rgba(245, 200, 66, 0.1) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.20) 0%, rgba(245, 184, 56, 0.12) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
