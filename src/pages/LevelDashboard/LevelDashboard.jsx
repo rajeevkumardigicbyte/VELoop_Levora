@@ -29,7 +29,7 @@ const LevelDashboard = () => {
   return (
     <div className="page-wrapper">
       {/* Top Navbar */}
-      <header className={styles.navbar}>
+      <header className={styles.navbar} role="banner">
         <div className="content-container">
           <div className={styles.navInner}>
             <a href="#hero" className={styles.brand}>
@@ -38,7 +38,7 @@ const LevelDashboard = () => {
               <span className={styles.brandSub}>REWARDS</span>
             </a>
 
-            <nav className={styles.navLinks}>
+            <nav className={styles.navLinks} aria-label="Desktop Primary Navigation">
               <a href="#hero" className={`${styles.navLink} ${activeTab === 'home' ? styles.navLinkActive : ''}`} onClick={() => setActiveTab('home')}>
                 Level Hub
               </a>
@@ -79,7 +79,7 @@ const LevelDashboard = () => {
       </header>
 
       {/* Main Content (Section 39 Desktop Layout & Page 33 Mobile screens) */}
-      <main className={`content-container ${styles.mainContent}`}>
+      <main className={`content-container ${styles.mainContent}`} id="main-content">
         {loading && (
           <div className={styles.loadingContainer}>
             <SkeletonLoader type="hero" />
@@ -102,9 +102,9 @@ const LevelDashboard = () => {
           <>
             {/* ROW 1: Current Level + XP Progress | Next Reward (Locked Reward Vault Card) */}
             <div id="hero" className={styles.heroRewardGrid}>
-              <div className={styles.heroCol}>
+              <section aria-label="Current Level & Daily Boost" className={styles.heroCol}>
                 <LevelHero data={data} onTriggerLevelUp={triggerLevelUp} />
-              </div>
+              </section>
               <div className={styles.rewardCol}>
                 <NextLevelReward data={data} onTriggerLevelUp={triggerLevelUp} />
               </div>

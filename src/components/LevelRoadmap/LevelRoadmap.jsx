@@ -24,19 +24,21 @@ const LevelNode = ({ level, isLast }) => {
         onClick={() => setExpanded(e => !e)}
         role="button"
         tabIndex={0}
+        aria-expanded={expanded}
+        aria-label={`Level ${level.level}: ${level.name}, ${level.status}`}
       >
         {/* Circle with Badge */}
         <div className={`${styles.nodeCircle} ${stateClass}`}>
           {level.badgeUrl ? (
             <img src={level.badgeUrl} alt={level.name} className={styles.roadmapBadgeImg} />
           ) : level.status === 'completed' ? (
-            <Check size={20} color="#2ECC71" />
+            <Check size={20} color="#2ECC71" aria-hidden="true" />
           ) : level.status === 'current' ? (
-            <Star size={20} color="#F5C842" fill="#F5C842" />
+            <Star size={20} color="#F5C842" fill="#F5C842" aria-hidden="true" />
           ) : level.status === 'next' ? (
-            <ArrowRight size={20} color="#7B61FF" />
+            <ArrowRight size={20} color="#7B61FF" aria-hidden="true" />
           ) : (
-            <Lock size={18} color="#677196" />
+            <Lock size={18} color="#677196" aria-hidden="true" />
           )}
         </div>
 
@@ -56,9 +58,9 @@ const LevelNode = ({ level, isLast }) => {
             <img src={level.reward.icon} alt="" className={styles.rewardIconImg} />
           ) : (
             level.status === 'completed' ? (
-              <Check size={12} style={{ display: 'inline', marginRight: '3px' }} />
+              <Check size={12} style={{ display: 'inline', marginRight: '3px' }} aria-hidden="true" />
             ) : level.status === 'locked' ? (
-              <Lock size={12} style={{ display: 'inline', marginRight: '3px' }} />
+              <Lock size={12} style={{ display: 'inline', marginRight: '3px' }} aria-hidden="true" />
             ) : null
           )}
           <span>{level.reward?.amount} {level.reward?.type}</span>
@@ -67,12 +69,12 @@ const LevelNode = ({ level, isLast }) => {
         {/* State label */}
         {level.status === 'current' && (
           <span className={styles.youAreHere}>
-            <MapPin size={11} style={{ display: 'inline', marginRight: '3px' }} /> You Are Here
+            <MapPin size={11} style={{ display: 'inline', marginRight: '3px' }} aria-hidden="true" /> You Are Here
           </span>
         )}
         {level.status === 'next' && (
           <span className={styles.nextGoal}>
-            <Target size={11} style={{ display: 'inline', marginRight: '3px' }} /> Next Goal
+            <Target size={11} style={{ display: 'inline', marginRight: '3px' }} aria-hidden="true" /> Next Goal
           </span>
         )}
       </div>
@@ -111,6 +113,7 @@ const LevelNode = ({ level, isLast }) => {
           className={`${styles.connector} ${
             level.status === 'completed' ? styles.connectorFilled : ''
           }`}
+          aria-hidden="true"
         />
       )}
     </div>
@@ -119,31 +122,31 @@ const LevelNode = ({ level, isLast }) => {
 
 const LevelRoadmap = ({ data }) => {
   return (
-    <section className={styles.section}>
+    <section aria-labelledby="roadmap-heading" className={styles.section}>
       <div className={styles.sectionHead}>
         <div>
-          <h2 className="section-title">Level Progression Roadmap</h2>
+          <h2 id="roadmap-heading" className="section-title">Level Progression Roadmap</h2>
           <p className="section-subtitle">
             Visual milestone ladder — click on any level node to view XP criteria and milestone rewards
           </p>
         </div>
-        <div className={styles.legend}>
-          <span className={styles.legendItem}>
-            <Check size={12} color="var(--state-completed)" /> Completed
+        <div className={styles.legend} role="list" aria-label="Roadmap Legend">
+          <span className={styles.legendItem} role="listitem">
+            <Check size={12} color="var(--state-completed)" aria-hidden="true" /> Completed
           </span>
-          <span className={styles.legendItem}>
-            <Star size={12} color="var(--state-current)" fill="var(--state-current)" /> You Are Here
+          <span className={styles.legendItem} role="listitem">
+            <Star size={12} color="var(--state-current)" fill="var(--state-current)" aria-hidden="true" /> You Are Here
           </span>
-          <span className={styles.legendItem}>
-            <ArrowRight size={12} color="var(--state-next)" /> Next Goal
+          <span className={styles.legendItem} role="listitem">
+            <ArrowRight size={12} color="var(--state-next)" aria-hidden="true" /> Next Goal
           </span>
-          <span className={styles.legendItem}>
-            <Lock size={12} color="var(--state-locked-text)" /> Locked
+          <span className={styles.legendItem} role="listitem">
+            <Lock size={12} color="var(--state-locked-text)" aria-hidden="true" /> Locked
           </span>
         </div>
       </div>
 
-      <div className={styles.roadmapScroll}>
+      <div className={styles.roadmapScroll} tabIndex={0} aria-label="Roadmap progression horizontal scroll track">
         <div className={styles.roadmapTrack}>
           {data.allLevels.map((level, idx) => (
             <LevelNode

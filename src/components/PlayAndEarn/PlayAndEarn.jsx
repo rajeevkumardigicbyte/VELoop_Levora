@@ -5,18 +5,18 @@ import styles from './PlayAndEarn.module.css'
 
 const PlayAndEarn = () => {
   return (
-    <section className={styles.section}>
+    <section aria-labelledby="arcade-heading" className={styles.section}>
       <div className={styles.sectionHead}>
         <div>
           <div className={styles.tagWrap}>
             <span className="ve-badge ve-badge-gold">
-              <Zap size={12} style={{ display: 'inline', marginRight: '4px' }} /> Play & Earn Hub
+              <Zap size={12} style={{ display: 'inline', marginRight: '4px' }} aria-hidden="true" /> Play & Earn Hub
             </span>
             <span className="ve-badge ve-badge-purple">
-              <Gamepad2 size={12} style={{ display: 'inline', marginRight: '4px' }} /> Skill Mini-Game
+              <Gamepad2 size={12} style={{ display: 'inline', marginRight: '4px' }} aria-hidden="true" /> Skill Mini-Game
             </span>
           </div>
-          <h2 className="section-title">Level-Up Arcade</h2>
+          <h2 id="arcade-heading" className="section-title">Level-Up Arcade</h2>
           <p className="section-subtitle">
             Play interactive micro-games to earn instant XP boosts and progress towards your next milestone.
           </p>

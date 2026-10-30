@@ -128,25 +128,31 @@ const EarnMoreXP = ({ data }) => {
   const listToRender = activeTab === 'active' ? activeActivities : upcomingConcepts
 
   return (
-    <section className={styles.section}>
+    <section aria-labelledby="earn-heading" className={styles.section}>
       {/* Header from Screen 4 */}
       <div className={styles.sectionHead}>
         <div>
-          <h2 className={styles.screen4Title}>EARN & LEVEL UP</h2>
+          <h2 id="earn-heading" className={styles.screen4Title}>EARN & LEVEL UP</h2>
           <p className={styles.screen4Subtitle}>
             Complete activities. Earn XP. Climb levels. Get rewards.
           </p>
         </div>
 
         {/* Tab Segment (Section 23 & 47) */}
-        <div className={styles.tabSegment}>
+        <div className={styles.tabSegment} role="tablist" aria-label="Earning categories">
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'active'}
             className={`${styles.tabBtn} ${activeTab === 'active' ? styles.tabBtnActive : ''}`}
             onClick={() => setActiveTab('active')}
           >
             Active Tasks (6)
           </button>
           <button
+            type="button"
+            role="tab"
+            aria-selected={activeTab === 'upcoming'}
             className={`${styles.tabBtn} ${activeTab === 'upcoming' ? styles.tabBtnActive : ''}`}
             onClick={() => setActiveTab('upcoming')}
           >

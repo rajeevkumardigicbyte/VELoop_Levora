@@ -4,12 +4,7 @@ import {
   Star,
   ClipboardCheck,
   Flame,
-  Tv,
-  CalendarCheck,
-  Users,
-  Magnet,
-  Gamepad2,
-  ArrowRight,
+  Zap,
 } from 'lucide-react'
 import LevelBadgeHex from '../shared/LevelBadgeHex'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
@@ -43,11 +38,11 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
   const pct = data.xpPercent
 
   return (
-    <section className={styles.hero}>
+    <div className={styles.hero}>
       {/* Top Greeting Bar (Screen 1) */}
       <div className={styles.greetingBar}>
         <div>
-          <h1 className={styles.greetingTitle}>
+          <h1 id="hero-greeting" className={styles.greetingTitle}>
             Good Morning, VeLooper!
           </h1>
           <p className={styles.greetingSub}>
@@ -56,19 +51,20 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
         </div>
         <div className={styles.greetingActions}>
           <button
+            type="button"
             className={styles.notificationBtn}
             onClick={onTriggerLevelUp}
             title="Preview Level Up Celebration"
-            aria-label="Notification"
+            aria-label="1 Unread Notification - Preview Level Up"
           >
             <Bell size={18} className={styles.bellIcon} />
-            <span className={styles.notifBadge}>1</span>
+            <span className={styles.notifBadge} aria-hidden="true">1</span>
           </button>
         </div>
       </div>
 
       {/* Main Level Progress Card (Screen 1) */}
-      <div className={styles.levelCard}>
+      <article aria-labelledby="current-level-heading" className={styles.levelCard}>
         <div className={styles.levelCardTop}>
           <div className={styles.levelMainInfo}>
             <div className={styles.badgeWrapper}>
@@ -76,7 +72,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             </div>
 
             <div className={styles.levelMeta}>
-              <div className={styles.xpBig}>
+              <div id="current-level-heading" className={styles.xpBig}>
                 {animStart ? xpCount.toLocaleString() : '0'} XP
               </div>
               <div className={styles.xpToNext}>
@@ -93,7 +89,14 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             <span>{data.currentXP?.toLocaleString()} / {data.requiredXP?.toLocaleString()} XP</span>
             <span className={styles.progressPct}>{pct}%</span>
           </div>
-          <div className={styles.progressBarTrack}>
+          <div
+            className={styles.progressBarTrack}
+            role="progressbar"
+            aria-valuenow={pct}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label={`Progress to Level ${data.nextLevel}: ${pct}%`}
+          >
             <div
               className={styles.progressBarFill}
               style={{
@@ -105,18 +108,21 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             </div>
           </div>
         </div>
-      </div>
+      </article>
 
-      {/* Today's Boost Card (Screen 1) */}
-      <div className={styles.boostCard}>
+      {/* Today's Boost Telemetry Card (Screen 1) */}
+      <section aria-labelledby="todays-boost-heading" className={styles.boostCard}>
         <div className={styles.boostHeader}>
-          <span className={styles.boostTitle}>⚡ TODAY'S BOOST</span>
+          <div className={styles.boostTitleWrap}>
+            <Zap size={14} className={styles.boostZap} aria-hidden="true" />
+            <h2 id="todays-boost-heading" className={styles.boostTitle}>TODAY'S BOOST</h2>
+          </div>
           <span className={styles.boostSubtitle}>Daily Overview</span>
         </div>
         <div className={styles.boostGrid}>
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconXP}`}>
-              <Star size={18} color="#F5C842" />
+              <Star size={16} color="#F5C842" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>XP Earned</span>
             <span className={styles.boostVal}>215 XP</span>
@@ -124,7 +130,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconTasks}`}>
-              <ClipboardCheck size={18} color="#3D9EFF" />
+              <ClipboardCheck size={16} color="#3D9EFF" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Tasks Done</span>
             <span className={styles.boostVal}>4 / 8</span>
@@ -132,54 +138,14 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconStreak}`}>
-              <Flame size={18} color="#FF5252" />
+              <Flame size={16} color="#FF5252" aria-hidden="true" />
             </div>
             <span className={styles.boostLabel}>Streak</span>
             <span className={styles.boostVal}>7 Days</span>
           </div>
         </div>
-      </div>
-
-      {/* Earn More 6-Tile Grid (Screen 1) */}
-      <div className={styles.earnMoreSection}>
-        <div className={styles.earnMoreHeader}>
-          <div>
-            <h3 className={styles.earnMoreTitle}>EARN MORE</h3>
-            <p className={styles.earnMoreSub}>Explore fun activities and earn exciting rewards.</p>
-          </div>
-          <a href="#earn" className={styles.earnMoreArrowBtn} title="View all earning activities">
-            <ArrowRight size={15} />
-          </a>
-        </div>
-
-        <div className={styles.quickTilesGrid}>
-          {[
-            { id: 'watch',  icon: Tv,            name: 'Watch & Earn', color: '#7B61FF', link: '#earn' },
-            { id: 'tasks',  icon: CalendarCheck, name: 'Daily Tasks',  color: '#3D9EFF', link: '#earn' },
-            { id: 'refer',  icon: Users,         name: 'Refer & Earn', color: '#2ECC71', link: '#earn' },
-            { id: 'game',   icon: Magnet,        name: 'XP Catcher',   color: '#F5C842', link: '#arcade' },
-            { id: 'mini',   icon: Gamepad2,      name: 'Mini Games',   color: '#A08CFF', link: '#arcade' },
-            { id: 'streak', icon: Flame,         name: 'Streak Bonus', color: '#FF5252', link: '#earn' },
-          ].map((tile) => {
-            const IconComp = tile.icon
-            return (
-              <a key={tile.id} href={tile.link} className={styles.quickTile}>
-                <div
-                  className={styles.quickTileIcon}
-                  style={{
-                    background: `${tile.color}15`,
-                    borderColor: `${tile.color}35`,
-                  }}
-                >
-                  <IconComp size={20} color={tile.color} />
-                </div>
-                <span className={styles.quickTileName}>{tile.name}</span>
-              </a>
-            )
-          })}
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
 

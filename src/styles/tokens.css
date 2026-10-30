@@ -4,15 +4,16 @@
    ============================================================ */
 
 :root {
-  /* ---------- Backgrounds (Section 34: Body background #161827) ---------- */
+  /* ---------- Backgrounds (Unified Executive Dark Obsidian & Navy Palette) ---------- */
+  --bg-canvas:      #0D0F18;
   --bg-body:        #161827;
   --bg-card:        #1E2138;
   --bg-card-hover:  #252843;
   --bg-elevated:    #2A2F4E;
-  --bg-overlay:     rgba(22, 24, 39, 0.94);
-  --bg-input:       #161827;
+  --bg-overlay:     rgba(13, 15, 24, 0.94);
+  --bg-input:       #121422;
 
-  /* ---------- Brand / Accent (Section 35: Gold, Deep Navy, Purple, Blue, Green) ---------- */
+  /* ---------- Brand / Accent Colors (Gold, Deep Navy, Purple, Blue, Green, Flame) ---------- */
   --gold:           #F5C842;
   --gold-dark:      #D4A017;
   --gold-light:     #FCE280;
@@ -48,10 +49,10 @@
   --border-gold:    rgba(245, 200, 66, 0.45);
   --border-purple:  rgba(123, 97, 255, 0.45);
 
-  /* ---------- Text ---------- */
+  /* ---------- Typography Colors (High-Contrast Professional) ---------- */
   --text-primary:   #FFFFFF;
-  --text-secondary: #8B93B0;
-  --text-muted:     #677196;
+  --text-secondary: #94A3B8;
+  --text-muted:     #64748B;
   --text-gold:      #F5C842;
 
   /* ---------- Borders ---------- */

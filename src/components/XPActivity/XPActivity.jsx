@@ -58,18 +58,20 @@ const XPActivity = () => {
     : recentActivities.filter(a => a.category === filter)
 
   return (
-    <section className={styles.section}>
+    <section aria-labelledby="activity-heading" className={styles.section}>
       <div className={styles.activityCard}>
         {/* Header from Screen 6 */}
         <div className={styles.cardHeader}>
-          <h2 className={styles.title}>RECENT ACTIVITY</h2>
+          <h2 id="activity-heading" className={styles.title}>RECENT ACTIVITY</h2>
           <div className={styles.filterWrap}>
             <button
+              type="button"
               className={`${styles.filterBtn} ${filter === 'all' ? styles.filterBtnActive : ''}`}
               onClick={() => setFilter(filter === 'all' ? 'catcher' : 'all')}
               title="Filter activity"
+              aria-label={`Filter activity: currently showing ${filter === 'all' ? 'All' : 'Game'}`}
             >
-              <Filter size={12} style={{ display: 'inline', marginRight: '4px' }} />
+              <Filter size={12} style={{ display: 'inline', marginRight: '4px' }} aria-hidden="true" />
               {filter === 'all' ? 'All' : 'Game'}
             </button>
           </div>
