@@ -143,13 +143,28 @@ const LevelDashboard = () => {
               <LevelRoadmap data={data} />
             </div>
 
-            {/* ROW 3: PLAY & EARN (XP Catcher Mini Game) | XP Activity */}
-            <div className={styles.arcadeActivityGrid}>
-              <div id="arcade" className={styles.arcadeCol}>
-                <PlayAndEarn />
+            {/* ROW 3: ARCADE & RECENT ACTIVITY LEDGER */}
+            <div className={styles.row3Section}>
+              <div className={styles.row3SectionHead}>
+                <div className={styles.row3HeaderBadge}>
+                  <Zap size={11} className={styles.row3BadgeIcon} />
+                  <span>INTERACTIVE HUBS & TRANSACTIONS</span>
+                </div>
+                <h2 id="arcade-heading" className="section-title">
+                  Arcade & Yield Ledger
+                </h2>
+                <p className="section-subtitle">
+                  Engage reflex micro-games for instant XP multipliers and audit daily reward deposits in real time.
+                </p>
               </div>
-              <div id="activity" className={styles.activityCol}>
-                <XPActivity />
+
+              <div className={styles.arcadeActivityGrid}>
+                <div id="arcade" className={styles.arcadeCol}>
+                  <PlayAndEarn />
+                </div>
+                <div id="activity" className={styles.activityCol}>
+                  <XPActivity />
+                </div>
               </div>
             </div>
 

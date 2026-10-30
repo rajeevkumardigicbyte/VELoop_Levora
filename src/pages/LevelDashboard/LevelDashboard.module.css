@@ -293,12 +293,44 @@
   width: 100%;
 }
 
-/* Row 3: PLAY & EARN (XP Catcher Mini Game) | XP Activity */
+/* Row 3: Arcade & Yield Ledger Hub */
+.row3Section {
+  width: 100%;
+}
+
+.row3SectionHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.row3HeaderBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-light);
+  background: var(--purple-soft);
+  border: 1px solid var(--border-purple);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  width: fit-content;
+  margin-bottom: 4px;
+}
+
+.row3BadgeIcon {
+  color: var(--purple-light);
+}
+
 .arcadeActivityGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (min-width: 1024px) {
@@ -309,10 +341,14 @@
 
 .arcadeCol {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .activityCol {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Row 4: EARN MORE XP & REWARDS */
