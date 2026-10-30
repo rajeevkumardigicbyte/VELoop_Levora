@@ -18,13 +18,13 @@
 }
 
 .gameCardWrapper {
-  background: linear-gradient(135deg, rgba(22, 26, 46, 0.75) 0%, rgba(13, 16, 28, 0.85) 100%);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(135deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.18);
   border-radius: var(--radius-xl);
   padding: 24px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   width: 100%;
   max-width: 520px;
   display: flex;
@@ -190,12 +190,12 @@
 }
 
 .gameArena {
-  background: radial-gradient(circle at 50% 15%, #25284b 0%, #111322 100%);
+  background: radial-gradient(circle at 50% 15%, #23183d 0%, #080612 100%);
   border: 2px solid var(--border-purple);
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0 0 32px rgba(0, 0, 0, 0.85);
   cursor: crosshair;
 }
 
@@ -213,9 +213,9 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #b197ff, #5833ea);
-  border: 2px solid #d5c8ff;
-  box-shadow: 0 0 16px rgba(123, 97, 255, 0.8);
+  background: radial-gradient(circle at 35% 35%, #C084FC, #7C3AED);
+  border: 2px solid #E9D5FF;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -229,9 +229,9 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffe685, #d49811);
-  border: 2px solid #fff2a8;
-  box-shadow: 0 0 16px rgba(245, 200, 66, 0.8);
+  background: radial-gradient(circle at 35% 35%, #FDE68A, #F59E0B);
+  border: 2px solid #FEF3C7;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -245,9 +245,9 @@
   width: 38px;
   height: 38px;
   border-radius: 8px;
-  background: radial-gradient(circle at 35% 35%, #7bf59f, #1aa34a);
-  border: 2px solid #b7ffd0;
-  box-shadow: 0 0 18px rgba(46, 204, 113, 0.85);
+  background: radial-gradient(circle at 35% 35%, #69F0AE, #00C853);
+  border: 2px solid #B9F6CA;
+  box-shadow: 0 0 18px rgba(0, 230, 118, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -278,7 +278,7 @@
   border-radius: 50%;
   background: var(--grad-gold);
   border: 3px solid #FFF;
-  box-shadow: 0 0 18px rgba(245, 200, 66, 0.9), inset 0 0 8px rgba(0,0,0,0.5);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.95), inset 0 0 8px rgba(0,0,0,0.5);
   position: relative;
 }
 
@@ -290,23 +290,23 @@
   height: 44px;
   background: repeating-linear-gradient(
     45deg,
-    rgba(245, 200, 66, 0.3),
-    rgba(245, 200, 66, 0.3) 2px,
+    rgba(251, 191, 36, 0.3),
+    rgba(251, 191, 36, 0.3) 2px,
     transparent 2px,
     transparent 8px
   ),
   repeating-linear-gradient(
     -45deg,
-    rgba(245, 200, 66, 0.3),
-    rgba(245, 200, 66, 0.3) 2px,
+    rgba(251, 191, 36, 0.3),
+    rgba(251, 191, 36, 0.3) 2px,
     transparent 2px,
     transparent 8px
   );
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
-  border-left: 2px dashed rgba(245, 200, 66, 0.6);
-  border-right: 2px dashed rgba(245, 200, 66, 0.6);
-  border-bottom: 3px solid rgba(245, 200, 66, 0.8);
+  border-left: 2px dashed rgba(251, 191, 36, 0.6);
+  border-right: 2px dashed rgba(251, 191, 36, 0.6);
+  border-bottom: 3px solid rgba(251, 191, 36, 0.8);
 }
 
 /* Bottom Score HUD from Screen 2 */

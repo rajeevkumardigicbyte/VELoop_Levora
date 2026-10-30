@@ -4,85 +4,85 @@
    ============================================================ */
 
 :root {
-  /* ---------- Backgrounds (Palette 1: Obsidian Champagne Luxury) ---------- */
-  --bg-canvas:      #080A12;
-  --bg-body:        #0B0E1B;
-  --bg-card:        rgba(17, 20, 36, 0.75);
-  --bg-card-hover:  rgba(26, 30, 52, 0.85);
-  --bg-elevated:    #161A2E;
-  --bg-overlay:     rgba(8, 10, 18, 0.95);
-  --bg-input:       #0D101E;
+  /* ---------- Backgrounds (Palette 2: Cyber Obsidian & Electric Amethyst) ---------- */
+  --bg-canvas:      #06070E;
+  --bg-body:        #070913;
+  --bg-card:        rgba(18, 14, 32, 0.78);
+  --bg-card-hover:  rgba(28, 20, 50, 0.88);
+  --bg-elevated:    #161128;
+  --bg-overlay:     rgba(6, 7, 14, 0.96);
+  --bg-input:       #0B0916;
 
-  /* ---------- Brand / Accent Colors (Champagne Gold, Royal Amethyst, Ice Cyan, Emerald) ---------- */
-  --gold:           #F5B838;
-  --gold-dark:      #C68A1B;
-  --gold-light:     #FFE27D;
-  --gold-soft:      rgba(245, 184, 56, 0.12);
-  --gold-glow:      rgba(245, 184, 56, 0.28);
+  /* ---------- Brand / Accent Colors (Cyber Gold, Electric Amethyst, Hyper Cyan, Matrix Mint) ---------- */
+  --gold:           #FBBF24;
+  --gold-dark:      #F59E0B;
+  --gold-light:     #FDE68A;
+  --gold-soft:      rgba(251, 191, 36, 0.14);
+  --gold-glow:      rgba(251, 191, 36, 0.35);
 
-  --purple:         #8B5CF6;
-  --purple-dark:    #6D28D9;
+  --purple:         #A855F7;
+  --purple-dark:    #7C3AED;
   --purple-light:   #C084FC;
-  --purple-soft:    rgba(139, 92, 246, 0.12);
-  --purple-glow:    rgba(139, 92, 246, 0.30);
+  --purple-soft:    rgba(168, 85, 247, 0.14);
+  --purple-glow:    rgba(168, 85, 247, 0.40);
 
-  --blue:           #38BDF8;
-  --blue-soft:      rgba(56, 189, 248, 0.12);
-  --blue-glow:      rgba(56, 189, 248, 0.28);
+  --blue:           #00F5FF;
+  --blue-soft:      rgba(0, 245, 255, 0.14);
+  --blue-glow:      rgba(0, 245, 255, 0.35);
 
-  --green:          #10B981;
-  --green-soft:     rgba(16, 185, 129, 0.12);
-  --green-glow:     rgba(16, 185, 129, 0.28);
+  --green:          #00E676;
+  --green-soft:     rgba(0, 230, 118, 0.14);
+  --green-glow:     rgba(0, 230, 118, 0.35);
 
   --silver:         #CBD5E1;
-  --red:            #F43F5E;
-  --red-soft:       rgba(244, 63, 94, 0.14);
+  --red:            #FF1E56;
+  --red-soft:       rgba(255, 30, 86, 0.16);
 
   /* Tint backgrounds & borders */
-  --bg-tint-cyan:   rgba(56, 189, 248, 0.08);
-  --bg-tint-amber:  rgba(245, 184, 56, 0.08);
-  --bg-tint-green:  rgba(16, 185, 129, 0.08);
-  --bg-tint-purple: rgba(139, 92, 246, 0.08);
+  --bg-tint-cyan:   rgba(0, 245, 255, 0.08);
+  --bg-tint-amber:  rgba(251, 191, 36, 0.08);
+  --bg-tint-green:  rgba(0, 230, 118, 0.08);
+  --bg-tint-purple: rgba(168, 85, 247, 0.08);
 
-  --border-cyan:    rgba(56, 189, 248, 0.35);
-  --border-green:   rgba(16, 185, 129, 0.35);
-  --border-gold:    rgba(245, 184, 56, 0.40);
-  --border-purple:  rgba(139, 92, 246, 0.40);
+  --border-cyan:    rgba(0, 245, 255, 0.40);
+  --border-green:   rgba(0, 230, 118, 0.40);
+  --border-gold:    rgba(251, 191, 36, 0.45);
+  --border-purple:  rgba(168, 85, 247, 0.45);
 
-  /* ---------- Typography Colors (Ice White & Crisp Cool Slate) ---------- */
-  --text-primary:   #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted:     #64748B;
-  --text-gold:      #F5B838;
+  /* ---------- Typography Colors (Pure Ice White & Crisp Silver) ---------- */
+  --text-primary:   #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted:     #71717A;
+  --text-gold:      #FBBF24;
 
   /* ---------- Borders ---------- */
-  --border:         #1E2338;
-  --border-subtle:  rgba(255, 255, 255, 0.08);
-  --border-hover:   #333A5A;
+  --border:         #221A3B;
+  --border-subtle:  rgba(168, 85, 247, 0.18);
+  --border-hover:   #3D2D66;
 
   /* ---------- Level States (Section 20) ---------- */
-  --state-completed: #10B981;
-  --state-current:   #F5B838;
-  --state-next:      #8B5CF6;
-  --state-locked:    #2A3048;
-  --state-locked-text: #64748B;
+  --state-completed: #00E676;
+  --state-current:   #FBBF24;
+  --state-next:      #A855F7;
+  --state-locked:    #2A243D;
+  --state-locked-text: #71717A;
 
-  /* ---------- Gradients (Multi-Tone Luxury) ---------- */
-  --grad-hero:        linear-gradient(135deg, rgba(22, 26, 46, 0.85) 0%, rgba(11, 14, 27, 0.95) 100%);
-  --grad-gold:        linear-gradient(135deg, #FFE27D 0%, #F5B838 50%, #C68A1B 100%);
-  --grad-purple:      linear-gradient(135deg, #C084FC 0%, #8B5CF6 60%, #6D28D9 100%);
-  --grad-primary-cta: linear-gradient(135deg, #FFE27D 0%, #F5B838 50%, #C68A1B 100%);
-  --grad-blue:        linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
-  --grad-green:       linear-gradient(135deg, #34D399 0%, #10B981 100%);
-  --grad-card:        linear-gradient(145deg, rgba(22, 26, 46, 0.75) 0%, rgba(13, 16, 28, 0.85) 100%);
-  --grad-reward:      linear-gradient(135deg, rgba(22, 26, 46, 0.80) 0%, rgba(45, 27, 85, 0.65) 100%);
-  --grad-xp-bar:      linear-gradient(90deg, #F5B838 0%, #FFE27D 75%, #FFFFFF 100%);
+  /* ---------- Gradients (Multi-Tone Cyber Luminescence) ---------- */
+  --grad-hero:        linear-gradient(135deg, rgba(22, 16, 40, 0.85) 0%, rgba(8, 6, 16, 0.95) 100%);
+  --grad-gold:        linear-gradient(135deg, #FDE68A 0%, #FBBF24 50%, #F59E0B 100%);
+  --grad-purple:      linear-gradient(135deg, #C084FC 0%, #A855F7 50%, #7C3AED 100%);
+  --grad-primary-cta: linear-gradient(135deg, #FDE68A 0%, #FBBF24 50%, #F59E0B 100%);
+  --grad-blue:        linear-gradient(135deg, #00F5FF 0%, #0284C7 100%);
+  --grad-green:       linear-gradient(135deg, #69F0AE 0%, #00E676 100%);
+  --grad-card:        linear-gradient(145deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
+  --grad-reward:      linear-gradient(135deg, rgba(24, 18, 44, 0.85) 0%, rgba(65, 22, 110, 0.70) 100%);
+  --grad-xp-bar:      linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FDE68A 100%);
 
   /* ---------- Shadows ---------- */
-  --shadow-card:   0 10px 32px rgba(0, 0, 0, 0.45);
-  --shadow-gold:   0 0 24px rgba(245, 184, 56, 0.25);
-  --shadow-purple: 0 0 24px rgba(139, 92, 246, 0.28);
-  --shadow-hover:  0 14px 44px rgba(0, 0, 0, 0.65);
+  --shadow-card:   0 10px 36px rgba(0, 0, 0, 0.55);
+  --shadow-gold:   0 0 24px rgba(251, 191, 36, 0.32);
+  --shadow-purple: 0 0 26px rgba(168, 85, 247, 0.38);
+  --shadow-hover:  0 16px 48px rgba(0, 0, 0, 0.75);
 
   /* ---------- Spacing ---------- */
   --space-xs:  4px;

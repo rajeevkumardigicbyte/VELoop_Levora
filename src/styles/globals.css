@@ -16,9 +16,9 @@ html {
 body {
   background-color: var(--bg-body);
   background-image: 
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(139, 92, 246, 0.12), transparent 70%),
-    radial-gradient(ellipse 60% 40% at 90% 20%, rgba(56, 189, 248, 0.07), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 10% 60%, rgba(245, 184, 56, 0.06), transparent 70%);
+    radial-gradient(ellipse 85% 45% at 50% 0%, rgba(168, 85, 247, 0.16), transparent 70%),
+    radial-gradient(ellipse 65% 45% at 90% 20%, rgba(0, 245, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 65% 55% at 10% 65%, rgba(251, 191, 36, 0.08), transparent 70%);
   background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-family);
@@ -52,20 +52,20 @@ body {
 
 /* ---------- Card Base (Executive Glassmorphism) ---------- */
 .ve-card {
-  background: linear-gradient(135deg, rgba(22, 26, 46, 0.75) 0%, rgba(13, 16, 28, 0.85) 100%);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.18);
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .ve-card:hover {
-  background: linear-gradient(135deg, rgba(28, 33, 58, 0.85) 0%, rgba(16, 20, 36, 0.90) 100%);
-  border-color: rgba(255, 255, 255, 0.16);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg, rgba(28, 20, 50, 0.88) 0%, rgba(14, 10, 28, 0.94) 100%);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow: 0 14px 44px rgba(168, 85, 247, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
@@ -85,7 +85,7 @@ body {
 .ve-badge-purple { background: var(--purple-soft); color: var(--purple-light); border: 1px solid var(--border-purple); }
 .ve-badge-blue   { background: var(--blue-soft); color: var(--blue); border: 1px solid var(--border-cyan); }
 .ve-badge-green  { background: var(--green-soft); color: var(--green); border: 1px solid var(--border-green); }
-.ve-badge-red    { background: var(--red-soft); color: var(--red); border: 1px solid rgba(255, 82, 82, 0.35); }
+.ve-badge-red    { background: var(--red-soft); color: var(--red); border: 1px solid rgba(255, 30, 86, 0.40); }
 .ve-badge-muted  { background: rgba(255, 255, 255, 0.05); color: var(--text-muted); border: 1px solid var(--border); }
 
 /* ---------- Button Base ---------- */
@@ -108,25 +108,25 @@ body {
 
 .ve-btn-gold {
   background: var(--grad-gold);
-  color: #161827;
+  color: #0E0B02;
   font-weight: 800;
   box-shadow: var(--shadow-gold);
 }
 .ve-btn-gold:hover {
   transform: translateY(-1px);
   filter: brightness(1.05);
-  box-shadow: 0 0 24px rgba(245, 200, 66, 0.4);
+  box-shadow: 0 0 26px rgba(251, 191, 36, 0.50);
 }
 
 .ve-btn-purple {
-  background: var(--grad-primary-cta);
+  background: var(--grad-purple);
   color: #FFFFFF;
   box-shadow: var(--shadow-purple);
 }
 .ve-btn-purple:hover {
   transform: translateY(-1px);
   filter: brightness(1.1);
-  box-shadow: 0 0 24px rgba(123, 97, 255, 0.45);
+  box-shadow: 0 0 26px rgba(168, 85, 247, 0.50);
 }
 
 .ve-btn-outline {
@@ -146,7 +146,7 @@ body {
   border: 1px solid var(--border-purple);
 }
 .ve-btn-ghost:hover {
-  background: rgba(123, 97, 255, 0.22);
+  background: rgba(168, 85, 247, 0.22);
   color: #fff;
 }
 

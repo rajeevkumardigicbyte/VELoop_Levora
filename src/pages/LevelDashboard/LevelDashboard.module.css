@@ -5,15 +5,15 @@
 
 /* Top Sticky Navbar */
 .navbar {
-  background: rgba(11, 14, 27, 0.95);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(7, 9, 19, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
   padding: 14px 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
 }
 
 .navInner {
@@ -34,7 +34,7 @@
   width: 32px;
   height: 32px;
   object-fit: contain;
-  filter: drop-shadow(0 0 8px rgba(123, 97, 255, 0.5));
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.55));
 }
 
 .brandName {
@@ -103,7 +103,7 @@
   border: 1px solid var(--border-gold);
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  box-shadow: 0 0 12px rgba(245, 200, 66, 0.15);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.22);
 }
 
 .walletSvg {
@@ -124,7 +124,7 @@
   border-radius: 50%;
   background: var(--bg-elevated);
   border: 2px solid var(--purple);
-  box-shadow: 0 0 12px rgba(123, 97, 255, 0.4);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.45);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +149,7 @@
 
 .userAvatar:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 18px rgba(123, 97, 255, 0.6);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
 }
 
 /* Main Container Layout (Section 39) */
@@ -164,10 +164,10 @@
 /* Full-Width Dashboard Greeting Card */
 .greetingCard {
   background: var(--grad-card);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(168, 85, 247, 0.18);
   border-radius: var(--radius-xl);
   padding: 24px 30px;
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.10);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,7 +179,8 @@
 }
 
 .greetingCard:hover {
-  border-color: rgba(255, 255, 255, 0.14);
+  border-color: rgba(168, 85, 247, 0.35);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(168, 85, 247, 0.20);
 }
 
 .greetingCardAura {
@@ -188,7 +189,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, rgba(245, 184, 56, 0.7) 0%, rgba(139, 92, 246, 0.7) 50%, rgba(56, 189, 248, 0.5) 100%);
+  background: linear-gradient(90deg, rgba(251, 191, 36, 0.8) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(0, 245, 255, 0.7) 100%);
   pointer-events: none;
 }
 
@@ -346,9 +347,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(22, 24, 39, 0.96);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(10, 8, 20, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
   padding: 8px 16px;
   justify-content: space-around;
@@ -393,7 +394,7 @@
 .footer {
   margin-top: 40px;
   border-top: 1px solid var(--border);
-  background: #121420;
+  background: #090B16;
   padding: 40px 0 80px;
 }
 

@@ -24,12 +24,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background: rgba(30, 33, 56, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(20, 16, 36, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.18);
 }
 
 .roadmapScroll {
@@ -42,12 +42,12 @@
   display: flex;
   min-width: max-content;
   padding: 8px 12px;
-  background: linear-gradient(135deg, rgba(22, 26, 46, 0.75) 0%, rgba(13, 16, 28, 0.85) 100%);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(135deg, rgba(20, 16, 36, 0.80) 0%, rgba(10, 8, 20, 0.90) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(168, 85, 247, 0.18);
   border-radius: var(--radius-xl);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .nodeWrapper {
@@ -117,7 +117,7 @@
 }
 
 .nodeLocked {
-  background: rgba(58, 63, 96, 0.35);
+  background: rgba(42, 36, 61, 0.40);
   border-color: var(--state-locked);
   color: var(--text-muted);
 }
@@ -186,7 +186,7 @@
 }
 
 .rewardPillLocked {
-  background: rgba(58, 63, 96, 0.3);
+  background: rgba(42, 36, 61, 0.35);
   color: var(--text-muted);
   border-color: var(--border);
 }

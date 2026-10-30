@@ -18,7 +18,7 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
-        filter: 'drop-shadow(0 4px 18px rgba(245, 184, 56, 0.38))',
+        filter: 'drop-shadow(0 6px 20px rgba(251, 191, 36, 0.42))',
       }}
     >
       <svg
@@ -30,18 +30,18 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
         style={{ width: '100%', height: '100%' }}
       >
         <defs>
-          {/* Metallic Champagne Gold Border Gradient */}
+          {/* Metallic Cyber Amber Gold Border Gradient */}
           <linearGradient id="goldBorderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFF4BE" />
-            <stop offset="25%" stopColor="#FFE27D" />
-            <stop offset="65%" stopColor="#F5B838" />
-            <stop offset="100%" stopColor="#C68A1B" />
+            <stop offset="0%" stopColor="#FFFBEB" />
+            <stop offset="25%" stopColor="#FDE68A" />
+            <stop offset="65%" stopColor="#FBBF24" />
+            <stop offset="100%" stopColor="#F59E0B" />
           </linearGradient>
 
-          {/* Inner Dark Core Gradient */}
+          {/* Inner Obsidian-Amethyst Dark Core Gradient */}
           <linearGradient id="badgeCoreGrad" x1="50%" y1="0%" x2="50%" y2="100%">
-            <stop offset="0%" stopColor="#1E2338" />
-            <stop offset="100%" stopColor="#0D101E" />
+            <stop offset="0%" stopColor="#18122C" />
+            <stop offset="100%" stopColor="#0B0916" />
           </linearGradient>
 
           {/* Subtle Top Inner Highlight */}
@@ -53,8 +53,8 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
           {/* Gold Text Gradient */}
           <linearGradient id="goldTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="60%" stopColor="#FFF2A8" />
-            <stop offset="100%" stopColor="#F5C842" />
+            <stop offset="60%" stopColor="#FDE68A" />
+            <stop offset="100%" stopColor="#FBBF24" />
           </linearGradient>
         </defs>
 
@@ -102,7 +102,7 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
             fontSize: `${Math.round(size * 0.12)}px`,
             fontWeight: 800,
             letterSpacing: '0.18em',
-            color: '#F5C842',
+            color: '#FBBF24',
             textTransform: 'uppercase',
             marginBottom: `${Math.round(size * 0.02)}px`,
             textShadow: '0 1px 3px rgba(0,0,0,0.8)',
@@ -117,7 +117,7 @@ const LevelBadgeHex = ({ level = 5, size = 88, className = '' }) => {
             lineHeight: 1,
             color: '#FFFFFF',
             letterSpacing: '-0.03em',
-            textShadow: '0 2px 8px rgba(0,0,0,0.9), 0 0 12px rgba(245,200,66,0.5)',
+            textShadow: '0 2px 8px rgba(0,0,0,0.9), 0 0 14px rgba(251,191,36,0.6)',
           }}
         >
           {levelStr}
