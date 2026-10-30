@@ -1,4 +1,5 @@
 import React from 'react'
+import { Tv, CalendarCheck, Users, Gamepad2, Flame, Magnet, ChevronRight, Trophy } from 'lucide-react'
 import styles from './EarnMoreXP.module.css'
 
 const earnActivitiesList = [
@@ -7,7 +8,7 @@ const earnActivitiesList = [
     title: 'Watch & Earn',
     desc: 'Watch ads and earn',
     reward: '+50 XP',
-    icon: '▶',
+    icon: Tv,
     color: '#7B61FF',
     tint: 'rgba(123, 97, 255, 0.08)',
     border: 'rgba(123, 97, 255, 0.35)',
@@ -18,7 +19,7 @@ const earnActivitiesList = [
     title: 'Daily Missions',
     desc: 'Complete daily tasks',
     reward: '+30 XP',
-    icon: '📋',
+    icon: CalendarCheck,
     color: '#2ECC71',
     tint: 'rgba(46, 204, 113, 0.08)',
     border: 'rgba(46, 204, 113, 0.35)',
@@ -29,7 +30,7 @@ const earnActivitiesList = [
     title: 'Refer & Earn',
     desc: 'Invite friends & earn',
     reward: '+100 XP',
-    icon: '👥',
+    icon: Users,
     color: '#3D9EFF',
     tint: 'rgba(61, 158, 255, 0.08)',
     border: 'rgba(61, 158, 255, 0.35)',
@@ -40,7 +41,7 @@ const earnActivitiesList = [
     title: 'Mini Games',
     desc: 'Play games & win',
     reward: '+75 XP',
-    icon: '🎮',
+    icon: Gamepad2,
     color: '#9A58C6',
     tint: 'rgba(154, 88, 198, 0.08)',
     border: 'rgba(154, 88, 198, 0.35)',
@@ -51,7 +52,7 @@ const earnActivitiesList = [
     title: 'Streak Bonus',
     desc: 'Maintain your streak',
     reward: '+25 XP',
-    icon: '🔥',
+    icon: Flame,
     color: '#FF5252',
     tint: 'rgba(255, 82, 82, 0.08)',
     border: 'rgba(255, 82, 82, 0.35)',
@@ -62,7 +63,7 @@ const earnActivitiesList = [
     title: 'XP Catcher',
     desc: 'Catch orbs & coins',
     reward: '+10 XP',
-    icon: '🧲',
+    icon: Magnet,
     color: '#3D9EFF',
     tint: 'rgba(61, 158, 255, 0.08)',
     border: 'rgba(61, 158, 255, 0.35)',
@@ -83,49 +84,52 @@ const EarnMoreXP = ({ data }) => {
         </div>
       </div>
 
-      {/* List matching Screen 4 */}
+      {/* Grid matching Screen 4 */}
       <div className={styles.activityList}>
-        {earnActivitiesList.map((item) => (
-          <div
-            key={item.id}
-            className={styles.activityRow}
-            style={{
-              background: item.tint,
-              borderColor: item.border,
-            }}
-            onClick={() => {
-              if (item.category === 'catcher' || item.category === 'games') {
-                const el = document.getElementById('arcade')
-                if (el) el.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
-          >
+        {earnActivitiesList.map((item) => {
+          const IconComp = item.icon
+          return (
             <div
-              className={styles.activityIconWrap}
-              style={{ background: `${item.color}25`, color: item.color }}
+              key={item.id}
+              className={styles.activityRow}
+              style={{
+                background: item.tint,
+                borderColor: item.border,
+              }}
+              onClick={() => {
+                if (item.category === 'catcher' || item.category === 'games') {
+                  const el = document.getElementById('arcade')
+                  if (el) el.scrollIntoView({ behavior: 'smooth' })
+                }
+              }}
             >
-              <span>{item.icon}</span>
-            </div>
+              <div
+                className={styles.activityIconWrap}
+                style={{ background: `${item.color}20`, color: item.color }}
+              >
+                <IconComp size={20} color={item.color} />
+              </div>
 
-            <div className={styles.activityDetails}>
-              <div className={styles.activityName}>{item.title}</div>
-              <div className={styles.activityDesc}>{item.desc}</div>
-            </div>
+              <div className={styles.activityDetails}>
+                <div className={styles.activityName}>{item.title}</div>
+                <div className={styles.activityDesc}>{item.desc}</div>
+              </div>
 
-            <div className={styles.activityActionWrap}>
-              <span className={styles.rewardPillTag} style={{ color: item.color }}>
-                {item.reward}
-              </span>
-              <span className={styles.chevron}>➔</span>
+              <div className={styles.activityActionWrap}>
+                <span className={styles.rewardPillTag} style={{ color: item.color }}>
+                  {item.reward}
+                </span>
+                <ChevronRight size={16} className={styles.chevron} />
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* Encouragement Bar from Screen 4 */}
       <div className={styles.encouragementBar}>
         <span className={styles.encouragementText}>Keep going! You're doing great!</span>
-        <span className={styles.chartIcon}>🏆</span>
+        <Trophy size={18} color="#F5C842" className={styles.chartIcon} />
       </div>
     </section>
   )

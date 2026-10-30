@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { User, Home, Coins, Gift, Wallet } from 'lucide-react'
 import useLevelData from '../../hooks/useLevelData'
 import LevelHero from '../../components/LevelHero/LevelHero'
 import NextLevelReward from '../../components/NextLevelReward/NextLevelReward'
@@ -67,8 +68,9 @@ const LevelDashboard = () => {
                 title="Preview Level Up Celebration"
                 role="button"
                 tabIndex={0}
+                aria-label="User Profile"
               >
-                👤
+                <User size={18} color="#FFFFFF" />
               </div>
             </div>
           </div>
@@ -142,29 +144,33 @@ const LevelDashboard = () => {
       {/* Screen 1 Mobile Bottom Navigation Bar */}
       <nav className={styles.mobileBottomNav}>
         {[
-          { id: 'home', label: 'Home', icon: '🏠', href: '#hero' },
-          { id: 'earn', label: 'Earn', icon: '💲', href: '#earn' },
-          { id: 'rewards', label: 'Rewards', icon: '🎁', href: '#roadmap' },
-          { id: 'wallet', label: 'Wallet', icon: '👛', href: '#activity' },
-          { id: 'profile', label: 'Profile', icon: '👤', onClick: triggerLevelUp },
-        ].map((item) => (
-          <a
-            key={item.id}
-            href={item.href || '#'}
-            className={`${styles.bottomNavItem} ${activeTab === item.id ? styles.bottomNavItemActive : ''}`}
-            onClick={(e) => {
-              if (item.onClick) {
-                e.preventDefault()
-                item.onClick()
-              } else {
-                setActiveTab(item.id)
-              }
-            }}
-          >
-            <span className={styles.bottomNavIcon}>{item.icon}</span>
-            <span className={styles.bottomNavLabel}>{item.label}</span>
-          </a>
-        ))}
+          { id: 'home', label: 'Home', icon: Home, href: '#hero' },
+          { id: 'earn', label: 'Earn', icon: Coins, href: '#earn' },
+          { id: 'rewards', label: 'Rewards', icon: Gift, href: '#roadmap' },
+          { id: 'wallet', label: 'Wallet', icon: Wallet, href: '#activity' },
+          { id: 'profile', label: 'Profile', icon: User, onClick: triggerLevelUp },
+        ].map((item) => {
+          const IconComp = item.icon
+          const isActive = activeTab === item.id
+          return (
+            <a
+              key={item.id}
+              href={item.href || '#'}
+              className={`${styles.bottomNavItem} ${isActive ? styles.bottomNavItemActive : ''}`}
+              onClick={(e) => {
+                if (item.onClick) {
+                  e.preventDefault()
+                  item.onClick()
+                } else {
+                  setActiveTab(item.id)
+                }
+              }}
+            >
+              <IconComp size={18} className={styles.bottomNavIcon} color={isActive ? 'var(--gold)' : 'var(--text-muted)'} />
+              <span className={styles.bottomNavLabel}>{item.label}</span>
+            </a>
+          )
+        })}
       </nav>
 
       {/* Desktop Footer */}

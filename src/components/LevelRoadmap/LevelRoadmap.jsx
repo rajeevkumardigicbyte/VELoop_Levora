@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Check, Star, ArrowRight, Lock, MapPin, Target } from 'lucide-react'
 import styles from './LevelRoadmap.module.css'
 import { levelStateConfig } from '../../data/levelData'
 
@@ -29,13 +30,13 @@ const LevelNode = ({ level, isLast }) => {
           {level.badgeUrl ? (
             <img src={level.badgeUrl} alt={level.name} className={styles.roadmapBadgeImg} />
           ) : level.status === 'completed' ? (
-            <span className={styles.checkIcon}>✓</span>
+            <Check size={20} color="#2ECC71" />
           ) : level.status === 'current' ? (
-            <span className={styles.starIcon}>★</span>
+            <Star size={20} color="#F5C842" fill="#F5C842" />
           ) : level.status === 'next' ? (
-            <span className={styles.nextIcon}>➔</span>
+            <ArrowRight size={20} color="#7B61FF" />
           ) : (
-            <span className={styles.lockSmall}>🔒</span>
+            <Lock size={18} color="#677196" />
           )}
         </div>
 
@@ -54,17 +55,25 @@ const LevelNode = ({ level, isLast }) => {
           {level.reward?.icon?.startsWith('/') ? (
             <img src={level.reward.icon} alt="" className={styles.rewardIconImg} />
           ) : (
-            (level.status === 'completed' ? '✓ ' : level.status === 'locked' ? '🔒 ' : '')
+            level.status === 'completed' ? (
+              <Check size={12} style={{ display: 'inline', marginRight: '3px' }} />
+            ) : level.status === 'locked' ? (
+              <Lock size={12} style={{ display: 'inline', marginRight: '3px' }} />
+            ) : null
           )}
           <span>{level.reward?.amount} {level.reward?.type}</span>
         </div>
 
         {/* State label */}
         {level.status === 'current' && (
-          <span className={styles.youAreHere}>📍 You Are Here</span>
+          <span className={styles.youAreHere}>
+            <MapPin size={11} style={{ display: 'inline', marginRight: '3px' }} /> You Are Here
+          </span>
         )}
         {level.status === 'next' && (
-          <span className={styles.nextGoal}>⭐ Next Goal</span>
+          <span className={styles.nextGoal}>
+            <Target size={11} style={{ display: 'inline', marginRight: '3px' }} /> Next Goal
+          </span>
         )}
       </div>
 
@@ -113,17 +122,24 @@ const LevelRoadmap = ({ data }) => {
     <section className={styles.section}>
       <div className={styles.sectionHead}>
         <div>
-          <h2 className="section-title">🗺️ Level Progression Roadmap</h2>
+          <h2 className="section-title">Level Progression Roadmap</h2>
           <p className="section-subtitle">
             Visual milestone ladder — click on any level node to view XP criteria and milestone rewards
           </p>
         </div>
         <div className={styles.legend}>
-          {Object.entries(levelStateConfig).map(([key, val]) => (
-            <span key={key} className={styles.legendItem}>
-              <span style={{ color: val.color }}>{val.icon}</span> {val.label}
-            </span>
-          ))}
+          <span className={styles.legendItem}>
+            <Check size={12} color="var(--state-completed)" /> Completed
+          </span>
+          <span className={styles.legendItem}>
+            <Star size={12} color="var(--state-current)" fill="var(--state-current)" /> You Are Here
+          </span>
+          <span className={styles.legendItem}>
+            <ArrowRight size={12} color="var(--state-next)" /> Next Goal
+          </span>
+          <span className={styles.legendItem}>
+            <Lock size={12} color="var(--state-locked-text)" /> Locked
+          </span>
         </div>
       </div>
 

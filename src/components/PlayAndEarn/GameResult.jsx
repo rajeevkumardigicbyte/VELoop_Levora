@@ -1,7 +1,9 @@
 import React from 'react'
+import { ArrowLeft, Share2 } from 'lucide-react'
+import LaurelMedal from '../shared/LaurelMedal'
 import styles from './PlayAndEarn.module.css'
 
-const GameResult = ({ score, reward, onPlayAgain, onBackToDashboard }) => {
+const GameResult = ({ score, reward, onPlayAgain }) => {
   const xpEarned = reward?.xp || 30
   const veEarned = reward?.ves || 12
 
@@ -13,10 +15,13 @@ const GameResult = ({ score, reward, onPlayAgain, onBackToDashboard }) => {
           className={styles.backBtn}
           onClick={onPlayAgain}
           title="Back"
+          aria-label="Back"
         >
-          ←
+          <ArrowLeft size={16} />
         </button>
-        <span className={styles.shareIcon}>↗</span>
+        <span className={styles.shareIcon} title="Share result">
+          <Share2 size={16} />
+        </span>
       </div>
 
       <div className={styles.resultTitle}>CHALLENGE COMPLETE!</div>
@@ -24,9 +29,7 @@ const GameResult = ({ score, reward, onPlayAgain, onBackToDashboard }) => {
 
       {/* Golden Laurel Star Trophy from Screen 3 */}
       <div className={styles.trophyWrapper}>
-        <div className={styles.trophyRing}>
-          <span className={styles.trophyStar}>★</span>
-        </div>
+        <LaurelMedal size={110} />
       </div>
 
       {/* Final Score Card */}

@@ -108,16 +108,22 @@
   font-weight: 800;
   padding: 4px 12px;
   border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .rewardPillPurple {
   background: var(--purple-soft);
-  color: var(--purple);
+  color: var(--purple-light);
   border: 1px solid var(--border-purple);
   font-size: 12px;
   font-weight: 800;
   padding: 4px 12px;
   border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* Progress Wrap */

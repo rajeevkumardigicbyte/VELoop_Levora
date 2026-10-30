@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Coins, Gem, ArrowRight, Sparkles } from 'lucide-react'
 import styles from './NextLevelReward.module.css'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
@@ -32,14 +33,22 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
             className={styles.chestImg}
           />
           <div className={styles.floatingGemCluster}>
-            <span className={styles.gemSparkle}>💎</span>
-            <span className={styles.gemSparkle} style={{ animationDelay: '0.4s' }}>✨</span>
+            <span className={styles.gemSparkle}>
+              <Gem size={18} color="#A08CFF" />
+            </span>
+            <span className={styles.gemSparkle} style={{ animationDelay: '0.4s' }}>
+              <Sparkles size={16} color="#F5C842" />
+            </span>
           </div>
         </div>
 
         <div className={styles.rewardSummaryRow}>
-          <span className={styles.rewardPillGold}>💰 +500 VEs</span>
-          <span className={styles.rewardPillPurple}>💎 +25 Gems</span>
+          <span className={styles.rewardPillGold}>
+            <Coins size={14} color="#F5C842" /> +500 VEs
+          </span>
+          <span className={styles.rewardPillPurple}>
+            <Gem size={14} color="#A08CFF" /> +25 Gems
+          </span>
         </div>
       </div>
 
@@ -50,7 +59,7 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
         </div>
         <div className={styles.progressText}>
           <span>{pct}% Unlocked</span>
-          <span className="text-gold font-bold">{data.xpRemaining.toLocaleString()} XP remaining</span>
+          <span className="text-gold font-bold">{data.xpRemaining?.toLocaleString()} XP remaining</span>
         </div>
       </div>
 
@@ -59,9 +68,9 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
         <button
           className="ve-btn ve-btn-gold"
           onClick={onTriggerLevelUp}
-          style={{ width: '100%', padding: '12px' }}
+          style={{ width: '100%', padding: '13px' }}
         >
-          View Rewards Preview ➔
+          View Rewards Preview <ArrowRight size={16} />
         </button>
       </div>
 

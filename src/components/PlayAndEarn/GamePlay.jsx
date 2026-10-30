@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react'
+import { ArrowLeft, Clock, Zap } from 'lucide-react'
 import styles from './PlayAndEarn.module.css'
 
 const GamePlay = ({
@@ -51,15 +52,17 @@ const GamePlay = ({
           className={styles.backBtn}
           onClick={onEndGame}
           title="Exit game"
+          aria-label="Exit game"
         >
-          ←
+          <ArrowLeft size={16} />
         </button>
         <div className={styles.gameHudTitleGroup}>
           <span className={styles.gameHudTitle}>XP CATCHER ⓘ</span>
           <span className={styles.gameHudSub}>Catch XP orbs & coins</span>
         </div>
         <div className={styles.timerBadge}>
-          ⏱ 00:{String(timeLeft).padStart(2, '0')}
+          <Clock size={13} style={{ display: 'inline', marginRight: '4px' }} />
+          00:{String(timeLeft).padStart(2, '0')}
         </div>
       </div>
 
@@ -118,7 +121,10 @@ const GamePlay = ({
         <div className={styles.scoreValueBig}>{score}</div>
         <div className={styles.scoreBadgesRow}>
           <span className={styles.scoreBadgeVE}>🟡 +{veGain} VEs</span>
-          <span className={styles.scoreBadgeMult}>🚀 2X Multiplier</span>
+          <span className={styles.scoreBadgeMult}>
+            <Zap size={13} style={{ display: 'inline', marginRight: '4px' }} />
+            2X Multiplier
+          </span>
         </div>
       </div>
 

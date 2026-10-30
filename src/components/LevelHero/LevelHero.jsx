@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import styles from './LevelHero.module.css'
+import {
+  Bell,
+  Star,
+  ClipboardCheck,
+  Flame,
+  Tv,
+  CalendarCheck,
+  Users,
+  Magnet,
+  Gamepad2,
+  ArrowRight,
+} from 'lucide-react'
+import LevelBadgeHex from '../shared/LevelBadgeHex'
 import InfoTooltip from '../InfoTooltip/InfoTooltip'
+import styles from './LevelHero.module.css'
 
 const useCountUp = (target, duration = 1200, start = false) => {
   const [count, setCount] = useState(0)
@@ -35,7 +48,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
       <div className={styles.greetingBar}>
         <div>
           <h1 className={styles.greetingTitle}>
-            Good Morning, VeLooper! 👋
+            Good Morning, VeLooper!
           </h1>
           <p className={styles.greetingSub}>
             Level up your journey and unlock epic rewards every day.
@@ -48,7 +61,8 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             title="Preview Level Up Celebration"
             aria-label="Notification"
           >
-            🔔 <span className={styles.notifBadge}>1</span>
+            <Bell size={18} className={styles.bellIcon} />
+            <span className={styles.notifBadge}>1</span>
           </button>
         </div>
       </div>
@@ -58,19 +72,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
         <div className={styles.levelCardTop}>
           <div className={styles.levelMainInfo}>
             <div className={styles.badgeWrapper}>
-              <div className={styles.badgeShield}>
-                <img
-                  src={data.currentLevelData?.badgeUrl || '/assets/lvl-5.svg'}
-                  alt={`Level ${data.currentLevel} Badge`}
-                  className={styles.shieldImg}
-                />
-                <div className={styles.shieldOverlayText}>
-                  <span className={styles.shieldLabel}>LEVEL</span>
-                  <span className={styles.shieldNumber}>
-                    {String(data.currentLevel).padStart(2, '0')}
-                  </span>
-                </div>
-              </div>
+              <LevelBadgeHex level={data.currentLevel || 5} size={82} />
             </div>
 
             <div className={styles.levelMeta}>
@@ -114,7 +116,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
         <div className={styles.boostGrid}>
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconXP}`}>
-              <span>⭐</span>
+              <Star size={18} color="#F5C842" />
             </div>
             <span className={styles.boostLabel}>XP Earned</span>
             <span className={styles.boostVal}>215 XP</span>
@@ -122,7 +124,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconTasks}`}>
-              <span>📋</span>
+              <ClipboardCheck size={18} color="#3D9EFF" />
             </div>
             <span className={styles.boostLabel}>Tasks Done</span>
             <span className={styles.boostVal}>4 / 8</span>
@@ -130,7 +132,7 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
 
           <div className={styles.boostItem}>
             <div className={`${styles.boostIconWrap} ${styles.boostIconStreak}`}>
-              <span>🔥</span>
+              <Flame size={18} color="#FF5252" />
             </div>
             <span className={styles.boostLabel}>Streak</span>
             <span className={styles.boostVal}>7 Days</span>
@@ -146,32 +148,35 @@ const LevelHero = ({ data, onTriggerLevelUp }) => {
             <p className={styles.earnMoreSub}>Explore fun activities and earn exciting rewards.</p>
           </div>
           <a href="#earn" className={styles.earnMoreArrowBtn} title="View all earning activities">
-            ➔
+            <ArrowRight size={15} />
           </a>
         </div>
 
         <div className={styles.quickTilesGrid}>
           {[
-            { id: 'watch',  icon: '📺', name: 'Watch & Earn', color: '#7B61FF', link: '#earn' },
-            { id: 'tasks',  icon: '📋', name: 'Daily Tasks',  color: '#3D9EFF', link: '#earn' },
-            { id: 'refer',  icon: '👥', name: 'Refer & Earn', color: '#2ECC71', link: '#earn' },
-            { id: 'game',   icon: '🧲', name: 'XP Catcher',   color: '#F5C842', link: '#arcade' },
-            { id: 'mini',   icon: '🎮', name: 'Mini Games',   color: '#A08CFF', link: '#arcade' },
-            { id: 'streak', icon: '🔥', name: 'Streak Bonus', color: '#FF5252', link: '#earn' },
-          ].map((tile) => (
-            <a key={tile.id} href={tile.link} className={styles.quickTile}>
-              <div
-                className={styles.quickTileIcon}
-                style={{
-                  background: `${tile.color}15`,
-                  borderColor: `${tile.color}40`,
-                }}
-              >
-                <span>{tile.icon}</span>
-              </div>
-              <span className={styles.quickTileName}>{tile.name}</span>
-            </a>
-          ))}
+            { id: 'watch',  icon: Tv,            name: 'Watch & Earn', color: '#7B61FF', link: '#earn' },
+            { id: 'tasks',  icon: CalendarCheck, name: 'Daily Tasks',  color: '#3D9EFF', link: '#earn' },
+            { id: 'refer',  icon: Users,         name: 'Refer & Earn', color: '#2ECC71', link: '#earn' },
+            { id: 'game',   icon: Magnet,        name: 'XP Catcher',   color: '#F5C842', link: '#arcade' },
+            { id: 'mini',   icon: Gamepad2,      name: 'Mini Games',   color: '#A08CFF', link: '#arcade' },
+            { id: 'streak', icon: Flame,         name: 'Streak Bonus', color: '#FF5252', link: '#earn' },
+          ].map((tile) => {
+            const IconComp = tile.icon
+            return (
+              <a key={tile.id} href={tile.link} className={styles.quickTile}>
+                <div
+                  className={styles.quickTileIcon}
+                  style={{
+                    background: `${tile.color}15`,
+                    borderColor: `${tile.color}35`,
+                  }}
+                >
+                  <IconComp size={20} color={tile.color} />
+                </div>
+                <span className={styles.quickTileName}>{tile.name}</span>
+              </a>
+            )
+          })}
         </div>
       </div>
     </section>

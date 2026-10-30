@@ -1,4 +1,5 @@
 import React from 'react'
+import { Zap, Gamepad2 } from 'lucide-react'
 import GameContainer from './GameContainer'
 import styles from './PlayAndEarn.module.css'
 
@@ -8,10 +9,14 @@ const PlayAndEarn = () => {
       <div className={styles.sectionHead}>
         <div>
           <div className={styles.tagWrap}>
-            <span className="ve-badge ve-badge-gold">⚡ Play & Earn Hub</span>
-            <span className="ve-badge ve-badge-purple">Skill Mini-Game</span>
+            <span className="ve-badge ve-badge-gold">
+              <Zap size={12} style={{ display: 'inline', marginRight: '4px' }} /> Play & Earn Hub
+            </span>
+            <span className="ve-badge ve-badge-purple">
+              <Gamepad2 size={12} style={{ display: 'inline', marginRight: '4px' }} /> Skill Mini-Game
+            </span>
           </div>
-          <h2 className="section-title">🕹️ Level-Up Arcade</h2>
+          <h2 className="section-title">Level-Up Arcade</h2>
           <p className="section-subtitle">
             Play interactive micro-games to earn instant XP boosts and progress towards your next milestone.
           </p>

@@ -47,12 +47,22 @@
   position: relative;
   cursor: pointer;
   transition: all var(--transition-fast);
+  color: var(--text-secondary);
 }
 
 .notificationBtn:hover {
   border-color: var(--border-hover);
   background: var(--bg-card-hover);
+  color: var(--text-primary);
   transform: scale(1.05);
+}
+
+.bellIcon {
+  transition: transform var(--transition-fast);
+}
+
+.notificationBtn:hover .bellIcon {
+  transform: rotate(15deg);
 }
 
 .notifBadge {

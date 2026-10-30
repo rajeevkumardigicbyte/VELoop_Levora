@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react'
+import { Coins, Gem, TrendingUp, Target, Gift, Sparkles } from 'lucide-react'
+import LevelBadgeHex from '../shared/LevelBadgeHex'
+import { LaurelBranch } from '../shared/LaurelWreath'
 import styles from './LevelUpModal.module.css'
 
 const LevelUpModal = ({ isOpen, onClose, data }) => {
@@ -18,17 +21,25 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
 
   if (!isOpen) return null
 
-  const targetLevel = data.nextLevel || 5
+  const targetLevel = data?.currentLevel || 5
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={`${styles.modalCard} animate-scaleIn`} onClick={(e) => e.stopPropagation()}>
-        {/* Floating Sparkles & Coins from Screen 5 */}
+        {/* Ambient Sparkles */}
         <div className={styles.sparkleWrap}>
-          <span className={styles.sparkle} style={{ top: '8%', left: '12%' }}>✨</span>
-          <span className={styles.sparkle} style={{ top: '15%', right: '15%' }}>🟡</span>
-          <span className={styles.sparkle} style={{ top: '35%', left: '8%' }}>💎</span>
-          <span className={styles.sparkle} style={{ top: '40%', right: '10%' }}>⭐</span>
+          <span className={styles.sparkle} style={{ top: '8%', left: '12%' }}>
+            <Sparkles size={20} color="#F5C842" />
+          </span>
+          <span className={styles.sparkle} style={{ top: '15%', right: '15%' }}>
+            <Gem size={18} color="#A08CFF" />
+          </span>
+          <span className={styles.sparkle} style={{ top: '35%', left: '8%' }}>
+            <Coins size={18} color="#F5C842" />
+          </span>
+          <span className={styles.sparkle} style={{ top: '40%', right: '10%' }}>
+            <Sparkles size={16} color="#3D9EFF" />
+          </span>
         </div>
 
         {/* Header from Screen 5 */}
@@ -38,12 +49,11 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
         {/* Golden Pedestal with Shield from Screen 5 */}
         <div className={styles.pedestalStage}>
           <div className={styles.podiumShield}>
-            <div className={styles.laurelWreathLeft}>🌿</div>
+            <LaurelBranch side="left" size={44} />
             <div className={styles.shieldCenter}>
-              <span className={styles.shieldTitle}>LEVEL</span>
-              <span className={styles.shieldNum}>{String(targetLevel).padStart(2, '0')}</span>
+              <LevelBadgeHex level={targetLevel} size={92} />
             </div>
-            <div className={styles.laurelWreathRight}>🌿</div>
+            <LaurelBranch side="right" size={44} />
           </div>
           <div className={styles.goldenPlatform} />
         </div>
@@ -52,27 +62,37 @@ const LevelUpModal = ({ isOpen, onClose, data }) => {
         <div className={styles.rewardCardsRow}>
           <div className={styles.rewardCard}>
             <span className={styles.rewardCardVal}>+500 VEs</span>
-            <span className={styles.rewardCardIcon}>💰</span>
+            <span className={styles.rewardCardIcon}>
+              <Coins size={28} color="#F5C842" />
+            </span>
           </div>
 
           <div className={styles.rewardCard}>
             <span className={styles.rewardCardVal}>+25 Gems</span>
-            <span className={styles.rewardCardIcon}>💎</span>
+            <span className={styles.rewardCardIcon}>
+              <Gem size={28} color="#A08CFF" />
+            </span>
           </div>
         </div>
 
         {/* Unlocked Perks List from Screen 5 */}
         <div className={styles.perksList}>
           <div className={styles.perkItem}>
-            <span className={styles.perkIcon}>📈</span>
+            <span className={`${styles.perkIcon} ${styles.perkIconTrend}`}>
+              <TrendingUp size={16} color="#7B61FF" />
+            </span>
             <span className={styles.perkText}>Higher daily XP limit</span>
           </div>
           <div className={styles.perkItem}>
-            <span className={styles.perkIcon}>🎯</span>
+            <span className={`${styles.perkIcon} ${styles.perkIconTarget}`}>
+              <Target size={16} color="#3D9EFF" />
+            </span>
             <span className={styles.perkText}>Access to new challenges</span>
           </div>
           <div className={styles.perkItem}>
-            <span className={styles.perkIcon}>🎁</span>
+            <span className={`${styles.perkIcon} ${styles.perkIconGift}`}>
+              <Gift size={16} color="#F5C842" />
+            </span>
             <span className={styles.perkText}>Better reward opportunities</span>
           </div>
         </div>
