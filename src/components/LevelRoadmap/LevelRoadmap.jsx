@@ -284,7 +284,7 @@ const LevelRoadmap = ({ data }) => {
                     )}
                     {nodeCurrent && (
                       <span className={styles.pillCurrent}>
-                        <span className={styles.radarDot} /> YOU ARE HERE
+                        <span className={styles.radarDot} /> ACTIVE
                       </span>
                     )}
                     {nodeNext && (
@@ -343,8 +343,10 @@ const LevelRoadmap = ({ data }) => {
                   {/* Bottom Milestone Reward Capsule */}
                   <div
                     className={`${styles.rewardCapsule} ${
-                      nodeLocked ? styles.rewardCapsuleLocked : ''
-                    }`}
+                      nodeCompleted ? styles.rewardCapsuleCompleted : ''
+                    } ${nodeCurrent ? styles.rewardCapsuleCurrent : ''} ${
+                      nodeNext ? styles.rewardCapsuleNext : ''
+                    } ${nodeLocked ? styles.rewardCapsuleLocked : ''}`}
                   >
                     {lvl.reward?.icon && (
                       <img
