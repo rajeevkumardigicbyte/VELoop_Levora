@@ -18,11 +18,13 @@
 }
 
 .gameCardWrapper {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(30, 33, 56, 0.75) 0%, rgba(22, 24, 39, 0.85) 100%);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-xl);
   padding: 24px;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   width: 100%;
   max-width: 520px;
   display: flex;
@@ -30,6 +32,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
+  transition: border-color var(--transition-normal);
 }
 
 /* Start screen */
@@ -71,8 +74,10 @@
 }
 
 .rulesCard {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-lg);
   padding: 16px 20px;
   width: 100%;

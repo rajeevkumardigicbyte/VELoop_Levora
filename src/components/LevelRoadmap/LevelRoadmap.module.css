@@ -24,10 +24,12 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background: var(--bg-card);
+  background: rgba(30, 33, 56, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .roadmapScroll {
@@ -40,12 +42,12 @@
   display: flex;
   min-width: max-content;
   padding: 8px 12px;
-  background: var(--bg-card);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid var(--border);
+  background: linear-gradient(135deg, rgba(30, 33, 56, 0.70) 0%, rgba(22, 24, 39, 0.85) 100%);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .nodeWrapper {
