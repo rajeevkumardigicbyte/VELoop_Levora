@@ -79,10 +79,10 @@ const NextLevelReward = ({ data, onTriggerLevelUp }) => {
           type="button"
           className="ve-btn ve-btn-gold"
           onClick={onTriggerLevelUp}
-          style={{ width: '100%', padding: '13px' }}
+          style={{ width: '100%', padding: '10px 16px', fontSize: '13px' }}
           aria-label="View Rewards Preview modal"
         >
-          View Rewards Preview <ArrowRight size={16} aria-hidden="true" />
+          View Rewards Preview <ArrowRight size={15} aria-hidden="true" />
         </button>
       </div>
 
